@@ -8,6 +8,7 @@
   "author": "",
   "license": "UNLICENSED",
   "devDependencies": {
+    "prettier": "^1.14.2",
     "tslint-config-prettier": "^1.15.0",
     "tslint-consistent-codestyle": "^1.13.3"
   }
