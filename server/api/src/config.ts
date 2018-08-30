@@ -7,7 +7,7 @@ const configuration = {
     linkedIn: {
       clientID: '77gy1y1ddffvxw',
       clientSecret: 'WNOSE0fM0KdVPlDq',
-      callbackURL: 'http://localhost:3000/auth/provider/callback',
+      callbackURL: 'http://localhost:3000/auth/linkedin/callback',
       scope: ['r_emailaddress', 'r_basicprofile'],
     },
   },

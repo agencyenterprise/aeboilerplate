@@ -6,7 +6,7 @@ import logger from './logger'
 
 export function initializePassport() {
   passport.use(
-    'provider',
+    'linkedInProvider',
     new linkedInOauth2.Strategy(
       {
         clientID: config.auth.linkedIn.clientID,
