@@ -4,7 +4,9 @@
   "description": "",
   "scripts": {
     "start": "ts-node ./src/server.ts",
-    "dev": "ts-node-dev --poll --no-notify ./src/server.ts"
+    "dev": "ts-node-dev --poll --no-notify ./src/server.ts",
+    "lint": "tslint --exclude **/*.d.ts src/**/*.ts",
+    "tslint-check": "tslint-config-prettier-check ./tslint.json"
   },
   "author": "",
   "license": "UNLICENSED",
