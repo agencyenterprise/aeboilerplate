@@ -1,5 +1,5 @@
 import routes from './routes'
 
-export function loadApiRoutes(app) {
+export const loadApiRoutes = (app) => {
   app.use('/', routes)
 }

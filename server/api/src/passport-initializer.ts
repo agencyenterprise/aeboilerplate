@@ -4,7 +4,7 @@ import linkedInOauth2 from 'passport-linkedin-oauth2'
 import config from './config'
 import logger from './logger'
 
-export function initializePassport() {
+export const initializePassport = () => {
   passport.use(
     'linkedInProvider',
     new linkedInOauth2.Strategy(
@@ -14,18 +14,18 @@ export function initializePassport() {
         callbackURL: config.auth.linkedIn.callbackURL,
         scope: config.auth.linkedIn.scope,
       },
-      function(accessToken, refreshToken, profile, done) {
+      (accessToken, refreshToken, profile, done) => {
         done(null, { accessToken, refreshToken, profile })
       },
     ),
   )
 
-  passport.serializeUser(function(user: any, done) {
+  passport.serializeUser((user: any, done) => {
     logger.debug(user.accessToken)
     done(null, user)
   })
 
-  passport.deserializeUser(function(user: any, done) {
+  passport.deserializeUser((user: any, done) => {
     logger.debug(user.accessToken)
     done(null, user)
   })

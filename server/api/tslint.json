@@ -19,11 +19,10 @@
     "prefer-object-spread": true,
     "prefer-template": true,
     "quotemark": [true, "single", "jsx-double"],
-    "no-default-export": true,
     "early-exit": true,
     "no-unnecessary-else": true,
-    "no-unnecessary-type-annotation": true,
     "semicolon": false,
-    "no-unused-expression": false
+    "no-unused-expression": false,
+    "only-arrow-functions": true
   }
 }
