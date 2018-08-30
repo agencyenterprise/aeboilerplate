@@ -1,5 +1,5 @@
 import routes from './routes'
 
-export default (app) => {
+export function loadApiRoutes(app) {
   app.use('/', routes)
 }

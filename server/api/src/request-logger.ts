@@ -2,7 +2,7 @@ import httpContext from 'express-http-context'
 import morgan from 'morgan'
 import uuid from 'node-uuid'
 
-export default function(app) {
+export function initializeRequestLogger(app) {
   setupRequestId(app)
   addMorganTokens()
   logOptionRequests(app)
