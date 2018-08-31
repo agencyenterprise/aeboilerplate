@@ -5,9 +5,9 @@ const configuration = {
   },
   auth: {
     linkedIn: {
-      clientID: '77gy1y1ddffvxw',
-      clientSecret: 'WNOSE0fM0KdVPlDq',
-      callbackURL: 'http://localhost:3000/auth/linkedin/callback',
+      clientID: process.env.LINKEDIN_ID,
+      clientSecret: process.env.LINKEDIN_SECRET,
+      callbackURL: process.env.LINKEDIN_CALLBACK_URL,
       scope: ['r_emailaddress', 'r_basicprofile'],
     },
   },
