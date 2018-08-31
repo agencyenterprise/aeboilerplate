@@ -1,5 +1,6 @@
 import bodyParser from 'body-parser'
 import express from 'express'
+import session from 'express-session'
 import passport from 'passport'
 
 import { initializeRequestLogger } from './request-logger'
@@ -15,6 +16,7 @@ app.use((req, res, next) => {
   next()
 })
 app.use(bodyParser.json())
+app.use(session({ secret: 'ae-boilerplate-super-session-secret' }))
 app.use(passport.initialize())
 app.use(passport.session())
 

@@ -45,6 +45,7 @@ export const initializePassport = () => {
   })
 
   passport.deserializeUser((user: any, done) => {
+    logger.info('deserialize user')
     logger.debug(user.accessToken)
     done(null, user)
   })
