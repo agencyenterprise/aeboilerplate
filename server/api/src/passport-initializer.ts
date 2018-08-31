@@ -4,6 +4,8 @@ import { db } from './knex-connection'
 
 import config from './config'
 import logger from './logger'
+import { saveUser } from '../src/services/users/save-user'
+import { saveAuthToken } from '../src/services/tokens/save-auth-token'
 
 export const initializePassport = () => {
   passport.use(
@@ -29,13 +31,15 @@ export const initializePassport = () => {
       userId = await saveUser(user)
     }
 
-    const {
-      token,
-      profile: { provider },
-    } = authenticationInfo
-    const authToken = getAuthToken({ userId, token, provider })
+    if (userId > 0) {
+      const {
+        token,
+        profile: { provider },
+      } = authenticationInfo
+      const authToken = getAuthToken({ userId, token, provider })
 
-    await saveAuthToken(authToken)
+      await saveAuthToken(authToken)
+    }
 
     done(null, authenticationInfo)
   })
@@ -68,15 +72,6 @@ const getUser = (profile): any => {
   return newUser
 }
 
-const getAuthToken = ({ userId, token, provider }) => {
-  return {
-    user_id: userId,
-    token,
-    provider,
-    status: 'active',
-  }
-}
-
 const getUserId = async (email: string) => {
   const user = await db('users')
     .select('id')
@@ -86,14 +81,11 @@ const getUserId = async (email: string) => {
   return user ? user.id : 0
 }
 
-const saveUser = async (user) => {
-  const [id] = await db('users')
-    .insert(user)
-    .returning('id')
-
-  return id
-}
-
-const saveAuthToken = async (authToken) => {
-  await db('auth_tokens').insert(authToken)
+const getAuthToken = ({ userId, token, provider }) => {
+  return {
+    user_id: userId,
+    token,
+    provider,
+    status: 'active',
+  }
 }

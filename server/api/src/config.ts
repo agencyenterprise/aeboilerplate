@@ -14,26 +14,24 @@ const configuration = {
   logLevel: process.env.LOG_LEVEL || 'debug',
   env: process.env.NODE_ENV || 'development',
   knex: {
-    development: {
-      client: 'postgresql',
-      connection: {
-        port: process.env.DB_CONN_PORT,
-        host: process.env.DB_CONN_HOST,
-        database: process.env.DB_CONN_DATABASE,
-        user: process.env.DB_CONN_USER,
-        password: process.env.DB_CONN_PASSWORD,
-      },
-      pool: {
-        min: +process.env.DATABASE_POOL_MIN,
-        max: +process.env.DATABASE_POOL_MAX,
-      },
-      migrations: {
-        directory: `${__dirname}/../db/pg/migrations`,
-        tableName: 'knex_migrations',
-      },
-      seeds: {
-        directory: './db/seeds',
-      },
+    client: 'postgresql',
+    connection: {
+      port: process.env.DB_CONN_PORT,
+      host: process.env.DB_CONN_HOST,
+      database: process.env.DB_CONN_DATABASE,
+      user: process.env.DB_CONN_USER,
+      password: process.env.DB_CONN_PASSWORD,
+    },
+    pool: {
+      min: +process.env.DATABASE_POOL_MIN,
+      max: +process.env.DATABASE_POOL_MAX,
+    },
+    migrations: {
+      directory: `${__dirname}/../db/pg/migrations`,
+      tableName: 'knex_migrations',
+    },
+    seeds: {
+      directory: './db/seeds',
     },
   },
 }

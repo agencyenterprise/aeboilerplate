@@ -38,3 +38,43 @@ services:
       POSTGRES_DB: api-db
       POSTGRES_PASSWORD: password
       POSTGRES_USER: user
+  test:
+    image: node:8.11.3
+    command: npm run test
+    working_dir: /usr/src/app
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - 4000:4000
+    depends_on:
+      - dbTest
+    environment:
+      DB_CONN_DATABASE: api-test-db
+      DB_CONN_HOST: dbTest
+      DB_CONN_PASSWORD: password
+      DB_CONN_PORT: 5432
+      DB_CONN_USER: user
+      NODE_ENV: test
+      DATABASE_POOL_MIN: 0
+      DATABASE_POOL_MAX: 10
+  dbTest:
+    image: postgres:10.4
+    ports:
+      - 5432
+    command: postgres
+      -D /run/pgsql-10.4-data
+      --fsync=off
+      --shared-buffers=128kB
+      --temp-buffers=800kB
+      --work-mem=64kB
+      --maintenance-work-mem=1024kB
+      --wal-buffers=32kB
+      --seq-page-cost=0.01
+      --random-page-cost=0.01
+      --effective-cache-size=64kB
+    environment:
+      LOGGING_COLLECTOR: 'on'
+      PGDATA: /run/pgsql-10.4-data
+      POSTGRES_DB: api-test-db
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: user
