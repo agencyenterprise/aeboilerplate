@@ -24,6 +24,8 @@ export const initializePassport = () => {
   )
 
   passport.serializeUser(async (authenticationInfo: any, done) => {
+    logger.info('serializing user')
+
     const user = getUser(authenticationInfo.profile)
     let userId = await getUserId(user.email)
 
@@ -45,8 +47,8 @@ export const initializePassport = () => {
   })
 
   passport.deserializeUser((user: any, done) => {
-    logger.info('deserialize user')
-    logger.debug(user.accessToken)
+    logger.info('deserializing user')
+    logger.debug(user.token)
     done(null, user)
   })
 }

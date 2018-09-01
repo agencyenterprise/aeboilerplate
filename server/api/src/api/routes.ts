@@ -1,8 +1,8 @@
 import errorMiddleware from 'error-middleware'
 import express from 'express'
 
-import authenticate from './authentication'
-import { ensureAuthenticated } from './middlewares/ensure-authenticated'
+import authenticate from './authentication/authenticate'
+import { ensureAuthenticated } from '../middlewares/ensure-authenticated'
 
 const router = express.Router()
 
