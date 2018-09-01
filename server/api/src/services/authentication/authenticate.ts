@@ -1,10 +1,10 @@
 import { db } from '../../knex-connection'
 import { saveUser } from '../users/save-user'
 import { saveAuthToken } from '../tokens/save-auth-token'
-import { getUser } from './passport-profile-converter'
+import { getUserFromProfile } from './passport-profile-converter'
 
 export const authenticate = async ({ token, profile }) => {
-  const user = getUser(profile)
+  const user = getUserFromProfile(profile)
   let userId = await getUserId(user.email)
 
   if (userId === 0) {
