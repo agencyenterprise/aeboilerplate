@@ -10,10 +10,10 @@ export const getUser = (profile): any => {
   const photoUrl = photos.length && photos.pop().value
 
   const newUser = {
-    provider: provider,
+    provider,
     firstName: givenName,
     lastName: familyName,
-    photoUrl: photoUrl,
+    photoUrl,
     email,
   }
 

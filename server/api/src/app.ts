@@ -16,7 +16,7 @@ app.use((req, res, next) => {
   next()
 })
 app.use(bodyParser.json())
-app.use(session({ secret: 'ae-boilerplate-super-session-secret' }))
+app.use(session({ secret: 'ae-boilerplate-super-session-secret', saveUninitialized: true, resave: true }))
 app.use(passport.initialize())
 app.use(passport.session())
 

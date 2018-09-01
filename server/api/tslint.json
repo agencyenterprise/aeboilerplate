@@ -21,6 +21,7 @@
     "no-unnecessary-else": true,
     "semicolon": false,
     "no-unused-expression": false,
-    "only-arrow-functions": true
+    "only-arrow-functions": true,
+    "object-literal-shorthand": true
   }
 }
