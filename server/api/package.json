@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "ts-node ./src/server.ts",
+    "start": "npm run migrate && ts-node ./src/server.ts",
     "dev": "npm run migrate && ts-node-dev --poll --no-notify ./src/server.ts",
     "lint": "tslint --exclude **/*.d.ts src/**/*.ts",
     "tslint-check": "tslint-config-prettier-check ./tslint.json",
