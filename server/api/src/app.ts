@@ -7,25 +7,25 @@ import { initializeRequestLogger } from './config/request-logger'
 import { initializePassport } from './config/passport-initializer'
 import { loadApiRoutes } from './api'
 
-const app = express()
+const expressApp = express()
 
-app.use((req, res, next) => {
+expressApp.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*')
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
   res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS')
   next()
 })
-app.use(bodyParser.json())
-app.use(session({ secret: 'ae-boilerplate-super-session-secret', saveUninitialized: true, resave: true }))
-app.use(passport.initialize())
-app.use(passport.session())
+expressApp.use(bodyParser.json())
+expressApp.use(session({ secret: 'ae-boilerplate-super-session-secret', saveUninitialized: true, resave: true }))
+expressApp.use(passport.initialize())
+expressApp.use(passport.session())
 
 if (process.env.NODE_ENV !== 'test') {
-  initializeRequestLogger(app)
+  initializeRequestLogger(expressApp)
 }
 
 initializePassport()
 
-loadApiRoutes(app)
+loadApiRoutes(expressApp)
 
-export default app
+export const app = expressApp

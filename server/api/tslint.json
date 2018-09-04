@@ -22,6 +22,7 @@
     "semicolon": false,
     "no-unused-expression": false,
     "only-arrow-functions": true,
-    "object-literal-shorthand": true
+    "object-literal-shorthand": true,
+    "no-default-export": true
   }
 }

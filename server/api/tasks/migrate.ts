@@ -1,5 +1,5 @@
 import { db } from '../src/knex-connection'
-import logger from '../src/logger'
+import { logger } from '../src/logger'
 
 logger.info('migration started')
 

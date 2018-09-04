@@ -16,7 +16,7 @@ class ObjectDumpTransport extends Transport {
   }
 }
 
-const logger = winston.createLogger({
+const winstonLogger = winston.createLogger({
   format: winston.format.json(),
   level: config.logLevel,
   transports: [
@@ -27,7 +27,7 @@ const logger = winston.createLogger({
 })
 
 if (config.env !== 'production') {
-  logger.add(new ObjectDumpTransport())
+  winstonLogger.add(new ObjectDumpTransport())
 }
 
-export default logger
+export const logger = winstonLogger

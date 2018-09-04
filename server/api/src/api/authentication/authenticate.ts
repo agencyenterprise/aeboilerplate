@@ -8,4 +8,4 @@ const router = express.Router()
 router.get('/linkedin/callback', authenticateCallback)
 router.get('/linkedin', passport.authenticate('linkedInProvider'))
 
-export default router
+export const authenticate = router
