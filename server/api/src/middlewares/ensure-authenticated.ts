@@ -8,7 +8,7 @@ export const ensureAuthenticated = async (req, res, next) => {
       .where({ token })
       .first()
 
-    if (validToken.status === 'active') {
+    if (validToken && validToken.status === 'active') {
       return next()
     }
 

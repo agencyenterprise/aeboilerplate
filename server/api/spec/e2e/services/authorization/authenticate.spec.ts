@@ -2,7 +2,7 @@ import { db, expect, clearTestData } from '../../../spec-helper'
 import { authenticationInfoFixture } from '../../../fixtures/authentication-info'
 import { authenticate } from '../../../../src/services/authentication/authenticate'
 
-describe('authenticate profile', () => {
+describe('authentication service', () => {
   afterEach(async () => {
     await clearTestData()
   })

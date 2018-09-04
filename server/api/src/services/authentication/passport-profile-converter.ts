@@ -1,4 +1,4 @@
-export const getUserFromProfile = (profile): any => {
+export const getUserFromProfile = (profile) => {
   const {
     provider,
     name: { givenName, familyName },

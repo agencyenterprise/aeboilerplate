@@ -3,8 +3,8 @@ import { saveUser } from '../users/save-user'
 import { saveAuthToken } from '../tokens/save-auth-token'
 import { getUserFromProfile } from './passport-profile-converter'
 
-export const authenticate = async ({ token, profile }) => {
-  const user = getUserFromProfile(profile)
+export const authenticate = async (authenticationInfo) => {
+  const user = getUserFromProfile(authenticationInfo.profile)
   let userId = await getUserId(user.email)
 
   if (userId === 0) {
@@ -13,8 +13,8 @@ export const authenticate = async ({ token, profile }) => {
 
   const authToken = {
     userId,
-    token,
-    provider: profile.provider,
+    token: authenticationInfo.token,
+    provider: authenticationInfo.profile.provider,
     status: 'active',
   }
 
