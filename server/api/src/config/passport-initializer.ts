@@ -1,9 +1,9 @@
 import passport from 'passport'
 import linkedInOauth2 from 'passport-linkedin-oauth2'
 
-import config from './config'
-import logger from './logger'
-import { authenticate } from './services/authentication/authenticate'
+import { config } from '.'
+import logger from '../logger'
+import { authenticate } from '../services/authentication/authenticate'
 
 export const initializePassport = () => {
   passport.use(

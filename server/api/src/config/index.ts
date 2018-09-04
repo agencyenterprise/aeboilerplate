@@ -27,13 +27,13 @@ const configuration = {
       max: +process.env.DATABASE_POOL_MAX,
     },
     migrations: {
-      directory: `${__dirname}/../db/pg/migrations`,
+      directory: `${__dirname}/../../db/pg/migrations`,
       tableName: 'knex_migrations',
     },
     seeds: {
-      directory: './db/seeds',
+      directory: `${__dirname}/../../db/pg/seeds`,
     },
   },
 }
 
-export default configuration
+export const config = configuration

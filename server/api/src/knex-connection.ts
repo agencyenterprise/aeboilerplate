@@ -1,7 +1,7 @@
 import knex from 'knex'
 
-import configuration from './config'
+import { config } from './config'
 
-const knexConnection = knex(configuration.knex)
+const knexConnection = knex(config.knex)
 
 export const db = knexConnection

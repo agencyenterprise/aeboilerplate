@@ -1,5 +1,5 @@
 import app from './app'
-import config from './config'
+import { config } from './config'
 import logger from './logger'
 
 app.listen(+config.http.port, config.http.host, () => {

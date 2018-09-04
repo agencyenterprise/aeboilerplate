@@ -3,8 +3,8 @@ import express from 'express'
 import session from 'express-session'
 import passport from 'passport'
 
-import { initializeRequestLogger } from './request-logger'
-import { initializePassport } from './passport-initializer'
+import { initializeRequestLogger } from './config/request-logger'
+import { initializePassport } from './config/passport-initializer'
 import { loadApiRoutes } from './api'
 
 const app = express()
