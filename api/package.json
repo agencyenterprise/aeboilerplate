@@ -16,6 +16,7 @@
   "devDependencies": {
     "@types/chai": "^4.1.4",
     "@types/chai-http": "^3.0.5",
+    "@types/express-rate-limit": "^2.9.3",
     "@types/express-session": "^1.15.10",
     "@types/knex": "^0.14.23",
     "@types/mocha": "^5.2.5",
@@ -44,6 +45,7 @@
     "express": "^4.16.3",
     "express-async-handler": "^1.1.4",
     "express-http-context": "^1.0.4",
+    "express-rate-limit": "^3.1.0",
     "express-session": "^1.15.6",
     "express-validator": "^5.3.0",
     "knex": "^0.15.2",
