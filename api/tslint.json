@@ -23,6 +23,7 @@
     "no-unused-expression": false,
     "only-arrow-functions": true,
     "object-literal-shorthand": true,
-    "no-default-export": true
+    "no-default-export": true,
+    "no-console": true
   }
 }
