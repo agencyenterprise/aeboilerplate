@@ -8,12 +8,7 @@
     "member-ordering": [
       true,
       {
-        "order": [
-          "static-field",
-          "instance-field",
-          "static-method",
-          "instance-method"
-        ]
+        "order": ["static-field", "instance-field", "static-method", "instance-method"]
       }
     ],
     "newline-before-return": true,
@@ -24,8 +19,7 @@
     "prefer-object-spread": true,
     "prefer-template": true,
     "quotemark": [true, "single", "jsx-double"],
-
-    "early-exit": true,
+    "semicolon": false,
     "no-unnecessary-else": true,
     "no-unnecessary-type-annotation": true
   }
