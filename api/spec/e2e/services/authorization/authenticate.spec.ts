@@ -1,4 +1,4 @@
-import { db, expect, clearTestData } from '../../../spec-helper'
+import { db, clearTestData } from '../../../spec-helper'
 import { authenticationInfoFixture } from '../../../fixtures/authentication-info'
 import { authenticate } from '../../../../src/services/authentication/authenticate'
 
@@ -25,15 +25,15 @@ describe('authentication service', () => {
     const authTokenBeforeAuth = await getAuthTokenByToken(authenticationInfoFixture.token)
     const userBeforeAuth = await getUserByEmail(userEmail)
 
-    expect(authTokenBeforeAuth).to.be.undefined
-    expect(userBeforeAuth).to.be.undefined
+    expect(authTokenBeforeAuth).toBeUndefined()
+    expect(userBeforeAuth).toBeUndefined()
 
     await authenticate(authenticationInfoFixture)
 
     const authTokenAfterAuth = await getAuthTokenByToken(authenticationInfoFixture.token)
     const userAfterAuth = await getUserByEmail(userEmail)
 
-    expect(authTokenAfterAuth.token).to.be.eql(authenticationInfoFixture.token)
-    expect(userAfterAuth.email).to.be.eql(userEmail)
+    expect(authTokenAfterAuth.token).toEqual(authenticationInfoFixture.token)
+    expect(userAfterAuth.email).toEqual(userEmail)
   })
 })

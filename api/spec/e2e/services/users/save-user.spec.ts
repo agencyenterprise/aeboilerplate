@@ -1,4 +1,4 @@
-import { db, expect, clearTestData } from '../../../spec-helper'
+import { db, clearTestData } from '../../../spec-helper'
 import { userFixture } from '../../../fixtures/user'
 import { saveUser } from '../../../../src/services/users/save-user'
 
@@ -13,7 +13,7 @@ describe('user service', () => {
       .where({ email: userFixture.email })
       .first()
 
-    expect(beforeSave).to.be.undefined
+    expect(beforeSave).toBeUndefined()
 
     await saveUser(userFixture)
 
@@ -22,12 +22,12 @@ describe('user service', () => {
       .where({ email: userFixture.email })
       .first()
 
-    expect(email).to.be.eql(userFixture.email)
+    expect(email).toEqual(userFixture.email)
   })
 
   it('returns the saved user id', async () => {
     const savedUserId = await saveUser(userFixture)
 
-    expect(savedUserId).to.be.eql(1)
+    expect(savedUserId).toEqual(1)
   })
 })

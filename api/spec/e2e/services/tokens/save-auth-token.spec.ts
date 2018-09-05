@@ -1,4 +1,4 @@
-import { db, expect, clearTestData } from '../../../spec-helper'
+import { db, clearTestData } from '../../../spec-helper'
 import { authTokenFixture } from '../../../fixtures/auth-token'
 import { saveAuthToken } from '../../../../src/services/tokens/save-auth-token'
 
@@ -13,7 +13,7 @@ describe('token service', () => {
       .where({ token: authTokenFixture.token })
       .first()
 
-    expect(beforeSave).to.be.undefined
+    expect(beforeSave).toBeUndefined()
 
     await saveAuthToken(authTokenFixture)
 
@@ -22,6 +22,6 @@ describe('token service', () => {
       .where({ token: authTokenFixture.token })
       .first()
 
-    expect(token).to.be.eql(authTokenFixture.token)
+    expect(token).toEqual(authTokenFixture.token)
   })
 })
