@@ -11,8 +11,6 @@ export const ensureAuthenticated = async (req, res, next) => {
     if (validToken && validToken.status === 'active') {
       return next()
     }
-
-    res.sendStatus(401)
   }
 
   res.sendStatus(401)
