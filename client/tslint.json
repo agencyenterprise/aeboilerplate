@@ -1,0 +1,32 @@
+{
+  "extends": ["tslint:recommended", "tslint-config-prettier"],
+  "rulesDirectory": ["tslint-consistent-codestyle"],
+  "rules": {
+    "cyclomatic-complexity": [true, 20],
+    "interface-name": false,
+    "member-access": [false],
+    "member-ordering": [
+      true,
+      {
+        "order": [
+          "static-field",
+          "instance-field",
+          "static-method",
+          "instance-method"
+        ]
+      }
+    ],
+    "newline-before-return": true,
+    "no-bitwise": false,
+    "no-conditional-assignment": false,
+    "no-unused-variable": true,
+    "object-literal-sort-keys": false,
+    "prefer-object-spread": true,
+    "prefer-template": true,
+    "quotemark": [true, "single", "jsx-double"],
+
+    "early-exit": true,
+    "no-unnecessary-else": true,
+    "no-unnecessary-type-annotation": true
+  }
+}
