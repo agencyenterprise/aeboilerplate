@@ -3,6 +3,7 @@ import express from 'express'
 import session from 'express-session'
 import passport from 'passport'
 import RateLimit from 'express-rate-limit'
+import cors from 'cors'
 
 import { initializeRequestLogger } from './config/request-logger'
 import { initializePassport } from './config/passport-initializer'
@@ -10,12 +11,7 @@ import { loadApiRoutes } from './api'
 
 const app = express()
 
-app.use((_, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*')
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
-  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS')
-  next()
-})
+app.use(cors())
 app.use(bodyParser.json())
 app.use(session({ secret: 'ae-boilerplate-super-session-secret', saveUninitialized: true, resave: true }))
 app.use(passport.initialize())
