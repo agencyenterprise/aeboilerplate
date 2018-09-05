@@ -6,11 +6,10 @@
     "start": "npm run migrate && ts-node ./src/server.ts",
     "dev": "npm run migrate && ts-node-dev --poll --no-notify ./src/server.ts",
     "lint": "tslint --exclude **/*.d.ts src/**/*.ts",
-    "tslint-check": "tslint-config-prettier-check ./tslint.json",
     "migrate": "ts-node ./tasks/migrate",
     "test": "npm run migrate && mocha -r ts-node/register spec/**/*.spec.ts --exit",
-    "test:report": "npm run migrate && mocha -r ts-node/register spec/**/*.spec.ts --reporter mocha-junit-reporter",
-    "test:watch": "npm run migrate && mocha -w -r ts-node/register --watch-extensions ts ./spec/**/*.spec.ts"
+    "test-report": "npm run migrate && mocha -r ts-node/register spec/**/*.spec.ts --reporter mocha-junit-reporter",
+    "test-watch": "npm run migrate && mocha -w -r ts-node/register --watch-extensions ts ./spec/**/*.spec.ts"
   },
   "author": "",
   "license": "UNLICENSED",
