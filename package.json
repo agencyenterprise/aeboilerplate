@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/agencyenterprise/ae-node-boilerplate.git"
   },
-  "author": "",
+  "author": "ae",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/agencyenterprise/ae-node-boilerplate/issues"

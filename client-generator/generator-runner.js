@@ -16,7 +16,7 @@ const run = async () => {
     await installDependences()
     console.log('Client project created successfully! Happy hacking!'.green)
   } catch (error) {
-    console.log(error, 'Something went wrong while trying to create a new React app using create-react-app'.red)
+    console.log(error, 'Something went wrong with the client generator'.red)
   }
 }
 

@@ -1,12 +1,12 @@
 {
-  "name": "ae-react-redux-boilerplate",
+  "name": "ae-react-redux-boilerplate-client-generator",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "generator-runner.js",
   "scripts": {
-    "create": "node ./index.js"
+    "create": "node ./generator-runner.js"
   },
-  "author": "",
+  "author": "ae",
   "license": "ISC",
   "dependencies": {
     "colors": "^1.3.2",
