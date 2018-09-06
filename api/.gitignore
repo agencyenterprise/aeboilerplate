@@ -3,3 +3,4 @@ dist/
 *.log
 db/local_database_volume
 .DS_Store
+coverage/
