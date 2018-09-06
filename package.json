@@ -2,24 +2,25 @@
   "name": "ae-node-boilerplate",
   "version": "1.0.0",
   "description": "AE Node boilerplate meta project",
-  "main": "index.js",
   "scripts": {
     "api-start": "cd api && docker-compose up",
     "api-test": "cd api && docker-compose -f docker-compose.tests-services.yml up",
-    "api-npm": "cd api && docker-compose run --service-ports --rm api npm",
+    "api-npm": "cd api && docker-compose run --rm api npm",
     "create-client": "cd ./client-generator && npm i && npm run create"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/agencyenterprise/ae-node-boilerplate.git"
   },
-  "author": "ae",
+  "author": {
+    "name": "AE Studio",
+    "url": "https://ae.studio/"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/agencyenterprise/ae-node-boilerplate/issues"
   },
   "homepage": "https://github.com/agencyenterprise/ae-node-boilerplate#readme",
-  "dependencies": {
-    "node": "^8.11.4"
-  }
+  "dependencies": {},
+  "devDependencies": {}
 }
