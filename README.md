@@ -2,7 +2,7 @@
 
 # AE Node Boilerplate - API
 
-The API boilerplate consists in an NodeJS, Express, REST structure to facilitate the kickstart of a project.
+The API boilerplate consists in a NodeJS, Express, REST structure to facilitate the kickstart of a project.
 
 The built in routes are:
 
