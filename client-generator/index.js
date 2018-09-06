@@ -4,9 +4,9 @@ const shell = require('shelljs')
 const colors = require('colors')
 const fs = require('fs')
 
-const resources = ['.editorconfig', '.gitignore', '.prettierrc', 'tsconfig.json', 'tslint.json']
 const clientGeneratorPath = `${process.cwd()}`
 const clientAppPath = '../client'
+const resourcesFilesPath = './resources'
 
 const run = async () => {
   try {
@@ -14,7 +14,7 @@ const run = async () => {
     await updateAppConfig()
     await openAppFolder()
     await installDependences()
-    console.log('\nAll done'.green)
+    console.log('Client project created successfully! Happy hacking!'.green)
   } catch (error) {
     console.log(error, 'Something went wrong while trying to create a new React app using create-react-app'.red)
   }
@@ -22,7 +22,7 @@ const run = async () => {
 
 const createReactApp = () => {
   return new Promise((resolve) => {
-    console.log('\nRun create-react-app with TypeScript and SASS'.cyan)
+    console.log('\nRunning create-react-app with TypeScript and SASS (@petejkim/react-scripts-ts-sass)'.cyan)
 
     const createReactAppCommand = `create-react-app ${clientAppPath} --scripts-version="@petejkim/react-scripts-ts-sass" --use-npm`
 
@@ -37,9 +37,20 @@ const createReactApp = () => {
 
 const updateAppConfig = () => {
   return new Promise((resolve) => {
-    const configPromises = resources.map((resource) => copyResourceFile(resource))
+    const resourcesFiles = []
+
+    console.log('\nMapping resource files'.cyan)
+
+    fs.readdirSync(resourcesFilesPath).forEach((file) => {
+      console.log('Adding resource file', file)
+      resourcesFiles.push(file)
+    })
+
+    console.log('Copying resource files'.cyan)
+
+    const configPromises = resourcesFiles.map((resource) => copyResourceFile(resource))
     Promise.all(configPromises).then(() => {
-      console.log('\nResources copied from generator to client'.cyan)
+      console.log(`\n${resourcesFiles.length} resources copied from generator to client`.cyan)
       resolve()
     })
   })
@@ -61,7 +72,7 @@ const copyResourceFile = (resource) => {
 const openAppFolder = () => {
   return new Promise((resolve) => {
     shell.cd(`${clientAppPath}`)
-    console.log('\nOpen client folder'.cyan)
+    console.log('\nOpening client folder'.cyan)
     resolve(true)
   })
 }
