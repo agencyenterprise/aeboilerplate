@@ -1,5 +1,3 @@
-### _Before running any command make sure you installed all meta packages running `npm install` in the meta folder._
-
 # AE Node Boilerplate - API
 
 The API boilerplate consists in a NodeJS, Express, REST structure to facilitate the kickstart of a project.
