@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  api:
+    image: node:8.11.3
+    command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; npm run dev'
+    working_dir: /usr/src/app
+    volumes:
+      - ./api:/usr/src/app
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+    environment:
+      DB_CONN_DATABASE: api-db
+      DB_CONN_HOST: db
+      DB_CONN_PASSWORD: password
+      DB_CONN_PORT: 5432
+      DB_CONN_USER: user
+      LINKEDIN_ID: 77gy1y1ddffvxw
+      LINKEDIN_SECRET: WNOSE0fM0KdVPlDq
+      LINKEDIN_CALLBACK_URL: http://localhost:3000/auth/linkedin/callback
+      NODE_ENV: development
+      DATABASE_POOL_MIN: 0
+      DATABASE_POOL_MAX: 10
+  db:
+    image: postgres:10.4
+    ports:
+      - 5432:5432
+    command: postgres -D /run/pgsql-10.4-data -c logging_collector=on
+    volumes:
+      - ./api/db/local_database_volume:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    environment:
+      LOGGING_COLLECTOR: 'on'
+      PGDATA: /run/pgsql-10.4-data
+      POSTGRES_DB: api-db
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: user
