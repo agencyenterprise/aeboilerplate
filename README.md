@@ -1,17 +1,14 @@
+# AE Node Boilerplate - Client
+
+Create the client project running the following command
+
+```
+npm run create-client
+```
+
 # AE Node Boilerplate - API
 
 The API boilerplate consists in a NodeJS, Express, REST structure to facilitate the kickstart of a project.
-
-The built in routes are:
-
-- `/auth/linkedin`
-
-  - The auth linkedin route must be called using a browser to access the linkedin login page. It saves a new user in the users table and a new token in the auth_tokens table when everything runs as expected.
-
-- `/`
-  - The root route has a middleware to check whether the user is authenticated or not and it needs an Authorization header containing the token returned by the auth/linkedin route.
-
-Important: in order to have a working authentication process, the user must register the application in the LinkedIn developer page (https://www.linkedin.com/developer/apps), changing the client id, client secret in the API docker-compose file, and adding the callback URL `/auth/linkedin/callback` to the new application created on LinkedIn developer page.
 
 ## Standalone run
 
@@ -33,7 +30,18 @@ Running the API node package manager, enabling the developer to run any npm comm
 npm run api-npm
 ```
 
-## Project structure
+## API Project structure
+
+The built in routes are:
+
+- `/auth/linkedin`
+
+  - The auth linkedin route must be called using a browser to access the linkedin login page. It saves a new user in the users table and a new token in the auth_tokens table when everything runs as expected.
+
+- `/`
+  - The root route has a middleware to check whether the user is authenticated or not and it needs an Authorization header containing the token returned by the auth/linkedin route.
+
+Important: in order to have a working authentication process, the user must register the application in the LinkedIn developer page (https://www.linkedin.com/developer/apps), changing the client id, client secret in the API docker-compose file, and adding the callback URL `/auth/linkedin/callback` to the new application created on LinkedIn developer page.
 
 ```
 - /db
@@ -77,12 +85,4 @@ npm run api-npm
 - /tasks
     - migrate
         - Executes the knex migration files
-```
-
-# AE Node Boilerplate - Client
-
-Create the client project running the following command
-
-```
-npm run create-client
 ```
