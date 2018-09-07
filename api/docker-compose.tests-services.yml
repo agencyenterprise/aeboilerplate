@@ -27,17 +27,7 @@ services:
     image: postgres:10.4
     ports:
       - 5432
-    command: postgres
-      -D /run/pgsql-10.4-data
-      --fsync=off
-      --shared-buffers=128kB
-      --temp-buffers=800kB
-      --work-mem=64kB
-      --maintenance-work-mem=1024kB
-      --wal-buffers=32kB
-      --seq-page-cost=0.01
-      --random-page-cost=0.01
-      --effective-cache-size=64kB
+    command: postgres -D /run/pgsql-10.4-data -F
     environment:
       LOGGING_COLLECTOR: 'on'
       PGDATA: /run/pgsql-10.4-data
