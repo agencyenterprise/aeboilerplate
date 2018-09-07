@@ -1,7 +1,7 @@
 const configuration = {
   http: {
     host: process.env.HTTP_HOST || '0.0.0.0',
-    port: process.env.PORT || 3000,
+    port: process.env.PORT || 3001,
   },
   auth: {
     linkedIn: {

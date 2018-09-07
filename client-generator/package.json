@@ -4,7 +4,7 @@
   "description": "",
   "main": "generator-runner.js",
   "scripts": {
-    "create": "node ./generator-runner.js"
+    "create": "npm i && node ./generator-runner.js"
   },
   "author": "ae",
   "license": "ISC",
