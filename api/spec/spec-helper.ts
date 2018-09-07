@@ -1,4 +1,4 @@
-import { db } from '../src/knex-connection'
+import { db } from '../src/services/knex-connection'
 
 const clearTestData = async () => {
   await db('auth_tokens').truncate()

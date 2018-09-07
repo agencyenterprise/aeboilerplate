@@ -1,4 +1,4 @@
-import { db } from '../knex-connection'
+import { db } from '../services/knex-connection'
 
 export const ensureAuthenticated = async (req, res, next) => {
   const token = req.headers.authorization || (req.session.passport && req.session.passport.user.token)

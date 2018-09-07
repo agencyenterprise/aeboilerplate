@@ -1,4 +1,4 @@
-import { db } from '../../knex-connection'
+import { db } from '../knex-connection'
 import { saveUser } from '../users/save-user'
 import { saveAuthToken } from '../tokens/save-auth-token'
 import { getUserFromProfile } from './passport-profile-converter'

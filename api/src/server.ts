@@ -3,7 +3,7 @@ import os from 'os'
 
 import { app } from './app'
 import { config } from './config'
-import { logger } from './logger'
+import { logger } from './services/logger'
 
 if (cluster.isMaster) {
   logger.info(`Master ${process.pid} is running`)

@@ -1,4 +1,4 @@
-import { db } from '../../knex-connection'
+import { db } from '../knex-connection'
 
 export const saveUser = async (rawUser) => {
   const newUser = {
