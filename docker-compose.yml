@@ -1,6 +1,16 @@
 version: '3'
 
 services:
+  site:
+    image: node:8.11.3
+    command: npm start
+    working_dir: /usr/src/app
+    volumes:
+      - ./client:/usr/src/app
+    ports:
+      - 3000:3000
+    environment:
+      NODE_ENV: development
   api:
     image: node:8.11.3
     command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; npm run dev'
@@ -8,7 +18,7 @@ services:
     volumes:
       - ./api:/usr/src/app
     ports:
-      - 3000:3000
+      - 3001:3001
     depends_on:
       - db
     environment:

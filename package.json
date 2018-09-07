@@ -4,10 +4,11 @@
   "description": "AE Node boilerplate meta project",
   "main": "index.js",
   "scripts": {
+    "create-client": "cd ./client-generator && npm i && npm run create",
+    "api-npm": "cd api && docker-compose run --service-ports --rm api npm",
     "api-start": "cd api && docker-compose up",
     "api-test": "cd api && docker-compose -f docker-compose.tests-services.yml up",
-    "api-npm": "cd api && docker-compose run --service-ports --rm api npm",
-    "create-client": "cd ./client-generator && npm i && npm run create",
+    "first-run": "npm run create-client && npm run api-npm i",
     "start": "docker-compose up"
   },
   "repository": {

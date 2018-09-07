@@ -1,4 +1,17 @@
-# AE Node Boilerplate - Client
+# First Run
+
+Run the command first-run to create a new client, install api dependencies and start the project.
+
+```
+npm run first-run
+```
+
+The default routes are:
+
+- Site: http://localhost:3000
+- API: http://localhost:3001
+
+# Client
 
 Create the client project running the following command
 
@@ -6,13 +19,13 @@ Create the client project running the following command
 npm run create-client
 ```
 
-# AE Node Boilerplate - API
+# API
 
 The API boilerplate consists in a NodeJS, Express, REST structure to facilitate the kickstart of a project.
 
-## Standalone run
+## API Standalone run
 
-Running the API locally. The API will be accessible by default on http://localhost:3000. If you are running the API for the first time, execute the command `npm run api-npm i` before starting it.
+Running the API locally. The API will be accessible by default on http://localhost:3001. If you are running the API for the first time, execute the command `npm run api-npm i` before starting it.
 
 ```
 npm run api-start
