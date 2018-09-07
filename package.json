@@ -9,6 +9,7 @@
     "api-test": "cd api && docker-compose -f docker-compose.tests-services.yml up",
     "stop-containers": "docker stop $(docker ps -a -q)",
     "first-run": "npm run create-client && npm run api-npm i && npm run stop-containers && npm start",
+    "show-containers": "docker ps --format 'table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}'",
     "start": "docker-compose up"
   },
   "repository": {
