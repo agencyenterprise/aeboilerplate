@@ -7,7 +7,8 @@
     "api-npm": "cd api && docker-compose run --rm api npm",
     "api-start": "cd api && docker-compose up",
     "api-test": "cd api && docker-compose -f docker-compose.tests-services.yml up",
-    "first-run": "npm run create-client && npm run api-npm i && docker stop $(docker ps -a -q) && npm start",
+    "stop-containers": "docker stop $(docker ps -a -q)",
+    "first-run": "npm run create-client && npm run api-npm i && npm run stop-containers && npm start",
     "start": "docker-compose up"
   },
   "repository": {
