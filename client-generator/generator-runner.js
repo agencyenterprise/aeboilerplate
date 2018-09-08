@@ -13,8 +13,9 @@ const resourcesFilesPath = './resources'
 const run = async () => {
   try {
     await createReactApp()
-    await updateAppConfig()
-    await setupAxios()
+    await updateAppResources()
+    await updateAppInitialConfig()
+    await addReduxStoreProvider()
     await openAppFolder()
     await installDependences()
     console.log('\nClient project created successfully! Happy hacking!'.green)
@@ -38,7 +39,7 @@ const createReactApp = () => {
   })
 }
 
-const updateAppConfig = () => {
+const updateAppResources = () => {
   return new Promise(async (resolve) => {
     createFolders()
 
@@ -51,6 +52,8 @@ const updateAppConfig = () => {
 const createFolders = () => {
   shell.mkdir('../client/src/api')
   shell.mkdir('../client/src/config')
+  shell.mkdir('../client/src/redux')
+  shell.mkdir('../client/src/redux/ducks')
 }
 
 const mapResourceFiles = async () => {
@@ -95,29 +98,48 @@ const copyFile = (resource) => {
   })
 }
 
-const setupAxios = () => {
-  console.log('\nInitializing axios'.cyan)
+const updateAppInitialConfig = () => {
+  console.log('\nInitializing axios and redux store'.cyan)
 
   return new Promise((resolve) => {
     const replaceFrom = "import registerServiceWorker from './registerServiceWorker'"
-    const replaceTo =
-      "import registerServiceWorker from './registerServiceWorker' \n\nimport setupAxios from './api/setup-axios' \n\nsetupAxios()"
+    const replaceTo = `import registerServiceWorker from './registerServiceWorker' \n\n
+    import { Provider } from 'react-redux'
+    import setupAxios from './api/setup-axios'
+    import configureStore from './redux/configure-store' \n\n
+    setupAxios() \n\n
+    const store = configureStore() \n\n`
 
-    const options = {
-      files: '../client/src/index.tsx',
-      from: replaceFrom,
-      to: replaceTo,
-    }
-
-    try {
-      const changes = replace.sync(options)
-      console.log('\nAxios initialized on index.tsx:'.cyan)
-      resolve(true)
-    } catch (error) {
-      console.error('\nError occurred:', error.red)
-      resolve(false)
-    }
+    replaceText(resolve, replaceFrom, replaceTo)
   })
+}
+
+const addReduxStoreProvider = () => {
+  console.log('\nAdding redux store provider'.cyan)
+
+  return new Promise((resolve) => {
+    const replaceFrom = '<App />'
+    const replaceTo = '<Provider store={store}>\n<App />\n</Provider>'
+
+    replaceText(resolve, replaceFrom, replaceTo)
+  })
+}
+
+const replaceText = (resolve, replaceFrom, replaceTo) => {
+  const options = {
+    files: '../client/src/index.tsx',
+    from: replaceFrom,
+    to: replaceTo,
+  }
+
+  try {
+    replace.sync(options)
+    console.log('\nUpdated index.tsx'.cyan)
+    resolve(true)
+  } catch (error) {
+    console.error('\nError occurred:', error.red)
+    resolve(false)
+  }
 }
 
 const openAppFolder = () => {
@@ -130,13 +152,15 @@ const openAppFolder = () => {
 const installDependences = () => {
   return new Promise((resolve) => {
     console.log('\nInstalling DEV dependences'.cyan)
-    shell.exec('npm install -D prettier tslint tslint-config-prettier tslint-consistent-codestyle')
+    shell.exec(
+      'npm install -D prettier tslint tslint-config-prettier tslint-consistent-codestyle redux-devtools-extension',
+    )
 
     console.log('\nInstalling dependencies'.cyan)
-    shell.exec(`npm install -S redux redux-thunk react-router-dom axios platform qs`)
+    shell.exec(`npm install -S redux react-redux redux-thunk react-router-dom axios platform qs`)
 
     console.log('\n Installing @types'.cyan)
-    shell.exec(`npm install -D @types/react-router-dom @types/platform @types/qs`)
+    shell.exec(`npm install -D @types/react-redux @types/react-router-dom @types/platform @types/qs`)
 
     resolve(true)
   })
