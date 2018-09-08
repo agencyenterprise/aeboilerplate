@@ -1,5 +1,5 @@
 {
-  "name": "ae-react-redux-boilerplate-client-generator",
+  "name": "ae-react-boilerplate-client-generator",
   "version": "1.0.0",
   "description": "",
   "main": "generator-runner.js",
@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "colors": "^1.3.2",
+    "recursive-readdir": "^2.2.2",
     "shelljs": "^0.8.2"
   }
 }

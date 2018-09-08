@@ -3,6 +3,7 @@
 const shell = require('shelljs')
 const colors = require('colors')
 const fs = require('fs')
+var readdirRecursive = require('recursive-readdir')
 
 const clientGeneratorPath = `${process.cwd()}`
 const clientAppPath = '../client'
@@ -36,17 +37,22 @@ const createReactApp = () => {
 }
 
 const updateAppConfig = () => {
-  return new Promise((resolve) => {
+  return new Promise(async (resolve) => {
     const resourcesFiles = []
+
+    shell.mkdir('../client/src/api')
+    shell.mkdir('../client/src/config')
 
     console.log('\nMapping resource files'.cyan)
 
-    fs.readdirSync(resourcesFilesPath).forEach((file) => {
+    const files = await readdirRecursive(resourcesFilesPath)
+    files.forEach((file) => {
+      file = file.replace('resources/', '')
       console.log('Adding resource file', file)
       resourcesFiles.push(file)
     })
 
-    console.log('Copying resource files'.cyan)
+    console.log('\nCopying resource files'.cyan)
 
     const configPromises = resourcesFiles.map((resource) => copyResourceFile(resource))
     Promise.all(configPromises).then(() => {
@@ -83,7 +89,7 @@ const installDependences = () => {
     shell.exec('npm install -D prettier tslint tslint-config-prettier tslint-consistent-codestyle')
 
     console.log('\nInstalling dependencies'.cyan)
-    shell.exec(`npm install -S redux redux-thunk react-router-dom`)
+    shell.exec(`npm install -S redux redux-thunk react-router-dom axios platform qs`)
 
     resolve(true)
   })
