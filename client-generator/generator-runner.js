@@ -40,34 +40,52 @@ const createReactApp = () => {
 
 const updateAppConfig = () => {
   return new Promise(async (resolve) => {
-    const resourcesFiles = []
+    createFolders()
 
-    shell.mkdir('../client/src/api')
-    shell.mkdir('../client/src/config')
+    const resourcesFiles = await mapResourceFiles()
 
-    console.log('\nMapping resource files'.cyan)
-
-    const files = await readdirRecursive(resourcesFilesPath)
-    files.forEach((file) => {
-      file = file.replace('resources/', '')
-      console.log('Adding resource file', file)
-      resourcesFiles.push(file)
-    })
-
-    console.log('\nCopying resource files'.cyan)
-
-    const configPromises = resourcesFiles.map((resource) => copyResourceFile(resource))
-    Promise.all(configPromises).then(() => {
-      console.log(`\n${resourcesFiles.length} resources copied from generator to client`.cyan)
-      resolve()
-    })
+    copyResourceFiles(resourcesFiles, resolve)
   })
 }
 
-const copyResourceFile = (resource) => {
+const createFolders = () => {
+  shell.mkdir('../client/src/api')
+  shell.mkdir('../client/src/config')
+}
+
+const mapResourceFiles = async () => {
+  const resourcesFiles = []
+
+  console.log('\nMapping resource files'.cyan)
+
+  const files = await readdirRecursive(resourcesFilesPath)
+
+  files.forEach((file) => {
+    file = file.replace('resources/', '')
+    console.log('Adding resource file', file)
+    resourcesFiles.push(file)
+  })
+
+  return resourcesFiles
+}
+
+const copyResourceFiles = (resourcesFiles, resolve) => {
+  console.log('\nCopying resource files'.cyan)
+
+  const configPromises = resourcesFiles.map((resource) => copyFile(resource))
+
+  Promise.all(configPromises).then(() => {
+    console.log(`\n${resourcesFiles.length} resources copied from generator to client`.cyan)
+    resolve()
+  })
+}
+
+const copyFile = (resource) => {
   return new Promise((resolve) => {
     const fromGeneratorResourcesPath = `${clientGeneratorPath}/resources/${resource}`
+
     const toClientResourcesPath = `${clientAppPath}/${resource}`
+
     const onErrorHandler = (error) => {
       error && console.log(error.red)
       resolve()
@@ -78,10 +96,13 @@ const copyResourceFile = (resource) => {
 }
 
 const setupAxios = () => {
+  console.log('\nInitializing axios'.cyan)
+
   return new Promise((resolve) => {
     const replaceFrom = "import registerServiceWorker from './registerServiceWorker'"
     const replaceTo =
       "import registerServiceWorker from './registerServiceWorker' \n\nimport setupAxios from './api/setup-axios' \n\nsetupAxios()"
+
     const options = {
       files: '../client/src/index.tsx',
       from: replaceFrom,
@@ -90,10 +111,10 @@ const setupAxios = () => {
 
     try {
       const changes = replace.sync(options)
-      console.log('Modified files:', changes.join(', '))
+      console.log('\nAxios initialized on index.tsx:'.cyan)
       resolve(true)
     } catch (error) {
-      console.error('Error occurred:', error)
+      console.error('\nError occurred:', error.red)
       resolve(false)
     }
   })
@@ -102,7 +123,6 @@ const setupAxios = () => {
 const openAppFolder = () => {
   return new Promise((resolve) => {
     shell.cd(`${clientAppPath}`)
-    console.log('\nOpening client folder'.cyan)
     resolve(true)
   })
 }
@@ -114,6 +134,9 @@ const installDependences = () => {
 
     console.log('\nInstalling dependencies'.cyan)
     shell.exec(`npm install -S redux redux-thunk react-router-dom axios platform qs`)
+
+    console.log('\n Installing @types'.cyan)
+    // shell.exec(`npm install -S redux redux-thunk react-router-dom axios platform qs`)
 
     resolve(true)
   })
