@@ -17,7 +17,7 @@ const run = async () => {
     await setupAxios()
     await openAppFolder()
     await installDependences()
-    console.log('Client project created successfully! Happy hacking!'.green)
+    console.log('\nClient project created successfully! Happy hacking!'.green)
   } catch (error) {
     console.log(error, 'Something went wrong with the client generator'.red)
   }
@@ -136,7 +136,7 @@ const installDependences = () => {
     shell.exec(`npm install -S redux redux-thunk react-router-dom axios platform qs`)
 
     console.log('\n Installing @types'.cyan)
-    // shell.exec(`npm install -S redux redux-thunk react-router-dom axios platform qs`)
+    shell.exec(`npm install -D @types/react-router-dom @types/platform @types/qs`)
 
     resolve(true)
   })
