@@ -4,6 +4,7 @@ const shell = require('shelljs')
 const colors = require('colors')
 const fs = require('fs')
 var readdirRecursive = require('recursive-readdir')
+const replace = require('replace-in-file')
 
 const clientGeneratorPath = `${process.cwd()}`
 const clientAppPath = '../client'
@@ -13,6 +14,7 @@ const run = async () => {
   try {
     await createReactApp()
     await updateAppConfig()
+    await setupAxios()
     await openAppFolder()
     await installDependences()
     console.log('Client project created successfully! Happy hacking!'.green)
@@ -72,6 +74,28 @@ const copyResourceFile = (resource) => {
     }
 
     fs.copyFile(fromGeneratorResourcesPath, toClientResourcesPath, onErrorHandler)
+  })
+}
+
+const setupAxios = () => {
+  return new Promise((resolve) => {
+    const replaceFrom = "import registerServiceWorker from './registerServiceWorker'"
+    const replaceTo =
+      "import registerServiceWorker from './registerServiceWorker' \n\nimport setupAxios from './api/setup-axios' \n\nsetupAxios()"
+    const options = {
+      files: '../client/src/index.tsx',
+      from: replaceFrom,
+      to: replaceTo,
+    }
+
+    try {
+      const changes = replace.sync(options)
+      console.log('Modified files:', changes.join(', '))
+      resolve(true)
+    } catch (error) {
+      console.error('Error occurred:', error)
+      resolve(false)
+    }
   })
 }
 
