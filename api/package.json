@@ -7,7 +7,7 @@
     "dev": "npm run migrate && ts-node-dev --poll --no-notify ./src/server.ts",
     "lint": "tslint --exclude **/*.d.ts src/**/*.ts",
     "migrate": "ts-node ./tasks/migrate",
-    "test": "npm run migrate && jest --colors --verbose -i --coverage --detectOpenHandles"
+    "test": "npm run migrate && jest --watchAll --colors --verbose -i --detectOpenHandles"
   },
   "license": "UNLICENSED",
   "devDependencies": {
@@ -20,12 +20,14 @@
     "@types/node": "^10.9.3",
     "@types/node-uuid": "0.0.28",
     "@types/passport": "^0.4.6",
+    "@types/supertest": "^2.0.6",
     "chai-http": "^4.2.0",
     "dumper.js": "^1.1.1",
     "husky": "^0.14.3",
     "jest": "^23.5.0",
     "mocha-junit-reporter": "^1.18.0",
     "prettier": "^1.14.2",
+    "supertest": "^3.3.0",
     "ts-jest": "^23.1.4",
     "ts-node": "^7.0.1",
     "ts-node-dev": "^1.0.0-pre.26",

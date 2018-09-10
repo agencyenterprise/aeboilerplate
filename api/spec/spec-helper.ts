@@ -1,3 +1,6 @@
+import supertest from 'supertest'
+
+import { app } from '../src/app'
 import { db } from '../src/services/knex-connection'
 
 const clearTestData = async () => {
@@ -5,4 +8,6 @@ const clearTestData = async () => {
   await db('users').truncate()
 }
 
-export { db, clearTestData }
+const apiRequest = supertest(app)
+
+export { db, clearTestData, apiRequest }
