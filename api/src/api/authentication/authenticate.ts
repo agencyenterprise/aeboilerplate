@@ -1,6 +1,6 @@
 import express from 'express'
-import passport from 'passport'
 import asyncHandler from 'express-async-handler'
+import passport from 'passport'
 
 import { authenticateCallback } from '../../middlewares/passport-callback-authenticator'
 
