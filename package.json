@@ -4,8 +4,8 @@
   "description": "AE Node boilerplate meta project",
   "scripts": {
     "create-client": "cd ./client-generator && npm run create",
-    "api-npm-d": "cd api && docker-compose run --rm api npm -D",
-    "api-npm-s": "cd api && docker-compose run --rm api npm -S",
+    "api-npm-i-d": "cd api && docker-compose run --rm api npm i -D",
+    "api-npm-i-s": "cd api && docker-compose run --rm api npm i -S",
     "api-start": "cd api && docker-compose up",
     "api-test": "cd api && docker-compose -f docker-compose.tests-services.yml up --remove-orphans",
     "stop-containers": "docker stop $(docker ps -a -q)",
