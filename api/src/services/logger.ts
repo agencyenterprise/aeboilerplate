@@ -1,6 +1,6 @@
+import { dump } from 'dumper.js'
 import winston from 'winston'
 import Transport from 'winston-transport'
-import { dump } from 'dumper.js'
 
 import { config } from '../config'
 

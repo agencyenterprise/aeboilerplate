@@ -1,6 +1,6 @@
 import { db } from '../knex-connection'
-import { saveUser } from '../users/save-user'
 import { saveAuthToken } from '../tokens/save-auth-token'
+import { saveUser } from '../users/save-user'
 import { getUserFromProfile } from './passport-profile-converter'
 
 export const authenticate = async (authenticationInfo) => {

@@ -1,13 +1,13 @@
 import bodyParser from 'body-parser'
+import cors from 'cors'
 import express from 'express'
+import RateLimit from 'express-rate-limit'
 import session from 'express-session'
 import passport from 'passport'
-import RateLimit from 'express-rate-limit'
-import cors from 'cors'
 
-import { initializeRequestLogger } from './config/request-logger'
-import { initializePassport } from './config/passport-initializer'
 import { loadApiRoutes } from './api'
+import { initializePassport } from './config/passport-initializer'
+import { initializeRequestLogger } from './config/request-logger'
 
 const app = express()
 
@@ -27,8 +27,8 @@ if (process.env.NODE_ENV === 'production') {
 
   const apiLimiter = new RateLimit({
     windowMs: minutesToKeepRequestsInMemory,
-    max: requestsPerWindowMs
-  });
+    max: requestsPerWindowMs,
+  })
 
   app.use(apiLimiter)
 }

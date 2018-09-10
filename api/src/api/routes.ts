@@ -2,8 +2,8 @@ import errorMiddleware from 'error-middleware'
 import express from 'express'
 import asyncHandler from 'express-async-handler'
 
-import { authenticate } from './authentication/authenticate'
 import { ensureAuthenticated } from '../middlewares/ensure-authenticated'
+import { authenticate } from './authentication/authenticate'
 
 const router = express.Router()
 
