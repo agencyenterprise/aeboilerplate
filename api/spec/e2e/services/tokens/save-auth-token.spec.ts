@@ -1,6 +1,6 @@
-import { db, clearTestData } from '../../../spec-helper'
-import { authTokenFixture } from '../../../fixtures/auth-token'
 import { saveAuthToken } from '../../../../src/services/tokens/save-auth-token'
+import { authTokenFixture } from '../../../fixtures/auth-token'
+import { clearTestData, db } from '../../../spec-helper'
 
 describe('token service', () => {
   afterEach(async () => {

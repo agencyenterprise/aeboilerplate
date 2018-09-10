@@ -1,6 +1,6 @@
-import { db, clearTestData } from '../../../spec-helper'
-import { userFixture } from '../../../fixtures/user'
 import { saveUser } from '../../../../src/services/users/save-user'
+import { userFixture } from '../../../fixtures/user'
+import { clearTestData, db } from '../../../spec-helper'
 
 describe('user service', () => {
   afterEach(async () => {
