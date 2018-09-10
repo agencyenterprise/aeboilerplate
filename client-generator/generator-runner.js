@@ -16,6 +16,7 @@ const run = async () => {
     await updateAppResources()
     await updateAppInitialConfig()
     await addReduxStoreProvider()
+    await addReactRouter()
     await openAppFolder()
     await installDependences()
     console.log('\nClient project created successfully! Happy hacking!'.green)
@@ -99,12 +100,13 @@ const copyFile = (resource) => {
 }
 
 const updateAppInitialConfig = () => {
-  console.log('\nInitializing axios and redux store'.cyan)
+  console.log('\nInitializing axios, redux store and react router'.cyan)
 
   return new Promise((resolve) => {
     const replaceFrom = "import registerServiceWorker from './registerServiceWorker'"
     const replaceTo = `import registerServiceWorker from './registerServiceWorker' \n\n
     import { Provider } from 'react-redux'
+    import { BrowserRouter as Router, Route } from 'react-router-dom'
     import setupAxios from './api/setup-axios'
     import configureStore from './redux/configure-store' \n\n
     setupAxios() \n\n
@@ -120,6 +122,17 @@ const addReduxStoreProvider = () => {
   return new Promise((resolve) => {
     const replaceFrom = '<App />'
     const replaceTo = '<Provider store={store}>\n<App />\n</Provider>'
+
+    replaceText(resolve, replaceFrom, replaceTo)
+  })
+}
+
+const addReactRouter = () => {
+  console.log('\nAdding react router'.cyan)
+
+  return new Promise((resolve) => {
+    const replaceFrom = '<App />'
+    const replaceTo = '<Router>\n<Route path="/" component={App} />\n</Router>'
 
     replaceText(resolve, replaceFrom, replaceTo)
   })
