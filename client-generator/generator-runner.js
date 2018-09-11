@@ -12,13 +12,13 @@ const resourcesFilesPath = './resources'
 
 const run = async () => {
   try {
-    await createReactApp()
+    // await createReactApp()
     await updateAppResources()
-    await updateAppInitialConfig()
-    await addReduxStoreProvider()
-    await addReactRouter()
-    await openAppFolder()
-    await installDependences()
+    // await updateAppInitialConfig()
+    // await addReduxStoreProvider()
+    // await addReactRouter()
+    // await openAppFolder()
+    // await installDependences()
     console.log('\nClient project created successfully! Happy hacking!'.green)
   } catch (error) {
     console.log(error, 'Something went wrong with the client generator'.red)
@@ -175,10 +175,12 @@ const installDependences = () => {
     )
 
     console.log('\nInstalling dependencies'.cyan)
-    shell.exec(`npm install -S redux react-redux redux-thunk react-router-dom axios platform qs store`)
+    shell.exec(`npm install -S redux react-redux redux-thunk react-router-dom axios platform qs store query-string`)
 
     console.log('\n Installing @types'.cyan)
-    shell.exec(`npm install -D @types/react-redux @types/react-router-dom @types/platform @types/qs @types/store`)
+    shell.exec(
+      `npm install -D @types/react-redux @types/react-router-dom @types/platform @types/qs @types/store @types/query-string`,
+    )
 
     resolve(true)
   })

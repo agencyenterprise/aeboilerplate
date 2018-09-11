@@ -1,9 +1,10 @@
 import * as React from 'react'
+
 import './home.scss'
 
 import logo from './logo.svg'
 
-class Home extends React.Component {
+class Home extends React.Component<any, any> {
   public render() {
     return (
       <div className="home">
@@ -12,15 +13,11 @@ class Home extends React.Component {
           <h1 className="home-title">Welcome to React</h1>
         </header>
         <p className="home-intro">
-          To get started, edit <code>src/constainers/Home.tsx</code> and save to reload.
+          To get started, edit <code>src/containers/Home.tsx</code> and save to reload.
         </p>
-        <button
-          onClick={() => {
-            alert('Testing authentication')
-          }}
-        >
-          Authentication test
-        </button>
+        <a href="http://localhost:3001/auth/linkedin">
+          <button>Login with LinkedIn</button>
+        </a>
       </div>
     )
   }

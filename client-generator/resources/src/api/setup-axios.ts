@@ -11,6 +11,7 @@ export default function setupAxios() {
   const paramsSerializer = (params: any) => qs.stringify(params, { arrayFormat: 'brackets' })
 
   axios.interceptors.request.use((axiosConfig) => {
+    // axiosConfig.url = `${config.apiUrl}${axiosConfig.url}`
     axiosConfig.url = config.apiUrl
     axiosConfig.timeout = 200000
     axiosConfig.headers.authorization = store.get(config.localStorageKeys.token)
