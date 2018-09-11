@@ -3,6 +3,9 @@ const configuration = {
   localStorageKeys: {
     token: 'token',
   },
+  auth: {
+    linkedInAuthURL: 'http://localhost:3001/auth/linkedin',
+  },
 }
 
 export default configuration

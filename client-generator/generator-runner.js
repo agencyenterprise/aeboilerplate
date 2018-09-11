@@ -12,13 +12,14 @@ const resourcesFilesPath = './resources'
 
 const run = async () => {
   try {
-    // await createReactApp()
+    await createReactApp()
     await updateAppResources()
-    // await updateAppInitialConfig()
-    // await addReduxStoreProvider()
-    // await addReactRouter()
-    // await openAppFolder()
-    // await installDependences()
+    await updateAppEntryPoint()
+    await updateAppInitialConfig()
+    await addReduxStoreProvider()
+    await addReactRouter()
+    await openAppFolder()
+    await installDependences()
     console.log('\nClient project created successfully! Happy hacking!'.green)
   } catch (error) {
     console.log(error, 'Something went wrong with the client generator'.red)
@@ -101,6 +102,15 @@ const copyFile = (resource) => {
     }
 
     fs.copyFile(fromGeneratorResourcesPath, toClientResourcesPath, onErrorHandler)
+  })
+}
+
+const updateAppEntryPoint = () => {
+  return new Promise((resolve) => {
+    const replaceFrom = './App'
+    const replaceTo = './containers/app/App'
+
+    replaceText(resolve, replaceFrom, replaceTo)
   })
 }
 

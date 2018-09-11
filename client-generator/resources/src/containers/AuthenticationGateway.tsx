@@ -17,8 +17,8 @@ const PrivateRoute = ({ component: Component, path }: { component: any; path: st
 
   return (
     <Switch>
+      <Route exact path="/connect" component={Connect} />
       <Route exact path="/" component={Home} />
-      <Route exact path="/auth/linkedin/callback" component={Connect} />
       <Route render={componentRenderer} />
     </Switch>
   )
