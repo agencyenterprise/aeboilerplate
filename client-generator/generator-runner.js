@@ -170,10 +170,10 @@ const installDependences = () => {
     )
 
     console.log('\nInstalling dependencies'.cyan)
-    shell.exec(`npm install -S redux react-redux redux-thunk react-router-dom axios platform qs`)
+    shell.exec(`npm install -S redux react-redux redux-thunk react-router-dom axios platform qs store`)
 
     console.log('\n Installing @types'.cyan)
-    shell.exec(`npm install -D @types/react-redux @types/react-router-dom @types/platform @types/qs`)
+    shell.exec(`npm install -D @types/react-redux @types/react-router-dom @types/platform @types/qs @types/store`)
 
     resolve(true)
   })

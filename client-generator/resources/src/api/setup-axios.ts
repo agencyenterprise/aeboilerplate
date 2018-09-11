@@ -1,6 +1,7 @@
 import axios from 'axios'
 import * as platform from 'platform'
 import * as qs from 'qs'
+import store from 'store'
 
 import config from '../config'
 
@@ -12,6 +13,7 @@ export default function setupAxios() {
   axios.interceptors.request.use((axiosConfig) => {
     axiosConfig.url = config.apiUrl
     axiosConfig.timeout = 200000
+    axiosConfig.headers.authorization = store.get(config.localStorageKeys.token)
 
     if (platform.name === 'IE' || REGEX_MICROSOFT.test(platform.name || '')) {
       if (!axiosConfig.params) {
