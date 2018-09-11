@@ -15,7 +15,7 @@ const configuration = {
   env: process.env.NODE_ENV || 'development',
   knex: {
     client: 'postgresql',
-    connection: {
+    connection: process.env.DATABASE_URL || {
       port: process.env.DB_CONN_PORT,
       host: process.env.DB_CONN_HOST,
       database: process.env.DB_CONN_DATABASE,
@@ -23,8 +23,8 @@ const configuration = {
       password: process.env.DB_CONN_PASSWORD,
     },
     pool: {
-      min: +process.env.DATABASE_POOL_MIN,
-      max: +process.env.DATABASE_POOL_MAX,
+      min: +process.env.DATABASE_POOL_MIN || 0,
+      max: +process.env.DATABASE_POOL_MAX || 10,
     },
     migrations: {
       directory: `${__dirname}/../../db/pg/migrations`,

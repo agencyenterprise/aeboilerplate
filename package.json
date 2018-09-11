@@ -6,10 +6,11 @@
     "create-client": "cd ./client-generator && npm run create",
     "api-npm-i-d": "cd api && docker-compose run --rm api npm i -D",
     "api-npm-i-s": "cd api && docker-compose run --rm api npm i -S",
+    "api-npm-i": "cd api && docker-compose run --rm api npm i",
     "api-start": "cd api && docker-compose up",
-    "api-test": "cd api && docker-compose -f docker-compose.tests-services.yml up --remove-orphans",
+    "api-test-watch": "cd api && docker-compose -f docker-compose.tests-services.yml up --remove-orphans",
     "stop-containers": "docker stop $(docker ps -a -q)",
-    "first-run": "npm run create-client && npm run api-npm-i-d && npm run api-npm-i-s && npm run stop-containers && npm start",
+    "first-run": "npm run create-client && npm run api-npm-i && npm run stop-containers && npm start",
     "show-containers": "docker ps --format 'table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}'",
     "start": "docker-compose up"
   },
