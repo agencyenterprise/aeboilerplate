@@ -19,6 +19,7 @@ app.use(passport.session())
 
 if (process.env.NODE_ENV !== 'test') {
   initializeRequestLogger(app)
+  initializePassport()
 }
 
 if (process.env.NODE_ENV === 'production') {
@@ -32,8 +33,6 @@ if (process.env.NODE_ENV === 'production') {
 
   app.use(apiLimiter)
 }
-
-initializePassport()
 
 loadApiRoutes(app)
 
