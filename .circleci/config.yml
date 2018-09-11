@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  api:
     docker:
       - image: circleci/node:8.11.0
       - image: postgres:10.4
@@ -38,17 +38,19 @@ jobs:
           command: |
             cd api
             set -ou pipefail
-            # Notice this `set -o pipefail`, this will cause script to fail if `make test` fails
-            # without this option script will return success regardless of testing result due to pipe after test command
             npm run test
 
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
-            # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+workflows:
+  version: 2
+  build:
+    jobs:
+      - api
