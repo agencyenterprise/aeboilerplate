@@ -1,7 +1,7 @@
 import axios from 'axios'
 import * as platform from 'platform'
 import * as qs from 'qs'
-import store from 'store'
+import * as store from 'store'
 
 import config from '../config'
 

@@ -55,6 +55,11 @@ const createFolders = () => {
   shell.mkdir('../client/src/config')
   shell.mkdir('../client/src/redux')
   shell.mkdir('../client/src/redux/ducks')
+  shell.mkdir('../client/src/containers')
+  shell.mkdir('../client/src/containers/app')
+  shell.mkdir('../client/src/containers/connect')
+  shell.mkdir('../client/src/containers/home')
+  shell.mkdir('../client/src/containers/user')
 }
 
 const mapResourceFiles = async () => {

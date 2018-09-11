@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
-import store from 'store'
+import * as store from 'store'
 
 import config from '../config'
 import Connect from './connect/Connect'
@@ -9,9 +9,9 @@ const PrivateRoute = ({ component: Component, path, location }: { component: any
   const componentRenderer = () => {
     if (!!store.get(config.localStorageKeys.token)) {
       return <Component exact path={path} />
-    } else {
-      return <Redirect to={{ pathname: '/connect' }} />
     }
+
+    return <Redirect to={{ pathname: '/connect' }} />
   }
 
   return (
