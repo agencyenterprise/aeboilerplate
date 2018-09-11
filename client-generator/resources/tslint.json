@@ -2,7 +2,7 @@
   "extends": ["tslint:recommended", "tslint-config-prettier"],
   "rulesDirectory": ["tslint-consistent-codestyle"],
   "rules": {
-    "cyclomatic-complexity": [true, 20],
+    "cyclomatic-complexity": [true, 10],
     "interface-name": false,
     "member-access": [false],
     "member-ordering": [

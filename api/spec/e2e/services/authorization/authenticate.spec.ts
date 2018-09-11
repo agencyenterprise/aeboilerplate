@@ -1,6 +1,6 @@
-import { db, clearTestData } from '../../../spec-helper'
-import { authenticationInfoFixture } from '../../../fixtures/authentication-info'
 import { authenticate } from '../../../../src/services/authentication/authenticate'
+import { authenticationInfoFixture } from '../../../fixtures/authentication-info'
+import { clearTestData, db } from '../../../spec-helper'
 
 describe('authentication service', () => {
   afterEach(async () => {
