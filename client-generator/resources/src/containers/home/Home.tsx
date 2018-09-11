@@ -14,6 +14,13 @@ class Home extends React.Component {
         <p className="home-intro">
           To get started, edit <code>src/constainers/Home.tsx</code> and save to reload.
         </p>
+        <button
+          onClick={() => {
+            alert('Testing authentication')
+          }}
+        >
+          Authentication test
+        </button>
       </div>
     )
   }

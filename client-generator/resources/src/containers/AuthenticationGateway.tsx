@@ -4,6 +4,7 @@ import * as store from 'store'
 
 import config from '../config'
 import Connect from './connect/Connect'
+import Home from './home/Home'
 
 const PrivateRoute = ({ component: Component, path, location }: { component: any; path: string; location: any }) => {
   const componentRenderer = () => {
@@ -16,6 +17,7 @@ const PrivateRoute = ({ component: Component, path, location }: { component: any
 
   return (
     <Switch>
+      <Route exact path="/" component={Home} />
       <Route exact path="/connect" component={Connect} />
       <Route render={componentRenderer} />
     </Switch>
