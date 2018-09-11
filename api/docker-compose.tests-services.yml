@@ -3,7 +3,7 @@ version: '3'
 services:
   test:
     image: node:8.11.3
-    command: npm run test
+    command: npm run test-watch
     working_dir: /usr/src/app
     volumes:
       - ./:/usr/src/app

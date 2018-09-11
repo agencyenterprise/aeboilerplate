@@ -7,7 +7,8 @@
     "dev": "npm run migrate && ts-node-dev --poll --no-notify ./src/server.ts",
     "lint": "tslint --exclude **/*.d.ts src/**/*.ts",
     "migrate": "ts-node ./tasks/migrate",
-    "test": "npm run migrate && jest -i --watchAll --colors --verbose --coverage --detectOpenHandles"
+    "test": "npm run migrate && jest -i --colors --verbose --coverage --detectOpenHandles",
+    "test-watch": "npm run migrate && jest -i --watchAll --colors --verbose --detectOpenHandles"
   },
   "license": "UNLICENSED",
   "devDependencies": {
