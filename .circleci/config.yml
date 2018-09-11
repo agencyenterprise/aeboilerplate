@@ -7,12 +7,9 @@ jobs:
         environment:
           POSTGRES_USER: ubuntu
           POSTGRES_DB: api-db
-
     working_directory: ~/repo
-
     steps:
       - checkout
-
       - run:
           name: Waiting for Postgres to be ready
           command: |
@@ -23,13 +20,11 @@ jobs:
               sleep 1
             done
             echo Failed waiting for Postgress && exit 1
-
       - run:
           name: Install packages
           command: |
             cd api
             npm i
-
       - run:
           name: Run unit tests
           environment:
@@ -39,17 +34,14 @@ jobs:
             cd api
             set -ou pipefail
             npm run test
-
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
             - v1-dependencies-
-
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-
       - deploy:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
