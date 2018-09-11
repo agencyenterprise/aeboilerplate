@@ -49,8 +49,54 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+
+      - deploy:
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              bash ./.circleci/add-ssh-hosts.sh
+              git remote -v
+              bash ./.circleci/install-packages.sh
+              bash ./.circleci/deploy-heroku.sh git@heroku.com:API_PROJECT_NAME.git
+            fi
+  client:
+    docker:
+      - image: circleci/node:8.11.0
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run:
+          name: Install packages
+          command: |
+            cd client
+            npm i
+      - run:
+          name: Run unit tests
+          environment:
+            NODE_ENV: test
+            DATABASE_URL: 'postgres://ubuntu@localhost:5432/api-db?sslmode=disable'
+          command: |
+            cd client
+            set -ou pipefail
+            npm run test
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - deploy:
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              bash ./.circleci/add-ssh-hosts.sh
+              git remote -v
+              bash ./.circleci/install-packages.sh
+              bash ./.circleci/deploy-heroku.sh git@heroku.com:CLIENT_PROJECT_NAME.git
+            fi
 workflows:
   version: 2
   build:
     jobs:
       - api
+      - client
