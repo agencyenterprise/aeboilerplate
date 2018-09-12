@@ -1,6 +1,8 @@
 import passport from 'passport'
 import url from 'url'
 
+import { config } from '../config'
+
 export const authenticateCallback = (req, res, next) => {
   passport.authenticate('linkedInProvider', (error, user) => {
     if (error) {
@@ -18,7 +20,7 @@ export const authenticateCallback = (req, res, next) => {
 
       res.redirect(
         url.format({
-          pathname: 'http://localhost:3000/connect',
+          pathname: config.auth.successLoginRedirectUrl,
           query: {
             token: user.token,
           },

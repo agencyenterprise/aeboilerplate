@@ -29,6 +29,8 @@ module.exports = {
   // An array of regexp pattern strings used to skip coverage collection
   coveragePathIgnorePatterns: [
     '/src/config/',
+    '/src/middlewares/passport-callback-authenticator.ts',
+    '/src/middlewares/ensure-authenticated.ts',
     '/src/services/knex-connection.ts',
     '/src/services/logger.ts',
     '/src/app.ts',

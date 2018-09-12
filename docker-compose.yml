@@ -30,6 +30,7 @@ services:
       LINKEDIN_ID: 77gy1y1ddffvxw
       LINKEDIN_SECRET: WNOSE0fM0KdVPlDq
       LINKEDIN_CALLBACK_URL: http://localhost:3001/auth/linkedin/callback
+      SUCCESS_LOGIN_REDIRECT_URL: 'http://localhost:3000/connect'
       NODE_ENV: development
       DATABASE_POOL_MIN: 0
       DATABASE_POOL_MAX: 10
