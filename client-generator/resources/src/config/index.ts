@@ -1,10 +1,10 @@
 const configuration = {
-  apiUrl: 'http://localhost:3001',
+  apiUrl: process.env.API_URL,
   localStorageKeys: {
     token: 'token',
   },
   auth: {
-    linkedInAuthURL: 'http://localhost:3001/auth/linkedin',
+    linkedInAuthURL: process.env.LINKEDIN_AUTH_URL,
   },
 }
 

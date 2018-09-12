@@ -11,6 +11,8 @@ services:
       - 3000:3000
     environment:
       NODE_ENV: development
+      API_URL: http://localhost:3001
+      LINKEDIN_AUTH_URL: http://localhost:3001/auth/linkedin
   api:
     image: node:8.11.3
     command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; npm run dev'
@@ -30,7 +32,7 @@ services:
       LINKEDIN_ID: 77gy1y1ddffvxw
       LINKEDIN_SECRET: WNOSE0fM0KdVPlDq
       LINKEDIN_CALLBACK_URL: http://localhost:3001/auth/linkedin/callback
-      SUCCESS_LOGIN_REDIRECT_URL: 'http://localhost:3000/connect'
+      SUCCESS_LOGIN_REDIRECT_URL: http://localhost:3000/connect
       NODE_ENV: development
       DATABASE_POOL_MIN: 0
       DATABASE_POOL_MAX: 10
