@@ -1,3 +1,4 @@
+import * as queryString from 'query-string'
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
@@ -8,8 +9,7 @@ import { authenticate } from '../../redux/ducks/authenticate'
 
 class Connect extends React.Component<any, any> {
   componentDidMount() {
-    // TODO: GET token parameter and SET authenticated to true and the token value
-    const token = 'token_value'
+    const { token } = this.parseQueryString()
 
     if (token) {
       store.set(config.localStorageKeys.token, token)
@@ -17,19 +17,13 @@ class Connect extends React.Component<any, any> {
     }
   }
 
+  parseQueryString() {
+    return queryString.parse(this.props.location.search)
+  }
+
   render() {
-    const authenticated = this.props.authenticated
-
-    if (authenticated) {
-      return <Redirect to="/user" />
-    }
-
     return <Redirect to="/" />
   }
 }
 
-const mapStateToProps = (state: any) => ({
-  authenticated: state.authenticated,
-})
-
-export default connect(mapStateToProps)(Connect)
+export default connect()(Connect)
