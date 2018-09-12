@@ -1,7 +1,7 @@
 import * as React from 'react'
 
-import AuthenticationGateway from '../AuthenticationGateway'
-import ProtectedRoutes from '../ProtectedRoutes'
+import { AuthenticationGateway } from '../AuthenticationGateway'
+import { ProtectedRoutes } from '../ProtectedRoutes'
 
 const App = ({ location }: { location: any }) => {
   return (
@@ -11,4 +11,4 @@ const App = ({ location }: { location: any }) => {
   )
 }
 
-export default App
+export { App }

@@ -1,11 +1,9 @@
-const configuration = {
-  apiUrl: process.env.API_URL,
+export const config = {
+  apiUrl: process.env.REACT_APP_API_URL,
   localStorageKeys: {
     token: 'token',
   },
   auth: {
-    linkedInAuthURL: process.env.LINKEDIN_AUTH_URL,
+    linkedInAuthURL: process.env.REACT_APP_LINKEDIN_AUTH_URL,
   },
 }
-
-export default configuration

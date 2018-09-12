@@ -12,4 +12,4 @@ const ducks = combineReducers({
 
 const configureStore = () => createStore(ducks, composeWithDevTools(applyMiddleware(thunk)))
 
-export default configureStore
+export { configureStore }

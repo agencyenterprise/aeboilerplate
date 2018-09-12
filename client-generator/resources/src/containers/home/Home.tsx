@@ -4,7 +4,7 @@ import '../../config'
 import './home.scss'
 
 import logo from './logo.svg'
-import configuration from '../../config'
+import { config } from '../../config'
 
 class Home extends React.Component<any, any> {
   public render() {
@@ -17,7 +17,7 @@ class Home extends React.Component<any, any> {
         <p className="home-intro">
           To get started, edit <code>src/containers/Home.tsx</code> and save to reload.
         </p>
-        <a href={configuration.auth.linkedInAuthURL}>
+        <a href={config.auth.linkedInAuthURL}>
           <button>Login with LinkedIn</button>
         </a>
       </div>
@@ -25,4 +25,4 @@ class Home extends React.Component<any, any> {
   }
 }
 
-export default Home
+export { Home }

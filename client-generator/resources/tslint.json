@@ -1,5 +1,5 @@
 {
-  "extends": ["tslint:recommended", "tslint-config-prettier"],
+  "extends": ["tslint-config-prettier"],
   "rulesDirectory": ["tslint-consistent-codestyle"],
   "rules": {
     "cyclomatic-complexity": [true, 10],
@@ -14,13 +14,25 @@
     "newline-before-return": true,
     "no-bitwise": false,
     "no-conditional-assignment": false,
-    "no-unused-variable": true,
     "object-literal-sort-keys": false,
     "prefer-object-spread": true,
     "prefer-template": true,
-    "quotemark": [true, "single", "jsx-double"],
-    "semicolon": false,
+    "early-exit": true,
     "no-unnecessary-else": true,
-    "no-unnecessary-type-annotation": true
+    "semicolon": false,
+    "no-unused-expression": false,
+    "only-arrow-functions": true,
+    "object-literal-shorthand": true,
+    "no-default-export": true,
+    "no-console": true,
+    "no-unnecessary-type-annotation": true,
+    "quotemark": [true, "single", "jsx-double"],
+    "ordered-imports": [
+      true,
+      {
+        "import-sources-order": "lowercase-last",
+        "named-imports-order": "lowercase-first"
+      }
+    ]
   }
 }

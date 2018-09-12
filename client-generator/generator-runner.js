@@ -107,8 +107,8 @@ const copyFile = (resource) => {
 
 const updateAppEntryPoint = () => {
   return new Promise((resolve) => {
-    const replaceFrom = './App'
-    const replaceTo = './containers/app/App'
+    const replaceFrom = "import App from './App'"
+    const replaceTo = "import { App } from './containers/app/App'"
 
     replaceText(resolve, replaceFrom, replaceTo)
   })
@@ -122,8 +122,8 @@ const updateAppInitialConfig = () => {
     const replaceTo = `import registerServiceWorker from './registerServiceWorker' \n\n
     import { Provider } from 'react-redux'
     import { BrowserRouter as Router, Route } from 'react-router-dom'
-    import setupAxios from './api/setup-axios'
-    import configureStore from './redux/configure-store' \n\n
+    import { setupAxios } from './api/setup-axios'
+    import { configureStore } from './redux/configure-store' \n\n
     setupAxios() \n\n
     const store = configureStore() \n\n`
 
@@ -187,7 +187,7 @@ const installDependences = () => {
     console.log('\nInstalling dependencies'.cyan)
     shell.exec(`npm install -S redux react-redux redux-thunk react-router-dom axios platform qs store query-string`)
 
-    console.log('\n Installing @types'.cyan)
+    console.log('\nInstalling @types'.cyan)
     shell.exec(
       `npm install -D @types/react-redux @types/react-router-dom @types/platform @types/qs @types/store @types/query-string`,
     )

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export default async function get() {
+export const get = async () => {
   const { data } = await axios({
     method: 'get',
     url: '/',

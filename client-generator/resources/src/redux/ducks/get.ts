@@ -1,4 +1,4 @@
-import get from '../../api/get'
+import { get } from '../../api/get'
 
 const FETCH_REQUEST = 'FETCH_REQUEST'
 const FETCH_SUCCESS = 'FETCH_SUCCESS'

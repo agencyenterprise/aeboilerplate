@@ -4,10 +4,10 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import * as store from 'store'
 
-import config from '../../config'
+import { config } from '../../config'
 import { authenticate } from '../../redux/ducks/authenticate'
 
-class Connect extends React.Component<any, any> {
+class ConnectComponent extends React.Component<any, any> {
   componentDidMount() {
     const { token } = this.parseQueryString()
 
@@ -26,4 +26,6 @@ class Connect extends React.Component<any, any> {
   }
 }
 
-export default connect()(Connect)
+const Connect = connect()(ConnectComponent)
+
+export { Connect }

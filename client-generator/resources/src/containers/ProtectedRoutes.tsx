@@ -2,9 +2,9 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { Route, Switch } from 'react-router-dom'
 
-import User from './user/User'
+import { User } from './user/User'
 
-class ProtectedRoutes extends React.Component<any, any> {
+class ProtectedRoutesComponent extends React.Component<any, any> {
   render() {
     return (
       <Switch>
@@ -14,9 +14,11 @@ class ProtectedRoutes extends React.Component<any, any> {
   }
 }
 
-export default connect(
+const ProtectedRoutes = connect(
   null,
   null,
   null,
   { pure: false },
-)(ProtectedRoutes)
+)(ProtectedRoutesComponent)
+
+export { ProtectedRoutes }

@@ -11,8 +11,8 @@ services:
       - 3000:3000
     environment:
       NODE_ENV: development
-      API_URL: http://localhost:3001
-      LINKEDIN_AUTH_URL: http://localhost:3001/auth/linkedin
+      REACT_APP_API_URL: http://localhost:3001
+      REACT_APP_LINKEDIN_AUTH_URL: http://localhost:3001/auth/linkedin
   api:
     image: node:8.11.3
     command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; npm run dev'
