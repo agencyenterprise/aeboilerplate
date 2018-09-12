@@ -1,4 +1,5 @@
 import passport from 'passport'
+import url from 'url'
 
 export const authenticateCallback = (req, res, next) => {
   passport.authenticate('linkedInProvider', (error, user) => {
@@ -15,7 +16,14 @@ export const authenticateCallback = (req, res, next) => {
         return next(loginError)
       }
 
-      return res.send({ success: true, token: user.token })
+      res.redirect(
+        url.format({
+          pathname: 'http://localhost:3000/connect',
+          query: {
+            token: user.token,
+          },
+        }),
+      )
     })
   })(req, res, next)
 }
