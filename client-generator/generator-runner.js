@@ -189,7 +189,7 @@ const installDependences = () => {
 
     console.log('\nInstalling @types'.cyan)
     shell.exec(
-      `npm install -D @types/react-redux @types/react-router-dom @types/platform @types/qs @types/store @types/query-string @types/redux-actions`,
+      `npm install -D @types/react-redux @types/react-router-dom @types/platform @types/qs @types/store @types/query-string`,
     )
 
     resolve(true)
