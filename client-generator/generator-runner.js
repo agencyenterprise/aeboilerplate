@@ -181,7 +181,7 @@ const installDependences = () => {
   return new Promise((resolve) => {
     console.log('\nInstalling DEV dependences'.cyan)
     shell.exec(
-      'npm install -D prettier tslint tslint-config-prettier tslint-consistent-codestyle redux-devtools-extension',
+      'npm install -D prettier tslint tslint-config-prettier tslint-consistent-codestyle redux-devtools-extension redux-actions',
     )
 
     console.log('\nInstalling dependencies'.cyan)
@@ -189,7 +189,7 @@ const installDependences = () => {
 
     console.log('\nInstalling @types'.cyan)
     shell.exec(
-      `npm install -D @types/react-redux @types/react-router-dom @types/platform @types/qs @types/store @types/query-string`,
+      `npm install -D @types/react-redux @types/react-router-dom @types/platform @types/qs @types/store @types/query-string @types/redux-actions`,
     )
 
     resolve(true)
