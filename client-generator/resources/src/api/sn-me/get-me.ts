@@ -1,9 +1,9 @@
 import axios from 'axios'
 
-export const get = async () => {
+export const getMe = async () => {
   const { data } = await axios({
     method: 'get',
-    url: '/',
+    url: '/me',
   })
 
   return data
