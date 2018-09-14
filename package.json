@@ -3,17 +3,19 @@
   "version": "1.0.0",
   "description": "AE Node boilerplate meta project",
   "scripts": {
-    "create-client": "cd ./client-generator && npm run create",
+    "first-run": "npm run api-npm-i && npm run stop-containers && npm run create-client",
+    "dev": "docker-compose up",
     "api-npm-i-d": "cd api && docker-compose run --rm api npm i -D",
     "api-npm-i-s": "cd api && docker-compose run --rm api npm i -S",
-    "site-npm-i-sass": "docker-compose run --rm site npm i node-sass",
     "api-npm-i": "cd api && docker-compose run --rm api npm i",
     "api-start": "cd api && docker-compose up",
     "api-test-watch": "cd api && docker-compose -f docker-compose.tests-services.yml up --remove-orphans",
     "stop-containers": "docker stop $(docker ps -a -q)",
-    "first-run": "npm run api-npm-i && npm run stop-containers && npm run create-client",
     "show-containers": "docker ps --format 'table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}'",
-    "start": "docker-compose up"
+    "create-client": "cd ./client-generator && npm run create",
+    "client-npm-i-sass": "docker-compose run --rm site npm i node-sass",
+    "client-build": "cd client && npm run build",
+    "start": "ts-node ./server/index.ts"
   },
   "repository": {
     "type": "git",
@@ -28,6 +30,13 @@
     "url": "https://github.com/agencyenterprise/ae-node-boilerplate/issues"
   },
   "homepage": "https://github.com/agencyenterprise/ae-node-boilerplate#readme",
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "@types/node": "^10.9.4",
+    "prettier": "^1.14.2",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.0.3"
+  }
 }

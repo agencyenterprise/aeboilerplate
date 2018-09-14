@@ -190,7 +190,7 @@ const installDependencies = () => {
     )
 
     console.log('Installing sass')
-    shell.exec(`cd .. && npm run site-npm-i-sass`)
+    shell.exec(`cd .. && npm run client-npm-i-sass`)
 
     resolve(true)
   })
