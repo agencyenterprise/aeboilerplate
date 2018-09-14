@@ -11,7 +11,7 @@
     "api-start": "cd api && docker-compose up",
     "api-test-watch": "cd api && docker-compose -f docker-compose.tests-services.yml up --remove-orphans",
     "stop-containers": "docker stop $(docker ps -a -q)",
-    "first-run": "npm run create-client && npm run api-npm-i && npm run site-npm-i-sass && npm run stop-containers && npm start",
+    "first-run": "npm run api-npm-i && npm run stop-containers && npm run create-client",
     "show-containers": "docker ps --format 'table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}'",
     "start": "docker-compose up"
   },

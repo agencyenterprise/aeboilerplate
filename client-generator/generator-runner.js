@@ -9,6 +9,7 @@ const replace = require('replace-in-file')
 const clientGeneratorPath = `${process.cwd()}`
 const clientAppPath = '../client'
 const resourcesFilesPath = './resources'
+const totalSteps = 7
 
 const run = async () => {
   try {
@@ -18,9 +19,9 @@ const run = async () => {
     await updateAppInitialConfig()
     await addReduxStoreProvider()
     await addReactRouter()
-    await openAppFolder()
-    await installDependences()
-    console.log('\nClient project created successfully! Happy hacking!'.green)
+    await installDependencies()
+
+    showSuccessMessage()
   } catch (error) {
     console.log(error, 'Something went wrong with the client generator'.red)
   }
@@ -28,7 +29,7 @@ const run = async () => {
 
 const createReactApp = () => {
   return new Promise((resolve) => {
-    console.log('\nRunning create-react-app with TypeScript and SASS (@petejkim/react-scripts-ts-sass)'.cyan)
+    logStepHeaderMessage('Running create-react-app with TypeScript and SASS (@petejkim/react-scripts-ts-sass)', 1)
 
     const createReactAppCommand = `create-react-app ${clientAppPath} --scripts-version="@petejkim/react-scripts-ts-sass" --use-npm`
 
@@ -43,15 +44,15 @@ const createReactApp = () => {
 
 const updateAppResources = () => {
   return new Promise(async (resolve) => {
+    logStepHeaderMessage('Updating client resources', 2)
     createFolders()
-
     const resourcesFiles = await mapResourceFiles()
-
     copyResourceFiles(resourcesFiles, resolve)
   })
 }
 
 const createFolders = () => {
+  console.log('Creating client folders')
   shell.mkdir('../client/src/api')
   shell.mkdir('../client/src/config')
   shell.mkdir('../client/src/redux')
@@ -64,15 +65,14 @@ const createFolders = () => {
 }
 
 const mapResourceFiles = async () => {
+  console.log('Mapping resource files')
+
   const resourcesFiles = []
-
-  console.log('\nMapping resource files'.cyan)
-
   const files = await readdirRecursive(resourcesFilesPath)
 
   files.forEach((file) => {
     file = file.replace('resources/', '')
-    console.log('Adding resource file', file)
+    console.log('\tAdding resource file', file)
     resourcesFiles.push(file)
   })
 
@@ -80,12 +80,12 @@ const mapResourceFiles = async () => {
 }
 
 const copyResourceFiles = (resourcesFiles, resolve) => {
-  console.log('\nCopying resource files'.cyan)
+  console.log('Copying resource files')
 
   const configPromises = resourcesFiles.map((resource) => copyFile(resource))
 
   Promise.all(configPromises).then(() => {
-    console.log(`\n${resourcesFiles.length} resources copied from generator to client`.cyan)
+    console.log(`${resourcesFiles.length} resources copied from generator to client`)
     resolve()
   })
 }
@@ -107,6 +107,8 @@ const copyFile = (resource) => {
 
 const updateAppEntryPoint = () => {
   return new Promise((resolve) => {
+    logStepHeaderMessage('Updating react app entry point', 3)
+
     const replaceFrom = "import App from './App'"
     const replaceTo = "import { App } from './containers/app/App'"
 
@@ -115,9 +117,9 @@ const updateAppEntryPoint = () => {
 }
 
 const updateAppInitialConfig = () => {
-  console.log('\nInitializing axios, redux store and react router'.cyan)
-
   return new Promise((resolve) => {
+    logStepHeaderMessage('Initializing axios, redux store and react router', 4)
+
     const replaceFrom = "import registerServiceWorker from './registerServiceWorker'"
     const replaceTo = `import registerServiceWorker from './registerServiceWorker' \n\n
     import { Provider } from 'react-redux'
@@ -132,9 +134,9 @@ const updateAppInitialConfig = () => {
 }
 
 const addReduxStoreProvider = () => {
-  console.log('\nAdding redux store provider'.cyan)
-
   return new Promise((resolve) => {
+    logStepHeaderMessage('Adding redux store provider', 5)
+
     const replaceFrom = '<App />'
     const replaceTo = '<Provider store={store}>\n<App />\n</Provider>'
 
@@ -143,9 +145,9 @@ const addReduxStoreProvider = () => {
 }
 
 const addReactRouter = () => {
-  console.log('\nAdding react router'.cyan)
-
   return new Promise((resolve) => {
+    logStepHeaderMessage('Adding react router', 6)
+
     const replaceFrom = '<App />'
     const replaceTo = '<Router>\n<Route path="/" component={App} />\n</Router>'
 
@@ -162,38 +164,51 @@ const replaceText = (resolve, replaceFrom, replaceTo) => {
 
   try {
     replace.sync(options)
-    console.log('\nUpdated index.tsx'.cyan)
     resolve(true)
   } catch (error) {
-    console.error('\nError occurred:', error.red)
+    console.error('Error occurred updating index.tsx:', error.red)
     resolve(false)
   }
 }
 
-const openAppFolder = () => {
+const installDependencies = () => {
   return new Promise((resolve) => {
+    logStepHeaderMessage('Installing client dependencies', 7)
     shell.cd(`${clientAppPath}`)
-    resolve(true)
-  })
-}
 
-const installDependences = () => {
-  return new Promise((resolve) => {
-    console.log('\nInstalling DEV dependences'.cyan)
+    console.log('Installing DEV dependencies')
     shell.exec(
       'npm install -D prettier tslint tslint-config-prettier tslint-consistent-codestyle redux-devtools-extension redux-actions',
     )
 
-    console.log('\nInstalling dependencies'.cyan)
+    console.log('Installing dependencies')
     shell.exec(`npm install -S redux react-redux redux-thunk react-router-dom axios platform qs store query-string`)
 
-    console.log('\nInstalling @types'.cyan)
+    console.log('Installing @types')
     shell.exec(
       `npm install -D @types/react-redux @types/react-router-dom @types/platform @types/qs @types/store @types/query-string`,
     )
 
+    console.log('Installing sass')
+    shell.exec(`cd .. && npm run site-npm-i-sass`)
+
     resolve(true)
   })
+}
+
+const showSuccessMessage = () => {
+  const successMessage = `\nSetup success! Welcome to AE Node Boilerplate\n
+Some stuff to do:\n
+• commit right now if you want to have a baseline for the project.
+• npm start to get the project going
+• have fun!\n`.green
+
+  console.log(successMessage)
+}
+
+const logStepHeaderMessage = (message, step) => {
+  console.log(`\n${message}`.cyan)
+  console.log(`[Step ${step}/${totalSteps}]\n`.yellow)
 }
 
 run()
