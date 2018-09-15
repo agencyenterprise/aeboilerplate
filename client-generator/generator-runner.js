@@ -54,6 +54,7 @@ const updateAppResources = () => {
 const createFolders = () => {
   console.log('Creating client folders')
   shell.mkdir('../client/src/api')
+  shell.mkdir('../client/src/api/me')
   shell.mkdir('../client/src/config')
   shell.mkdir('../client/src/redux')
   shell.mkdir('../client/src/redux/ducks')

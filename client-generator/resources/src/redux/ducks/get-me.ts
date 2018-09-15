@@ -1,4 +1,6 @@
 import { createAction, handleActions } from 'redux-actions'
+import { getMeData } from '../../api/me/get-me'
+
 const defaultState = {
   me: {},
   loading: false,
@@ -31,5 +33,14 @@ export const fetchMe = handleActions(
 )
 
 export const getMe = () => {
-  return fetchMeRequest()
+  return async () => {
+    fetchMeRequest()
+    try {
+      const me = await getMeData()
+
+      fetchMeSuccess({ me })
+    } catch (error) {
+      fetchMeFailure({ error })
+    }
+  }
 }

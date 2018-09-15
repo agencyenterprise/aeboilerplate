@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const getMe = async () => {
+export const getMeData = async () => {
   const { data } = await axios({
     method: 'get',
     url: '/me',

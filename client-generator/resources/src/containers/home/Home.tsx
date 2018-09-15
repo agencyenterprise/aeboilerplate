@@ -1,12 +1,18 @@
 import * as React from 'react'
+import { connect } from 'react-redux'
 
 import '../../config'
 import './home.scss'
 
 import logo from './logo.svg'
 import { config } from '../../config'
+import { getMe } from '../../redux/ducks/get-me'
 
-class Home extends React.Component<any, any> {
+class HomeComponent extends React.Component<any, any> {
+  componentDidMount() {
+    this.props.dispatch(getMe())
+  }
+
   public render() {
     return (
       <div className="home">
@@ -24,5 +30,7 @@ class Home extends React.Component<any, any> {
     )
   }
 }
+
+const Home = connect()(HomeComponent)
 
 export { Home }
