@@ -200,7 +200,7 @@ const showSuccessMessage = () => {
   const successMessage = `\nSetup success! Welcome to AE Node Boilerplate\n
 Some stuff to do:\n
 • commit right now if you want to have a baseline for the project.
-• npm start to get the project going
+• npm run dev to get the project going
 • have fun!\n`.green
 
   console.log(successMessage)

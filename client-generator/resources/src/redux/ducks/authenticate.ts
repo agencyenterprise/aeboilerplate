@@ -16,5 +16,5 @@ export const authentication = handleActions(
 )
 
 export const authenticate = (token: string) => {
-  return { type: 'AUTHENTICATE', payload: { token } }
+  return authenticateAction({ token })
 }

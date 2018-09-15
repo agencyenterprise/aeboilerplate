@@ -6,7 +6,7 @@ import * as store from 'store'
 
 import { config } from '../../config'
 import { authenticate } from '../../redux/ducks/authenticate'
-import { fetchMe } from '../../redux/ducks/get-me'
+import { getMe } from '../../redux/ducks/get-me'
 
 class ConnectComponent extends React.Component<any, any> {
   componentDidMount() {
@@ -15,7 +15,7 @@ class ConnectComponent extends React.Component<any, any> {
     if (token) {
       store.set(config.localStorageKeys.token, token)
       this.props.dispatch(authenticate(token))
-      this.props.dispatch(fetchMe(token))
+      this.props.dispatch(getMe())
     }
   }
 
