@@ -11,8 +11,8 @@ services:
       - 3000:3000
     environment:
       NODE_ENV: development
-      REACT_APP_API_URL: http://localhost:3001
-      REACT_APP_LINKEDIN_AUTH_URL: http://localhost:3001/auth/linkedin
+      REACT_APP_API_URL: http://localhost:3001/api
+      REACT_APP_LINKEDIN_AUTH_URL: http://localhost:3001/api/auth/linkedin
   api:
     image: node:8.11.3
     command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; npm run dev'
@@ -31,7 +31,7 @@ services:
       DB_CONN_USER: user
       LINKEDIN_ID: 77gy1y1ddffvxw
       LINKEDIN_SECRET: WNOSE0fM0KdVPlDq
-      LINKEDIN_CALLBACK_URL: http://localhost:3001/auth/linkedin/callback
+      LINKEDIN_CALLBACK_URL: http://localhost:3001/api/auth/linkedin/callback
       SUCCESS_LOGIN_REDIRECT_URL: http://localhost:3000/connect
       NODE_ENV: development
       DATABASE_POOL_MIN: 0
