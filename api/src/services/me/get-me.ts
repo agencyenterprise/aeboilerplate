@@ -11,7 +11,5 @@ export const getMe = async (req) => {
     //.where({ token })
     .first()
 
-  console.log(user)
-
   return user
 }

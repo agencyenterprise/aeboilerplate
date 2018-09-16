@@ -1,4 +1,4 @@
-const configuration = {
+export const config = {
   http: {
     host: process.env.HTTP_HOST || '0.0.0.0',
     port: process.env.PORT || 3001,
@@ -36,5 +36,3 @@ const configuration = {
     },
   },
 }
-
-export const config = configuration
