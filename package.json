@@ -14,8 +14,9 @@
     "show-containers": "docker ps --format 'table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}'",
     "create-client": "cd ./client-generator && npm run create",
     "client-npm-i-sass": "docker-compose run --rm site npm i node-sass",
-    "client-build": "cd client && npm run build",
-    "start": "ts-node ./server/index.ts"
+    "client-build": "cd client && npm install && npm run build",
+    "start": "ts-node ./server/index.ts",
+    "heroku-postbuild": "npm i && npm run client-build"
   },
   "repository": {
     "type": "git",
