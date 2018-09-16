@@ -23,7 +23,7 @@ class HomeComponent extends React.Component<any, any> {
         <p className="home-intro">
           To get started, edit <code>src/containers/Home.tsx</code> and save to reload.
         </p>
-        <a href={config.auth.linkedInAuthURL || '/api/auth/linkedin'}>
+        <a href={config.auth.linkedInAuthURL}>
           <button>Login with LinkedIn</button>
         </a>
       </div>
@@ -31,6 +31,12 @@ class HomeComponent extends React.Component<any, any> {
   }
 }
 
-const Home = connect()(HomeComponent)
+const mapStateToProps = (state: any) => {
+  return {
+    me: state.me.me,
+  }
+}
+
+const Home = connect(mapStateToProps)(HomeComponent)
 
 export { Home }
