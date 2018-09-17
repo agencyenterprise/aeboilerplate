@@ -11,7 +11,7 @@ export const fetchMeRequest = createAction('FETCH_ME_REQUEST')
 export const fetchMeSuccess = createAction('FETCH_ME_SUCCESS')
 export const fetchMeFailure = createAction('FETCH_ME_FAILURE')
 
-export const fetchMe = handleActions(
+export const me = handleActions(
   {
     [fetchMeRequest]: (state) => ({
       ...state,
@@ -37,6 +37,7 @@ export const getMe = () => {
     fetchMeRequest()
     try {
       const me = await getMeData()
+      // TODO: state is updating with user data
 
       fetchMeSuccess({ me })
     } catch (error) {
