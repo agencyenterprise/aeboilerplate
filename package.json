@@ -4,7 +4,7 @@
   "description": "AE Node boilerplate meta project",
   "scripts": {
     "first-run": "npm run api-npm-i && npm run stop-containers && npm run create-client",
-    "dev": "docker-compose up",
+    "create-client": "cd ./client-generator && npm run create",
     "api-npm-i-d": "cd api && docker-compose run --rm api npm i -D",
     "api-npm-i-s": "cd api && docker-compose run --rm api npm i -S",
     "api-npm-i": "cd api && docker-compose run --rm api npm i",
@@ -12,11 +12,13 @@
     "api-test-watch": "cd api && docker-compose -f docker-compose.tests-services.yml up --remove-orphans",
     "stop-containers": "docker stop $(docker ps -a -q)",
     "show-containers": "docker ps --format 'table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}'",
-    "create-client": "cd ./client-generator && npm run create",
     "client-npm-i-sass": "docker-compose run --rm site npm i node-sass",
-    "client-build": "cd client && npm install && npm run build",
+    "build-client": "cd client && npm i --only=dev && npm i && npm run build",
+    "build-api": "cd api && npm i",
+    "build": "npm i && npm run build-client && npm run build-api",
+    "heroku-postbuild": "npm run build",
     "start": "ts-node ./server/index.ts",
-    "heroku-postbuild": "npm i && npm run client-build"
+    "dev": "docker-compose up"
   },
   "repository": {
     "type": "git",
