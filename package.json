@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "AE Node boilerplate meta project",
   "scripts": {
-    "first-run": "npm run api-npm-i && npm run stop-containers && npm run create-client",
+    "first-run": "npm i && npm run api-npm-i && npm run stop-containers && npm run create-client",
     "create-client": "cd ./client-generator && npm run create",
     "api-npm-i-d": "cd api && docker-compose run --rm api npm i -D",
     "api-npm-i-s": "cd api && docker-compose run --rm api npm i -S",
