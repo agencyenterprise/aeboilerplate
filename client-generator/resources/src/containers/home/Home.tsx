@@ -6,13 +6,8 @@ import './home.scss'
 
 import logo from './logo.svg'
 import { config } from '../../config'
-import { getMe } from '../../redux/ducks/get-me'
 
 class HomeComponent extends React.Component<any, any> {
-  componentDidMount() {
-    this.props.dispatch(getMe())
-  }
-
   public render() {
     return (
       <div className="home">

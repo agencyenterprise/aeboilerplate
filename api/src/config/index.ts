@@ -17,11 +17,11 @@ export const config = {
   knex: {
     client: 'postgresql',
     connection: process.env.DATABASE_URL || {
-      port: process.env.DB_CONN_PORT,
-      host: process.env.DB_CONN_HOST,
-      database: process.env.DB_CONN_DATABASE,
-      user: process.env.DB_CONN_USER,
-      password: process.env.DB_CONN_PASSWORD,
+      port: process.env.DB_CONN_PORT || 5432,
+      host: process.env.DB_CONN_HOST || 'localhost',
+      database: process.env.DB_CONN_DATABASE || 'api-db',
+      user: process.env.DB_CONN_USER || 'user',
+      password: process.env.DB_CONN_PASSWORD || 'password',
     },
     pool: {
       min: +process.env.DATABASE_POOL_MIN || 0,
