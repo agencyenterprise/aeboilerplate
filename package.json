@@ -9,6 +9,7 @@
     "api-npm-i-s": "cd api && docker-compose run --rm api npm i -S",
     "api-npm-i": "cd api && docker-compose run --rm api npm i",
     "api-start": "cd api && docker-compose up",
+    "migrate": "cd api && npm run migrate",
     "api-test-watch": "cd api && docker-compose -f docker-compose.tests-services.yml up --remove-orphans",
     "stop-containers": "docker stop $(docker ps -a -q)",
     "show-containers": "docker ps --format 'table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}'",
@@ -17,7 +18,7 @@
     "build-api": "cd api && npm i",
     "build": "npm i && npm run build-client && npm run build-api",
     "heroku-postbuild": "npm run build",
-    "start": "ts-node ./server/index.ts",
+    "start": "npm run migrate && ts-node ./server/index.ts",
     "dev": "docker-compose up"
   },
   "repository": {
