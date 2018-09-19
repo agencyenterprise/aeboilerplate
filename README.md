@@ -27,7 +27,7 @@ This command creates a client and installs all the packages creating a full stac
 
 The authentication process uses [PassportJS](http://www.passportjs.org/) with the [Oauth2 framework](https://oauth.net/2/) to authenticate to LinkedIn. In order to make it work, you are going to need:
 
-- A new application in the [LinkedIn developer page].(https://www.linkedin.com/developer/apps)
+- A new application in the [LinkedIn developer page](https://www.linkedin.com/developer/apps).
 - Add your LinkedIn id and secret in the docker-compose.yml files (meta and api folders).
   - LINKEDIN_ID
   - LINKEDIN_SECRET
