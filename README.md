@@ -31,6 +31,7 @@ The authentication process uses [PassportJS](http://www.passportjs.org/) with th
 - Add your LinkedIn id and secret in the docker-compose.yml files (meta and api folders).
   - LINKEDIN_ID
   - LINKEDIN_SECRET
+- Add the linkedin callback URL from your docker compose file in the LinkedIn developer app
   - LINKEDIN_CALLBACK_URL: http://localhost:3001/api/auth/linkedin/callback
 
 ```shell
@@ -61,6 +62,7 @@ It starts an API, database and client containers using docker compose. The defau
    - LINKEDIN_SECRET: client secret created in the [LinkedIn developer page](https://www.linkedin.com/developer/apps)
    - LINKEDIN_CALLBACK_URL: for this variable you must go back to the [LinkedIn developer page](https://www.linkedin.com/developer/apps) and add a URL using this pattern: https://url_from_heroku_create_command.herokuapp.com/api/auth/linkedin/callback.
      - To check what is the url created for your new app, go down in the Settings tab and look for the Domains and certificates item, your application url will be there.
+   - SUCCESS_LOGIN_REDIRECT_URL: https://your_application_url.herokuapp.com/connect
 
 7. Considering you haven't started your git repository, run: `git init && git add . && git commit -m "First commit"`
 8. Run `git push heroku master` will deploy your project to heroku and make it available using the url
