@@ -55,7 +55,7 @@ It starts an API, database and client containers using docker compose. The defau
 2. Install [heroku cli](https://www.npmjs.com/package/heroku) using npm
 3. Run `heroku login` and fulfill with your login data.
 4. Run `heroku create` to create a random named app or run `heroku create APP_NAME_HERE` to set a name to your application. Save your application url for further use.
-5. Open your app in the [heroku apps dashboard](https://dashboard.heroku.com/apps), go to the resources tab and search for [postgres](https://elements.heroku.com/addons/heroku-postgresql) in the add-ons, select it and confirm clicking on provision. It'll automatically create an [environment variable](https://devcenter.heroku.com/articles/config-vars) in your app called DATABASE_URL which means your app has now access to a database. You don't need to worry about your krei project configuration as it's already prepared to use the DATABASE_URL environment variable.
+5. Open your app in the [heroku apps dashboard](https://dashboard.heroku.com/apps), go to the resources tab and search for [postgres](https://elements.heroku.com/addons/heroku-postgresql) in the add-ons, select it and confirm clicking on provision. It'll automatically create an [environment variable](https://devcenter.heroku.com/articles/config-vars) in your app called DATABASE_URL which means your app has now access to a database.
 6. Open now the settings tab in your app dashboard, click on the reveal vars button in the Config Vars item and add the following variables with their respective values:
 
    - LINKEDIN_ID: client id created in the [LinkedIn developer page](https://www.linkedin.com/developer/apps)
