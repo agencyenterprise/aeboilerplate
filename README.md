@@ -1,101 +1,66 @@
-# First Run
+![Logo of the project](https://ae.studio/assets/images/aestudio-logo-light.svg)
 
-Run the command first-run to create a new client, install api dependencies and start the project.
+# Krei
 
-```
-npm run first-run
-```
+> From Latin creō (“I create, make, produce”) +‎ -i.
 
-The default routes are:
+Krei a project ready to run and deploy with react/redux and a node API in just one step... and it's clean code!
 
-- Site: http://localhost:3000
-- API: http://localhost:3001
+## Before you start
 
-# Client
+Make sure you have installed:
 
-Create the client project running the following command
+- [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+- [Node 8+](https://nodejs.org/en/)
+- [Docker 18+](https://docs.docker.com/install/)
+- [Docker Compose 1.21+](https://docs.docker.com/compose/install/)
 
-```
-npm run create-client
-```
+## Creating a new project
 
-# API
-
-The API boilerplate consists in a NodeJS, Express, REST structure to facilitate the kickstart of a project.
-
-## API Standalone run
-
-Running the API locally. The API will be accessible by default on http://localhost:3001. If you are running the API for the first time, execute the command `npm run api-npm i` before starting it.
-
-```
-npm run api-start
+```shell
+npm run krei
 ```
 
-Running the API tests.
+This command creates a client and installs all the packages creating a full stack project structure ready to be developed.
 
+## Running locally
+
+The authentication process uses [PassportJS](http://www.passportjs.org/) with the [Oauth2 framework](https://oauth.net/2/) to authenticate to LinkedIn. In order to make it work, you are going to need:
+
+- A new application in the [LinkedIn developer page].(https://www.linkedin.com/developer/apps)
+- Add your LinkedIn id and secret in the docker-compose.yml files (meta and api folders).
+  - LINKEDIN_ID
+  - LINKEDIN_SECRET
+  - LINKEDIN_CALLBACK_URL: http://localhost:3001/api/auth/linkedin/callback
+
+```shell
+npm run dev
 ```
-npm run api-test
-```
 
-Running the API node package manager, enabling the developer to run any npm command inside the API, e.g.: `npm run api-npm i` or `npm run api-npm i SOME_PACKAGE -D`
+It starts an API, database and client containers using docker compose. The default configuration provides the following environment:
 
-```
-npm run api-npm
-```
+- API: http://localhost:3001/api
+- Client: http://localhost:3000
+- Database:
+  - host: localhost
+  - port: 5432
+  - user: user
+  - password: password
+  - database: api-db
 
-## API Project structure
+## Deploying to heroku
 
-The built in routes are:
+1. Create a [Heroku](https://www.heroku.com/) account.
+2. Install [heroku cli](https://www.npmjs.com/package/heroku) using npm
+3. Run `heroku login` and fulfill with your login data.
+4. Run `heroku create` to create a random named app or run `heroku create APP_NAME_HERE` to set a name to your application. Save your application url for further use.
+5. Open your app in the [heroku apps dashboard](https://dashboard.heroku.com/apps), go to the resources tab and search for [postgres](https://elements.heroku.com/addons/heroku-postgresql) in the add-ons, select it and confirm clicking on provision. It'll automatically create an [environment variable](https://devcenter.heroku.com/articles/config-vars) in your app called DATABASE_URL which means your app has now access to a database. You don't need to worry about your krei project configuration as it's already prepared to use the DATABASE_URL environment variable.
+6. Open now the settings tab in your app dashboard, click on the reveal vars button in the Config Vars item and add the following variables with their respective values:
 
-- `/auth/linkedin`
+   - LINKEDIN_ID: client id created in the [LinkedIn developer page](https://www.linkedin.com/developer/apps)
+   - LINKEDIN_SECRET: client secret created in the [LinkedIn developer page](https://www.linkedin.com/developer/apps)
+   - LINKEDIN_CALLBACK_URL: for this variable you must go back to the [LinkedIn developer page](https://www.linkedin.com/developer/apps) and add a URL using this pattern: https://url_from_heroku_create_command.herokuapp.com/api/auth/linkedin/callback.
+     - To check what is the url created for your new app, go down in the Settings tab and look for the Domains and certificates item, your application url will be there.
 
-  - The auth linkedin route must be called using a browser to access the linkedin login page. It saves a new user in the users table and a new token in the auth_tokens table when everything runs as expected.
-
-- `/`
-  - The root route has a middleware to check whether the user is authenticated or not and it needs an Authorization header containing the token returned by the auth/linkedin route.
-
-Important: in order to have a working authentication process, the user must register the application in the LinkedIn developer page (https://www.linkedin.com/developer/apps), changing the client id, client secret in the API docker-compose file, and adding the callback URL `/auth/linkedin/callback` to the new application created on LinkedIn developer page.
-
-```
-- /db
-    - /pg
-        - /migrations
-            - Contains the migration files used by Knex to manipulate the database schema
-- /spec
-    - /e2e
-        - End to end tests
-    - /fixtures
-        - Tests fixtures folder to be shared between end to end, and unit tests
-- /src
-    - /api
-        - index
-            - API entry point, change this file to amend the API basic access point
-        - routes
-            - Express routes used by the API
-    - /config
-        - Application configuration file and any other configuration initializer
-    - /middlewares
-        - Express middlwares
-    - /services
-        - Business logic scripts to be consumed by the API
-    - app
-        - Setup the express application using the following libraries
-            - 'body-parser'
-            - 'express'
-            - 'express-session'
-            - 'passport'
-            - 'express-rate-limit'
-            - 'cors'
-        - Initialize Passport.JS configuration
-        - Load the routes registered in /api/index
-    - knex-connection
-        - Starts the database connection using the application configuration file
-    - logger
-        - Uses winston to log to the console
-        - Dump objects (dumper.js) when using `logger.debug` in the development environment
-    - server
-        - Starts an express server using Node cluster to fork the number of instaces based on the CPU cores count
-- /tasks
-    - migrate
-        - Executes the knex migration files
-```
+7. Considering you haven't started your git repository, run: `git init && git add . && git commit -m "First commit"`
+8. Run `git push heroku master` will deploy your project to heroku and make it available using the url
