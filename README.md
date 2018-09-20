@@ -25,6 +25,8 @@ This command creates a client and installs all the packages creating a full stac
 
 ## Running locally
 
+*If you are running a cloned project originally made by krei for the first time, make sure you install all packages executing `npm run npm-i`.*
+
 ```shell
 npm run dev
 ```
