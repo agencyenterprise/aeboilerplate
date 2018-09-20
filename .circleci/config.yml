@@ -1,4 +1,10 @@
 version: 2
+workflows:
+  version: 2
+  build:
+    jobs:
+      - api
+      - client
 jobs:
   api:
     docker:
@@ -86,9 +92,3 @@ jobs:
               bash ./.circleci/install-packages.sh
               bash ./.circleci/deploy-heroku.sh git@heroku.com:CLIENT_PROJECT_NAME.git
             fi
-workflows:
-  version: 2
-  build:
-    jobs:
-      - api
-      - client
