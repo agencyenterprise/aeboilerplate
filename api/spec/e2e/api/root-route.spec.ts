@@ -10,7 +10,7 @@ describe('root route get', () => {
   })
 
   it('returns unauthorized status when not passing an authorized token', async () => {
-    const { status } = await apiRequest.get('/')
+    const { status } = await apiRequest.get('/api/')
 
     expect(status).toEqual(401)
   })
@@ -21,7 +21,7 @@ describe('root route get', () => {
 
     await saveAuthToken(authTokenFixture)
 
-    const { status } = await apiRequest.get('/')
+    const { status } = await apiRequest.get('/api/')
 
     expect(status).toEqual(401)
   })
@@ -29,7 +29,7 @@ describe('root route get', () => {
   it('returns success status when passing an authorized token', async () => {
     await saveAuthToken(authTokenFixture)
 
-    const { status } = await apiRequest.get('/').set('Authorization', authTokenFixture.token)
+    const { status } = await apiRequest.get('/api/').set('Authorization', authTokenFixture.token)
 
     expect(status).toEqual(200)
   })
