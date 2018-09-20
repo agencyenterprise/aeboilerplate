@@ -68,3 +68,13 @@ The authentication process uses [PassportJS](http://www.passportjs.org/) with th
 
 7. Considering you haven't started your git repository, run: `git init && git add . && git commit -m "First commit"`
 8. Run `git push heroku master` will deploy your project to heroku and make it available using the url
+
+## Continuous integration with Circle CI
+
+1. Deploy your application to heroku following the steps above.
+2. Sign up to [Circle CI](https://circleci.com/) using your git hub account which contains the project you want to integrate.
+3. Click on the `add projects` tab item on the left menu and `Set Up Project` right beside the project you want to integrate.
+4. Choose Linux as operating system, Node as language and click on the button for step 5, "Start building".
+5. Click on the gear icon on the top right corner under your profile picture.
+6. Click on Heroku deployment item on the left menu.
+7. Click on "Set User to YOUR_GIT_USER" button.
