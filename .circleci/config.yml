@@ -90,5 +90,5 @@ jobs:
               bash ./.circleci/add-ssh-hosts.sh
               git remote -v
               bash ./.circleci/install-packages.sh
-              bash ./.circleci/deploy-heroku.sh git@heroku.com:CLIENT_PROJECT_NAME.git
+              bash ./.circleci/deploy-heroku.sh git@heroku.com:blooming-retreat-56835.git
             fi
