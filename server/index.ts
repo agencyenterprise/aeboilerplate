@@ -7,8 +7,6 @@ import { app } from '../api/src/app'
 import { config } from './config'
 import { logger } from '../api/src/services/logger'
 
-logger.info(path.join(__dirname, '../client/build'))
-
 app.use(express.static(path.join(__dirname, '../client/build')))
 
 app.get('*', function(_, res) {
