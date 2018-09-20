@@ -53,14 +53,14 @@ The authentication process uses [PassportJS](http://www.passportjs.org/) with th
 
 1. Create a [Heroku](https://www.heroku.com/) account.
 2. Install [heroku cli](https://www.npmjs.com/package/heroku) using npm
-3. Run `heroku login` and fulfill with your login data.
-4. Run `heroku create` to create a random named app or run `heroku create APP_NAME_HERE` to set a name to your application. Save your application url for further use.
-5. Open your app in the [heroku apps dashboard](https://dashboard.heroku.com/apps), go to the resources tab and search for [postgres](https://elements.heroku.com/addons/heroku-postgresql) in the add-ons, select it and confirm clicking on provision. It'll automatically create an [environment variable](https://devcenter.heroku.com/articles/config-vars) in your app called DATABASE_URL which means your app has now access to a database.
+3. Run `heroku login` and fulfil with your login data.
+4. Run `heroku create` to create a randomly named app or run `heroku create APP_NAME_HERE` to set a name to your application. Save your application url for further use.
+5. Open your app in the [heroku apps dashboard](https://dashboard.heroku.com/apps), go to the resources tab and search for [postgres](https://elements.heroku.com/addons/heroku-postgresql) in the add-ons, select it and confirm clicking on "provision". It'll automatically create an [environment variable](https://devcenter.heroku.com/articles/config-vars) in your app called DATABASE_URL which means your app has now access to a database.
 6. Open now the settings tab in your app dashboard, click on the reveal vars button in the Config Vars item and add the following variables with their respective values:
 
    - LINKEDIN_ID: client id created in the [LinkedIn developer page](https://www.linkedin.com/developer/apps)
    - LINKEDIN_SECRET: client secret created in the [LinkedIn developer page](https://www.linkedin.com/developer/apps)
-   - LINKEDIN_CALLBACK_URL: for this variable you must go back to the [LinkedIn developer page](https://www.linkedin.com/developer/apps) and add a URL using this pattern: https://url_from_heroku_create_command.herokuapp.com/api/auth/linkedin/callback.
+   - LINKEDIN_CALLBACK_URL: for this variable, you must go back to the [LinkedIn developer page](https://www.linkedin.com/developer/apps) and add a URL using this pattern: https://url_from_heroku_create_command.herokuapp.com/api/auth/linkedin/callback.
      - To check what is the url created for your new app, go down in the Settings tab and look for the Domains and certificates item, your application url will be there.
    - SUCCESS_LOGIN_REDIRECT_URL: https://your_application_url.herokuapp.com/connect
 
