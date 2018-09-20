@@ -25,15 +25,6 @@ This command creates a client and installs all the packages creating a full stac
 
 ## Running locally
 
-The authentication process uses [PassportJS](http://www.passportjs.org/) with the [Oauth2 framework](https://oauth.net/2/) to authenticate to LinkedIn. In order to make it work, you are going to need:
-
-- A new application in the [LinkedIn developer page](https://www.linkedin.com/developer/apps).
-- Add your LinkedIn id and secret in the docker-compose.yml files (meta and api folders).
-  - LINKEDIN_ID
-  - LINKEDIN_SECRET
-- Add the linkedin callback URL from your docker compose file in the LinkedIn developer app
-  - LINKEDIN_CALLBACK_URL: http://localhost:3001/api/auth/linkedin/callback
-
 ```shell
 npm run dev
 ```
@@ -48,6 +39,15 @@ It starts an API, database and client containers using docker compose. The defau
   - user: user
   - password: password
   - database: api-db
+
+The authentication process uses [PassportJS](http://www.passportjs.org/) with the [Oauth2 framework](https://oauth.net/2/) to authenticate to LinkedIn. In order to make it work, you are going to need:
+
+- A new application in the [LinkedIn developer page](https://www.linkedin.com/developer/apps).
+- Add your LinkedIn id and secret in the docker-compose.yml files (meta and api folders).
+  - LINKEDIN_ID
+  - LINKEDIN_SECRET
+- Add the linkedin callback URL from your docker compose file in the LinkedIn developer app
+  - LINKEDIN_CALLBACK_URL: http://localhost:3001/api/auth/linkedin/callback
 
 ## Deploying to heroku
 
