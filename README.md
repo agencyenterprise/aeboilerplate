@@ -88,3 +88,12 @@ The authentication process uses [PassportJS](http://www.passportjs.org/) with th
 9.  Go back to your Circle CI application settings and click on `Heroku deployment` item on the left menu.
     * Add your Heroku API key copied before.
     * Click on `Set User to YOUR_GIT_USER` button.
+
+## Running tests
+
+```shell
+npm run api-test-watch
+```
+
+It runs tests on watch mode for the API.
+
