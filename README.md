@@ -72,7 +72,7 @@ The authentication process uses [PassportJS](http://www.passportjs.org/) with th
 ## Continuous integration with Circle CI
 
 1. Deploy your application to heroku following the steps above.
-2. Change the placeholder `CLIENT_PROJECT_NAME` in the `.circleci/config.yml` file with the name returned from your heroku application.
+2. Change the placeholder `HEROKU_PROJECT_NAME` in the `.circleci/config.yml` file with the name returned from your heroku application.
 3. Sign up to [Circle CI](https://circleci.com/) using your git hub account which contains the project you want to integrate.
 4. Click on the `add projects` tab item on the left menu and `Set Up Project` right beside the project you want to integrate.
 5. Choose Linux as operating system, Node as language and click on the button for step 5, "Start building".
