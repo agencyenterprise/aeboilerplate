@@ -45,8 +45,5 @@ jobs:
       - deploy:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              bash ./.circleci/add-ssh-hosts.sh
-              git remote -v
-              bash ./.circleci/install-packages.sh
-              bash ./.circleci/deploy-heroku.sh git@heroku.com:HEROKU_PROJECT_NAME.git
+              bash ./.circleci/deploy-heroku.sh git@heroku.com:krei-test.git
             fi
