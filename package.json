@@ -4,7 +4,7 @@
   "description": "AE Node boilerplate meta project",
   "scripts": {
     "krei": "rm -rf .git && npm i && npm run api-npm-i && npm run stop-containers && npm run create-client && rm -rf client-generator",
-    "create-client": "cd ./client-generator && npm run create",
+    "create-client": "cd client-generator && npm run create && cd ../client && prettier --write */*.tsx --loglevel silent",
     "api-npm-i": "cd api && docker-compose run --rm api npm i",
     "api-start": "cd api && docker-compose up",
     "api-test-watch": "cd api && docker-compose -f docker-compose.tests-services.yml up --remove-orphans",
