@@ -21,12 +21,17 @@ jobs:
             done
             echo Failed waiting for Postgress && exit 1
       - run:
-          name: Install packages
+          name: Install API packages
           command: |
             cd api
             npm i
       - run:
-          name: Run unit tests
+          name: Run API lint
+          command: |
+            cd api
+            npm run lint
+      - run:
+          name: Run API tests
           environment:
             NODE_ENV: test
             DATABASE_URL: 'postgres://ubuntu@localhost:5432/api-db?sslmode=disable'
