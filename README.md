@@ -4,7 +4,7 @@
 
 Krei is an opinionated boilerplate that creates a full-stack React/Node Typescript project,  with independent client and API structures in the same repository, ready to run and deploy.
 
-Why should I use it?
+*Why use Krei?*
 
 The main idea of Krei is to make your new project creation easier by giving you a simple, neat and tidy base.
 
