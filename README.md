@@ -1,5 +1,3 @@
-![Logo of the project](https://ae.studio/assets/images/aestudio-logo-light.svg)
-
 # Krei
 
 > From Latin creō (“I create, make, produce”) +‎ -i.
