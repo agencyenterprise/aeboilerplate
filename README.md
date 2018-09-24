@@ -2,7 +2,29 @@
 
 > From Latin creō (“I create, make, produce”) +‎ -i.
 
-Krei a project ready to run and deploy with react/redux and a node API in just one step... and it's clean code!
+Krei is an opinionated boilerplate that creates a full-stack React/Node project,  with independent client and API structures in the same repository, ready to run and deploy.
+
+Why should I use it?
+
+The main idea of Krei is to make your new project creation easier by giving you a simple, neat and tidy base.
+
+* The basic of a React client and Node API with ~~almost~~ zero configuration and no complicated structure.
+* Github templates.
+* Circle CI configuration.
+* Authentication using PassportJS and a social network oauth2 strategy.
+* Client
+  * Created using create-react-app with typescript and SASS.
+  * Access to the API using Axios.
+  * Redux using ducks modular approach.
+  * Private and protected routes with React Router 4.
+* API
+  * Express with public and private routes structure.
+  * Knex configuration.
+      * Migrations and seeds included.
+  * Jest for your tests.
+* Docker and docker compose to run all of this in a controlled environment.
+
+When using a development environment with support, Krei also includes: prettier, editorconfig, and tslint to guarantee the consistency of your codebase.
 
 ## Before you start
 
