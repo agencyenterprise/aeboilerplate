@@ -6,25 +6,25 @@ Krei is an opinionated boilerplate that creates a full-stack React/Node Typescri
 
 *Why use Krei?*
 
-The main idea of Krei is to make your new project creation easier by giving you a simple, neat and tidy base.
+The main idea of Krei is to make the creation of your new project easier by giving you a neat and tidy base.
 
 * The basic of a React client and Node API with ~~almost~~ zero configuration and no complicated structure.
 * [Github templates](https://blog.github.com/2016-02-17-issue-and-pull-request-templates/).
 * [Circle CI configuration](https://circleci.com/docs/2.0/configuration-reference/#section=configuration).
 * Authentication using [PassportJS](http://www.passportjs.org/) and a social network [OAuth2](https://oauth.net/2/) strategy.
 * Client
-  * Created using [create-react-app](https://github.com/facebook/create-react-app) with [Typescript](https://www.typescriptlang.org/docs/home.html) and [SASS](https://sass-lang.com/) support.
+  * Created using [create-react-app](https://github.com/facebook/create-react-app) with [Typescript](https://www.typescriptlang.org/docs/home.html) and [SASS](https://sass-lang.com/).
   * Access to the API using [Axios](https://github.com/axios/axios).
   * [Redux](https://github.com/reduxjs/redux) using [ducks modular approach](https://github.com/erikras/ducks-modular-redux).
   * Private and protected routes with [React Router 4](https://reacttraining.com/react-router/core/guides/philosophy).
 * API
   * [Express](https://expressjs.com/) with public and private routes structure.
-  * [Knex](https://knexjs.org/) configuration.
+  * Database access using [Knex](https://knexjs.org/)
       * [Migrations](https://knexjs.org/#Migrations-CLI) and [seeds](https://knexjs.org/#Seeds-CLI) included.
   * [Jest](https://jestjs.io/) for your tests.
 * [Docker](https://docs.docker.com) and [docker compose](https://docs.docker.com/compose/) to run all of this in a controlled environment.
 
-When using a development environment with support, Krei also includes: [prettier](https://github.com/prettier/prettier), [editorconfig](https://editorconfig.org/), and [tslint](https://palantir.github.io/tslint/) to guarantee the consistency of your codebase.
+Krei also includes: [prettier](https://github.com/prettier/prettier), [editorconfig](https://editorconfig.org/), and [tslint](https://palantir.github.io/tslint/) to guarantee the consistency of your codebase.
 
 ## Before you start
 
