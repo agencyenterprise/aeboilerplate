@@ -1,7 +1,7 @@
 {
-  "name": "ae-node-boilerplate",
+  "name": "krei",
   "version": "1.0.0",
-  "description": "AE Node boilerplate meta project",
+  "description": "Krei is an opinionated boilerplate that creates a full-stack React/Node Typescript project, with independent client and API structures in the same repository, ready to run and deploy with a neat and tidy base.",
   "scripts": {
     "krei": "rm -rf .git && npm i && npm run api-npm-i && npm run stop-containers && npm run create-client && rm -rf client-generator",
     "create-client": "cd client-generator && npm run create && cd ../client && prettier --write */*.tsx --loglevel silent",
@@ -29,7 +29,7 @@
     "name": "AE Studio",
     "url": "https://ae.studio/"
   },
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/agencyenterprise/ae-node-boilerplate/issues"
   },

@@ -1,6 +1,11 @@
 # Krei
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 > From Latin creō (“I create, make, produce”) +‎ -i.
+
+<div align="center">
+  <strong>Start your next full-stack project in seconds</strong>
+</div>
 
 Starting something new brings a good and well-known feeling. Helping you to focus on the business problem at hand is why we made Krei.
 
@@ -42,6 +47,8 @@ Make sure you have installed:
 - [Docker Compose 1.21+](https://docs.docker.com/compose/install/)
 
 ## Creating a new project
+
+Clone this project using the following command and changing the `PROJECT_NAME` placeholder: `git clone --depth=1 https://github.com/agencyenterprise/krei.git PROJECT_NAME`
 
 ```shell
 npm run krei
