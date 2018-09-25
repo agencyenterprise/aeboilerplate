@@ -18,6 +18,9 @@ class HomeComponent extends React.Component<any, any> {
         <p className="home-intro">
           To get started, edit <code>src/containers/Home.tsx</code> and save to reload.
         </p>
+        <a href={config.auth.googleAuthURL}>
+          <button>Login with Google</button>
+        </a>
         <a href={config.auth.linkedInAuthURL}>
           <button>Login with LinkedIn</button>
         </a>

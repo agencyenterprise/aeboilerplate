@@ -4,7 +4,7 @@ import url from 'url'
 import { config } from '../config'
 
 export const authenticateCallback = (req, res, next) => {
-  passport.authenticate('linkedInProvider', (error, user) => {
+  passport.authenticate('googleProvider', (error, user) => {
     if (error) {
       return next(error)
     }

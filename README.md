@@ -71,7 +71,22 @@ It starts an API, database and client containers using docker compose. The defau
   - password: password
   - database: api-db
 
-The authentication process uses [PassportJS](http://www.passportjs.org/) with the [Oauth2 framework](https://oauth.net/2/) to authenticate to LinkedIn. In order to make it work, you are going to need:
+The authentication process uses [PassportJS](http://www.passportjs.org/) with the [Oauth2 framework](https://oauth.net/2/) to authenticate to Google and LinkedIn. In order to make it work, you are going to need:
+
+### Google
+
+* Go to [google developer site](https://console.developers.google.com).
+* Create a new project.
+* Enable Google+ API.
+* Go to OAuth consent tab by clicking on the credentials item on the left menu, add a product name and any other data you want to have for your app.
+* After saving it, you will be redirected to the credentials tab. Click on create credentials and OAuth client ID.
+* Click on web application and set your web client name, your Authorized JavaScript origins as http://localhost:3001 and Authorized redirect URIs as http://localhost:3001/auth/google/callback.
+* Click on create.
+* You'll be redirected once again to the credentials tab with a popup showing your client id and client secret. Make sure you save both in your docker-compose files (meta and api)
+    * GOOGLE_ID
+    * GOOGLE_SECRET
+
+### LinkedIn
 
 - A new application in the [LinkedIn developer page](https://www.linkedin.com/developer/apps).
 - Add your LinkedIn id and secret in the docker-compose.yml files (meta and api folders).

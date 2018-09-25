@@ -17,9 +17,13 @@ services:
       DB_CONN_PASSWORD: password
       DB_CONN_PORT: 5432
       DB_CONN_USER: user
+      GOOGLE_ID: 794473277407-ct4gbghcmp567o0mej9vamp75v7n30nm.apps.googleusercontent.com
+      GOOGLE_SECRET: WpW2I776wvNX4C5q9tA23ncI
+      GOOGLE_CALLBACK_URL: http://localhost:3001/api/auth/google/callback
       LINKEDIN_ID: 77gy1y1ddffvxw
       LINKEDIN_SECRET: WNOSE0fM0KdVPlDq
-      LINKEDIN_CALLBACK_URL: http://localhost:3001/auth/linkedin/callback
+      LINKEDIN_CALLBACK_URL: http://localhost:3001/api/auth/linkedin/callback
+      SUCCESS_LOGIN_REDIRECT_URL: http://localhost:3001/api/
       NODE_ENV: development
       DATABASE_POOL_MIN: 0
       DATABASE_POOL_MAX: 10

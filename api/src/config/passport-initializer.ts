@@ -1,11 +1,28 @@
 import passport from 'passport'
 import linkedInOauth2 from 'passport-linkedin-oauth2'
+import googleOauth2 from 'passport-google-oauth2'
 
 import { config } from '.'
 import { authenticate } from '../services/authentication/authenticate'
 import { logger } from '../services/logger'
 
 export const initializePassport = () => {
+  passport.use(
+    'googleProvider',
+    new googleOauth2.Strategy(
+      {
+        clientID: config.auth.google.clientID,
+        clientSecret: config.auth.google.clientSecret,
+        callbackURL: config.auth.google.callbackURL,
+        scope: config.auth.google.scope,
+      },
+      (token, refreshToken, profile, done) => {
+        console.log('token', token)
+        console.log('refreshToken', refreshToken)
+        done(null, { token, refreshToken, profile })
+      },
+    ),
+  )
   passport.use(
     'linkedInProvider',
     new linkedInOauth2.Strategy(

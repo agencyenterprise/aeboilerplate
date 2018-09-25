@@ -4,6 +4,12 @@ export const config = {
     port: process.env.PORT || 3001,
   },
   auth: {
+    google: {
+      clientID: process.env.GOOGLE_ID,
+      clientSecret: process.env.GOOGLE_SECRET,
+      callbackURL: process.env.GOOGLE_CALLBACK_URL,
+      scope: ['https://www.googleapis.com/auth/userinfo.profile', , 'https://www.googleapis.com/auth/userinfo.email'],
+    },
     linkedIn: {
       clientID: process.env.LINKEDIN_ID,
       clientSecret: process.env.LINKEDIN_SECRET,

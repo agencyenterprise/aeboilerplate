@@ -8,5 +8,7 @@ const router = express.Router()
 
 router.get('/linkedin/callback', asyncHandler(authenticateCallback))
 router.get('/linkedin', passport.authenticate('linkedInProvider'))
+router.get('/google/callback', asyncHandler(authenticateCallback))
+router.get('/google', passport.authenticate('googleProvider'))
 
 export const authenticate = router
