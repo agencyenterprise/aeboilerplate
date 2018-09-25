@@ -2,11 +2,17 @@
 
 > From Latin creō (“I create, make, produce”) +‎ -i.
 
-Krei is an opinionated boilerplate that creates a full-stack React/Node Typescript project,  with independent client and API structures in the same repository, ready to run and deploy.
+Starting something new brings a good and well-known feeling. Helping you to focus on the business problem at hand is why we made Krei.
+
+We grouped good practices, methodologies and an up-to-date tech stack in the same way used by us at AE.
+
+We are providing a one-step boilerplate to avoid a large amount of setup needed by you when first starting a full-stack application. There are no hard concepts, it's as simple as it could be to facilitate your work. We don't want to have you removing code, but adding your own in a simple way.
+
+Serving a web app has become more and more seamless, with React, Node and Heroku, and we’re taking it to the next level!
 
 *Why use Krei?*
 
-The main idea of Krei is to make the creation of your new project easier by giving you a neat and tidy base.
+Krei is an opinionated boilerplate that creates a full-stack React/Node Typescript project,  with independent client and API structures in the same repository, ready to run and deploy with a neat and tidy base.
 
 * The basic of a React client and Node API with ~~almost~~ zero configuration and no complicated structure.
 * [Github templates](https://blog.github.com/2016-02-17-issue-and-pull-request-templates/).
