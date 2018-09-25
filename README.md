@@ -1,7 +1,7 @@
 # Krei
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-> From Latin creō (“I create, make, produce”) +‎ -i. e.g.: I create my next full-stack application in seconds.
+> From Latin creō (“I create, make, produce”) +‎ -i. e.g.: I krei my full-stack application in seconds.
 
 Starting something new brings a good and well-known feeling. Helping you to focus on the business problem at hand is why we made Krei.
 
@@ -101,7 +101,7 @@ The authentication process uses [PassportJS](http://www.passportjs.org/) with th
    - Run `git remote remove heroku`
    - Run `git remote add heroku git@heroku.com:ANOTHER_HEROKU_APP_NAME.git`
 
-## Continuous integration with Circle CI and Heroku
+## Setup Continuous integration with Circle CI and Heroku
 
 1. Deploy your application to heroku following the steps above.
 2. Change the placeholder `HEROKU_APP_NAME` in the `.circleci/config.yml` file with the name returned from your heroku application.
@@ -125,4 +125,3 @@ npm run api-test-watch
 ```
 
 It runs tests on watch mode for the API.
-
