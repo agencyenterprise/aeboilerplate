@@ -21,9 +21,6 @@ class HomeComponent extends React.Component<any, any> {
         <a href={config.auth.googleAuthURL}>
           <button>Login with Google</button>
         </a>
-        <a href={config.auth.linkedInAuthURL}>
-          <button>Login with LinkedIn</button>
-        </a>
       </div>
     )
   }
