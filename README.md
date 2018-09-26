@@ -3,19 +3,19 @@
 
 > From Latin creō (“I create, make, produce”) +‎ -i. e.g.: I krei my full-stack application in seconds.
 
-Starting something new brings a good and well-known feeling. Helping you to focus on the business problem at hand is why we made Krei.
+Krei is an opinionated boilerplate that creates a full-stack React/Node Typescript project. It includes independent client and API structures in the same repository, ready to run and deploy with a neat and tidy base.
 
-We grouped good practices, methodologies and an up-to-date tech stack in the same way used by us at AE.
+There’s a lot of setup whenever you start a project. And it often gets repeated project to project.
 
-We are providing a one-step boilerplate to avoid a large amount of setup needed by you when first starting a full-stack application. There are no hard concepts, it's as simple as it could be to facilitate your work. We don't want to have you removing code, but adding your own in a simple way.
+We start a lot of projects at ®[AE Studio](https://ae.studio/), for startups and for big companies like Samsung and Berkshire Hathaway. So we decided to take the best stuff out there and put it together in one place to make our future projects kickoff faster. 
 
-Serving a web app has become more and more seamless, with React, Node and Heroku, and we’re taking it to the next level!
+We’ve also scaled it down to make it easy to use for personal projects, and with a couple lines of code.
 
-*Why use Krei?*
+Krei is easy to use. 
 
-Krei is an opinionated boilerplate that creates a full-stack React/Node Typescript project,  with independent client and API structures in the same repository, ready to run and deploy with a neat and tidy base.
+*Krei includes*
 
-* The basic of a React client and Node API with ~~almost~~ zero configuration and no complicated structure.
+* The basics of a React client and Node API with zero configuration and no complicated structure.
 * [Github templates](https://blog.github.com/2016-02-17-issue-and-pull-request-templates/).
 * [Circle CI configuration](https://circleci.com/docs/2.0/configuration-reference/#section=configuration).
 * Authentication using [PassportJS](http://www.passportjs.org/) and a social network [OAuth2](https://oauth.net/2/) strategy.
