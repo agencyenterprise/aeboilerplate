@@ -6,8 +6,8 @@ export const getUserFromProfile = (profile) => {
     photos,
   } = profile
 
-  const email = emails.length && emails.pop().value
-  const photoUrl = photos.length && photos.pop().value
+  const email = emails.length && emails[emails.length - 1].value
+  const photoUrl = photos.length && photos[photos.length - 1].value
 
   const newUser = {
     provider,
