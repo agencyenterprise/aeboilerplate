@@ -47,8 +47,8 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      - deploy:
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              bash ./.circleci/deploy-heroku.sh git@heroku.com:krei-test.git
-            fi
+      # - deploy:
+      #     command: |
+      #       if [ "${CIRCLE_BRANCH}" == "master" ]; then
+      #         bash ./.circleci/deploy-heroku.sh
+      #       fi
