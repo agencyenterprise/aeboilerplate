@@ -88,7 +88,7 @@ The authentication process uses [PassportJS](http://www.passportjs.org/) with th
 
 ### LinkedIn
 
-- A new application in the [LinkedIn developer page](https://www.linkedin.com/developer/apps).
+- Create a new application in the [LinkedIn developer page](https://www.linkedin.com/developer/apps).
 - Add your LinkedIn id and secret in the docker-compose.yml files (meta and api folders).
   - LINKEDIN_ID
   - LINKEDIN_SECRET
