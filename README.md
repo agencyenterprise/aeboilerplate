@@ -1,6 +1,6 @@
 # Krei
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![CircleCI](https://circleci.com/gh/agencyenterprise/krei.svg?style=svg)](https://circleci.com/gh/agencyenterprise/krei)
+[![CircleCI](https://circleci.com/gh/agencyenterprise/krei.svg?style=svg&circle-token=3d749403becdba1c3b622fb512abad50192930b6)](https://circleci.com/gh/agencyenterprise/krei)
 
 > From Latin creō (“I create, make, produce”) +‎ -i. e.g.: I krei my full-stack application in seconds.
 
