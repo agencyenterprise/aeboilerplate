@@ -1,6 +1,6 @@
 import passport from 'passport'
-import linkedInOauth2 from 'passport-linkedin-oauth2'
 import googleOauth2 from 'passport-google-oauth2'
+import linkedInOauth2 from 'passport-linkedin-oauth2'
 
 import { config } from '.'
 import { authenticate } from '../services/authentication/authenticate'
@@ -17,8 +17,6 @@ export const initializePassport = () => {
         scope: config.auth.google.scope,
       },
       (token, refreshToken, profile, done) => {
-        console.log('token', token)
-        console.log('refreshToken', refreshToken)
         done(null, { token, refreshToken, profile })
       },
     ),
