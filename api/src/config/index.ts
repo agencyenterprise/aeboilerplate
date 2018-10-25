@@ -28,6 +28,7 @@ export const config = {
       database: process.env.DB_CONN_DATABASE || 'api-db',
       user: process.env.DB_CONN_USER || 'user',
       password: process.env.DB_CONN_PASSWORD || 'password',
+      multipleStatements: true,
     },
     pool: {
       min: +process.env.DATABASE_POOL_MIN || 0,

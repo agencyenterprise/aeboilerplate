@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "npm run migrate && ts-node ./src/server.ts",
-    "dev": "npm run migrate && ts-node-dev --poll --no-notify ./src/server.ts",
+    "start": "npm run migrate && npm run seed && ts-node ./src/server.ts",
+    "dev": "npm run migrate && npm run seed && ts-node-dev --poll --no-notify ./src/server.ts",
     "lint": "tslint --exclude **/*.d.ts src/**/*.ts",
-    "migrate": "ts-node ./tasks/migrate",
+    "migrate": "knex migrate:latest --knexfile ./src/config/knexfile.ts",
+    "migrate-make": "knex migrate:make --knexfile ./src/config/knexfile.ts",
+    "seed": "knex seed:run --knexfile ./src/config/knexfile.ts",
+    "seed-make": "knex seed:make --knexfile ./src/config/knexfile.ts",
     "test": "npm run migrate && jest -i --colors --verbose --coverage --detectOpenHandles",
     "test-watch": "npm run migrate && jest -i --watchAll --colors --verbose --detectOpenHandles"
   },
