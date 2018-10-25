@@ -12,8 +12,6 @@ We start a lot of projects at [AE Studio](https://ae.studio/), for startups and 
 
 We’ve also scaled it down to make it simple to use for personal projects, and with a couple lines of code.
 
-Krei is easy to use. 
-
 *Krei includes*
 
 * The basics of a React client and Node API with zero configuration and no complicated structure.
@@ -43,6 +41,16 @@ Make sure you have installed:
 - [Docker 18+](https://docs.docker.com/install/)
 - [Docker Compose 1.21+](https://docs.docker.com/compose/install/)
 
+## Quick reference
+
+- Create a new project: `npm run krei`
+- Run the project: `npm run dev`
+- Install dependencies of a cloned project: `npm run npm-i`
+- Configure the development environment: `docker-compose` files, `api/src/config` and `client/src/config`
+- Access the database (make sure your db container is running): `localhost:5432` user `user`, password `password`, database `api-db`
+- Execute the migration files: `npm run migrate`
+- Execute the seed files: `npm run seed`
+
 ## Creating a new project
 
 Clone this project using the following command and changing the `PROJECT_NAME` placeholder: `git clone --depth=1 https://github.com/agencyenterprise/krei.git PROJECT_NAME`
@@ -53,9 +61,17 @@ npm run krei
 
 This command creates a client and installs all the packages creating a full stack project structure ready to be developed.
 
+## Running a cloned project
+
+If you are running a cloned project originally made by krei, make sure you install all packages executing:
+
+```shell
+npm run npm-i
+```
+
 ## Running locally
 
-*If you are running a cloned project originally made by krei for the first time, make sure you install all packages executing `npm run npm-i`.*
+**
 
 ```shell
 npm run dev
@@ -74,7 +90,11 @@ It starts an API, database and client containers using docker compose. The defau
 
 The authentication process uses [PassportJS](http://www.passportjs.org/) with the [Oauth2 framework](https://oauth.net/2/) to authenticate to Google and LinkedIn. In order to make it work, you are going to need:
 
-### Google
+## Configuring the project environment
+
+The API and Client have both the same structure of configuration files. You can find these files on: `api/src/config` and `client/src/config`. The configuration is based on environment variables set using the docker-compose file when running the project in development mode.
+
+### Configuring Google Authentication
 
 * Go to [google developer site](https://console.developers.google.com).
 * Create a new project.
@@ -87,7 +107,7 @@ The authentication process uses [PassportJS](http://www.passportjs.org/) with th
     * GOOGLE_ID
     * GOOGLE_SECRET
 
-### LinkedIn
+### Configuring LinkedIn Authentication
 
 - Create a new application in the [LinkedIn developer page](https://www.linkedin.com/developer/apps).
 - Add your LinkedIn id and secret in the docker-compose.yml files (meta and api folders).
