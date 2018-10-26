@@ -13,6 +13,7 @@ services:
       NODE_ENV: development
       REACT_APP_API_URL: http://localhost:3001/api
       REACT_APP_LINKEDIN_AUTH_URL: http://localhost:3001/api/auth/linkedin
+      REACT_APP_GOOGLE_AUTH_URL: http://localhost:3001/api/auth/google
   api:
     image: node:8.11.3
     command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; npm run dev'
