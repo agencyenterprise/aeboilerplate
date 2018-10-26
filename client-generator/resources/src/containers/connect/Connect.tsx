@@ -9,7 +9,9 @@ import { authenticate } from '../../redux/ducks/authenticate'
 
 class ConnectComponent extends React.Component<any, any> {
   componentDidMount() {
-    const { token } = this.parseQueryString()
+    const { token: queryToken } = this.parseQueryString()
+
+    const token = Array.isArray(queryToken) ? queryToken[0] : queryToken
 
     if (token) {
       store.set(config.localStorageKeys.token, token)
