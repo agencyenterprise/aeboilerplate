@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 import '../../config'
 import './home.scss'
 
-import logo from './logo.svg'
 import { config } from '../../config'
+import logo from './logo.svg'
 
 class HomeComponent extends React.Component<any, any> {
   public render() {
