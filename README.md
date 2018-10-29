@@ -166,4 +166,4 @@ It runs tests on watch mode for the API.
 
 ## License
 
-This project is licensed under the MIT license, Copyright (c) 2018 Maximilian Stoiber. For more information see `LICENSE.md`.
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/agencyenterprise/krei/blob/master/LICENCE.md) file for details
