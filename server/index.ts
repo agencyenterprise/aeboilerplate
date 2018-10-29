@@ -17,7 +17,18 @@ app.get('*', function(_, res) {
   })
 })
 
-if (cluster.isMaster) {
+const startServer = () => {
+  app.listen(+config.http.port, config.http.host, () => {
+    logger.info(`Server started at [ http://${config.http.host}:${config.http.port} ]`)
+    logger.info(`Environment ${process.pid}: ${config.env}`)
+  })
+}
+
+const startClusterServer = () => {
+  if (!cluster.isMaster) {
+    return startServer()
+  }
+
   logger.info(`Master ${process.pid} is running`)
   const numCPUs = os.cpus().length
 
@@ -30,9 +41,10 @@ if (cluster.isMaster) {
   cluster.on('exit', (worker) => {
     logger.info(`worker ${worker.process.pid} died`)
   })
+}
+
+if (config.nodeClusterEnabled) {
+  startClusterServer()
 } else {
-  app.listen(+config.http.port, config.http.host, () => {
-    logger.info(`Server started at [ http://${config.http.host}:${config.http.port} ]`)
-    logger.info(`Environment ${process.pid}: ${config.env}`)
-  })
+  startServer()
 }

@@ -27,6 +27,7 @@ services:
       NODE_ENV: development
       DATABASE_POOL_MIN: 0
       DATABASE_POOL_MAX: 10
+      ENABLE_NODE_CLUSTER: 'false'
   db:
     image: postgres:10.4
     ports:
