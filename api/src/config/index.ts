@@ -20,7 +20,8 @@ export const config = {
   },
   logLevel: process.env.LOG_LEVEL || 'debug',
   env: process.env.NODE_ENV || 'development',
-  nodeClusterEnabled: process.env.ENABLE_NODE_CLUSTER.toLowerCase() === 'true' || false,
+  nodeClusterEnabled:
+    (process.env.ENABLE_NODE_CLUSTER && process.env.ENABLE_NODE_CLUSTER.toLowerCase() === 'true') || false,
   knex: {
     client: 'postgresql',
     connection: process.env.DATABASE_URL || {
