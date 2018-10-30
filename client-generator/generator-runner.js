@@ -9,7 +9,7 @@ const replace = require('replace-in-file')
 const clientGeneratorPath = `${process.cwd()}`
 const clientAppPath = '../client'
 const resourcesFilesPath = './resources'
-const totalSteps = 7
+const totalSteps = 8
 
 const run = async () => {
   try {
@@ -20,6 +20,7 @@ const run = async () => {
     await addReduxStoreProvider()
     await addReactRouter()
     await installDependencies()
+    await deleteUnnecessaryFiles()
 
     showSuccessMessage()
   } catch (error) {
@@ -194,6 +195,23 @@ const installDependencies = () => {
     shell.exec(`cd .. && npm run client-npm-i-sass`)
 
     resolve(true)
+  })
+}
+
+const deleteUnnecessaryFiles = async () => {
+  logStepHeaderMessage('Removing unnecessary files', 8)
+  const srcPath = `${clientAppPath}/src`
+  const files = fs.readdirSync(srcPath)
+  const isDirectory = (path) => fs.lstatSync(path).isDirectory()
+
+  files.forEach(file => {
+    const fullFilePath = `${srcPath}/${file}`
+    const whitelistFiles = ['index.tsx', 'index.scss', 'registerServiceWorker.ts']
+
+    if (!whitelistFiles.includes(file) && !isDirectory(fullFilePath)){
+      console.log('deleting unnecessary file: ', file);
+      fs.unlinkSync(fullFilePath)
+    }
   })
 }
 
