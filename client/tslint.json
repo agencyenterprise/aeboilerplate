@@ -1,0 +1,38 @@
+{
+  "extends": ["tslint-config-prettier"],
+  "rulesDirectory": ["tslint-consistent-codestyle"],
+  "rules": {
+    "cyclomatic-complexity": [true, 10],
+    "interface-name": false,
+    "member-access": [false],
+    "member-ordering": [
+      true,
+      {
+        "order": ["static-field", "instance-field", "static-method", "instance-method"]
+      }
+    ],
+    "newline-before-return": true,
+    "no-bitwise": false,
+    "no-conditional-assignment": false,
+    "object-literal-sort-keys": false,
+    "prefer-object-spread": true,
+    "prefer-template": true,
+    "early-exit": true,
+    "no-unnecessary-else": true,
+    "semicolon": false,
+    "no-unused-expression": false,
+    "only-arrow-functions": true,
+    "object-literal-shorthand": true,
+    "no-default-export": true,
+    "no-console": true,
+    "no-unnecessary-type-annotation": true,
+    "quotemark": [true, "single", "jsx-double"],
+    "ordered-imports": [
+      true,
+      {
+        "import-sources-order": "lowercase-last",
+        "named-imports-order": "lowercase-first"
+      }
+    ]
+  }
+}
