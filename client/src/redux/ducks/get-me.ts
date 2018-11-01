@@ -24,8 +24,7 @@ export const me = handleActions(
     [getMe.FAILED]: (state, action) => ({
       ...state,
       loading: false,
-      error: action.payload.err,
-      test: action.payload.data,
+      error: action.payload.error,
     }),
     [getMe.ENDED]: (state) => ({
       ...state,

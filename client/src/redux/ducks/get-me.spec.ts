@@ -15,7 +15,7 @@ describe('me duck', () => {
   })
 
   describe('get', () => {
-    it('returns me payload when calling the action', async () => {
+    it('returns "me" payload when calling the action', async () => {
       httpMock.onGet('/me').reply(200, {
         me: { name: 'HELLO WORLD' },
       })
@@ -32,24 +32,24 @@ describe('me duck', () => {
       })
     })
 
-    it('returns error payload and sets me equals to empty object when receiving 400', async () => {
+    it('returns error payload and sets "me" equals to empty object when receiving 400', async () => {
       httpMock.onGet('/me').reply(400, {
-        payload: { error: 'OPS' },
+        error: 'OPS',
       })
 
-      try {
-        await getMe()(store.dispatch)
-      } catch (e) {}
+      await getMe()(store.dispatch)
+
       const executedActions = store.getActions()
       const failedPayload = executedActions.find((action) => action.type === getMe.FAILED)
+
       expect(executedActions.map((action) => action.type)).toEqual([getMe.START, getMe.FAILED, getMe.ENDED])
       expect(failedPayload).toEqual({
-        error: { error: 'OPS' },
-        type: 'GET_ME_FAILED',
+        type: getMe.FAILED,
+        payload: { error: 'OPS' },
       })
     })
 
-    describe('reducers', () => {
+    describe('reducer', () => {
       let startedState = { me: {}, loading: true, error: null }
       let succeededState = { me: { name: 'Krei' }, loading: true, error: null }
 
@@ -59,13 +59,19 @@ describe('me duck', () => {
         expect(startReducer).toEqual(startedState)
       })
 
-      it('adds me data to the reducer when succeeded', async () => {
+      it('adds "me" data when it succeeds', async () => {
         const succeededReducer = me(startedState, { type: getMe.SUCCEEDED, payload: { me: { name: 'Krei' } } })
 
         expect(succeededReducer).toEqual(succeededState)
       })
 
-      it('sets loading equals to false when the process ends', async () => {
+      it('adds error data when it fails', async () => {
+        const failedReducer = me(startedState, { type: getMe.FAILED, payload: { error: 'OPS' } })
+
+        expect(failedReducer).toEqual({ error: 'OPS', loading: false, me: {} })
+      })
+
+      it('sets loading equals to false when it ends', async () => {
         const succeededReducer = me(succeededState, { type: getMe.ENDED, payload: { me: { name: 'Krei' } } })
 
         expect(succeededReducer).toEqual({ me: { name: 'Krei' }, loading: false, error: null })
