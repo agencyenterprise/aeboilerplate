@@ -14,38 +14,40 @@ describe('me duck', () => {
     store = mockStore(initialState)
   })
 
-  describe('get', () => {
-    it('returns "me" payload when calling the action', async () => {
-      httpMock.onGet('/me').reply(200, {
-        me: { name: 'HELLO WORLD' },
+  describe('get me', () => {
+    describe('calling the action', () => {
+      it('returns "me" payload in case of success', async () => {
+        httpMock.onGet('/me').reply(200, {
+          me: { name: 'HELLO WORLD' },
+        })
+
+        await getMe()(store.dispatch)
+
+        const executedActions = store.getActions()
+        const succeededPayload = executedActions.find((action) => action.type === getMe.SUCCEEDED)
+
+        expect(executedActions.map((action) => action.type)).toEqual([getMe.START, getMe.SUCCEEDED, getMe.ENDED])
+        expect(succeededPayload).toEqual({
+          type: getMe.SUCCEEDED,
+          payload: { me: { name: 'HELLO WORLD' } },
+        })
       })
 
-      await getMe()(store.dispatch)
+      it('when receiving a bad request returns error payload', async () => {
+        httpMock.onGet('/me').reply(400, {
+          error: 'OPS',
+        })
 
-      const executedActions = store.getActions()
-      const succeededPayload = executedActions.find((action) => action.type === getMe.SUCCEEDED)
+        await getMe()(store.dispatch)
 
-      expect(executedActions.map((action) => action.type)).toEqual([getMe.START, getMe.SUCCEEDED, getMe.ENDED])
-      expect(succeededPayload).toEqual({
-        type: getMe.SUCCEEDED,
-        payload: { me: { name: 'HELLO WORLD' } },
-      })
-    })
+        const executedActions = store.getActions()
+        const failedPayload = executedActions.find((action) => action.type === getMe.FAILED)
 
-    it('returns error payload and sets "me" equals to empty object when receiving 400', async () => {
-      httpMock.onGet('/me').reply(400, {
-        error: 'OPS',
-      })
-
-      await getMe()(store.dispatch)
-
-      const executedActions = store.getActions()
-      const failedPayload = executedActions.find((action) => action.type === getMe.FAILED)
-
-      expect(executedActions.map((action) => action.type)).toEqual([getMe.START, getMe.FAILED, getMe.ENDED])
-      expect(failedPayload).toEqual({
-        type: getMe.FAILED,
-        payload: { error: 'OPS' },
+        expect(executedActions.map((action) => action.type)).toEqual([getMe.START, getMe.FAILED, getMe.ENDED])
+        expect(failedPayload).toEqual({
+          type: getMe.FAILED,
+          payload: { error: 'OPS' },
+        })
       })
     })
 
