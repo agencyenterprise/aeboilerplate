@@ -18,6 +18,13 @@
     "redux-thunk-actions": "github:wgrisa/redux-thunk-actions",
     "store": "^2.0.12"
   },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!<rootDir>/node_modules/",
+      "!<rootDir>/src/registerServiceWorker.ts"
+    ]
+  },
   "scripts": {
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
