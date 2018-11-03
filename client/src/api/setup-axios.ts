@@ -24,7 +24,7 @@ export const setupAxios = () => {
       return response
     },
     (error) => {
-      if (error.response.data.code === 401) {
+      if (error.response.status === 401) {
         store.clearAll()
         window.location.href = '/'
       }

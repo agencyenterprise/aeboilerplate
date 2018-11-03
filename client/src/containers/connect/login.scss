@@ -1,0 +1,15 @@
+.login {
+  display: flex;
+  justify-content: center;
+
+  a > button {
+    margin-top: 5em;
+    width: 15em;
+    height: 5em;
+    border-radius: 5px;
+
+    &:hover {
+      border-color: grey;
+    }
+  }
+}

@@ -1,6 +1,7 @@
 export const routePaths = {
   connect: '/connect',
-  login: '/',
+  root: '/',
+  login: '/login',
   loggedUser: {
     root: '/logged-user',
   },

@@ -10,26 +10,27 @@ import { getMe } from '../../redux/ducks/get-me'
 import { routePaths } from '../route-paths'
 
 class ConnectComponent extends React.Component<any, any> {
-  componentDidMount() {
-    const { token: queryToken } = this.parseQueryString()
+  getQueryToken = () => {
+    const { token: queryToken } = queryString.parse(this.props.location.search)
 
-    const token = Array.isArray(queryToken) ? queryToken[0] : queryToken
+    return Array.isArray(queryToken) ? queryToken[0] : queryToken
+  }
+
+  componentDidMount() {
+    const token = this.getQueryToken()
 
     if (!token) {
       return
     }
 
     store.set(config.localStorageKeys.token, token)
+
     this.props.dispatch(authenticate(token))
     this.props.dispatch(getMe())
   }
 
-  parseQueryString() {
-    return queryString.parse(this.props.location.search)
-  }
-
   render() {
-    return <Redirect to={routePaths.login} />
+    return <Redirect to={routePaths.root} />
   }
 }
 
