@@ -10,14 +10,14 @@ import { getMe } from '../../redux/ducks/get-me'
 import { routePaths } from '../route-paths'
 
 class ConnectComponent extends React.Component<any, any> {
-  getQueryToken = () => {
+  getToken = () => {
     const { token: queryToken } = queryString.parse(this.props.location.search)
 
     return Array.isArray(queryToken) ? queryToken[0] : queryToken
   }
 
   componentDidMount() {
-    const token = this.getQueryToken()
+    const token = this.getToken()
 
     if (!token) {
       return
