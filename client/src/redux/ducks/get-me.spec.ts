@@ -17,9 +17,11 @@ describe('me duck', () => {
   describe('get me', () => {
     describe('calling the action', () => {
       it('returns "me" payload in case of success', async () => {
-        httpMock.onGet('/me').reply(200, {
-          me: { name: 'HELLO WORLD' },
-        })
+        const mePayload = {
+          first_name: 'HELLO WORLD',
+        }
+
+        httpMock.onGet('/me').reply(200, mePayload)
 
         await getMe()(store.dispatch)
 
@@ -29,7 +31,7 @@ describe('me duck', () => {
         expect(executedActions.map((action) => action.type)).toEqual([getMe.START, getMe.SUCCEEDED, getMe.ENDED])
         expect(succeededPayload).toEqual({
           type: getMe.SUCCEEDED,
-          payload: { me: { name: 'HELLO WORLD' } },
+          payload: { me: mePayload },
         })
       })
 

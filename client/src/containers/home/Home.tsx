@@ -9,11 +9,16 @@ import logo from './logo.svg'
 
 class HomeComponent extends React.Component<any, any> {
   public render() {
+    const loggedUserName = this.props.me.first_name ? `, ${this.props.me.first_name}` : ''
+
     return (
       <div className="home">
         <header className="home-header">
           <img src={logo} className="home-logo" alt="logo" />
-          <h1 className="home-title">Welcome to Krei</h1>
+          <h1 className="home-title">
+            Welcome to Krei
+            {loggedUserName}
+          </h1>
         </header>
         <p className="home-intro">
           To get started, edit <code>src/containers/Home.tsx</code> and save to reload.
