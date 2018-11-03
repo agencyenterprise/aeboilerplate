@@ -7,6 +7,7 @@ import * as store from 'store'
 import { config } from '../../config'
 import { authenticate } from '../../redux/ducks/authenticate'
 import { getMe } from '../../redux/ducks/get-me'
+import { routePaths } from '../route-paths'
 
 class ConnectComponent extends React.Component<any, any> {
   componentDidMount() {
@@ -28,7 +29,7 @@ class ConnectComponent extends React.Component<any, any> {
   }
 
   render() {
-    return <Redirect to="/" />
+    return <Redirect to={routePaths.login} />
   }
 }
 

@@ -5,11 +5,20 @@ import '../../config'
 import './home.scss'
 
 import { config } from '../../config'
+import { getMe } from '../../redux/ducks/get-me'
+import { routePaths } from '../route-paths'
 import logo from './logo.svg'
 
 class HomeComponent extends React.Component<any, any> {
+  componentDidMount() {
+    this.props.dispatch(getMe())
+  }
+
   public render() {
-    const loggedUserName = this.props.me.first_name ? `, ${this.props.me.first_name}` : ''
+    const me = this.props.me
+    const loggedUserName = me ? `, ${me.first_name}` : ''
+    const buttonRef = me ? routePaths.loggedUser.root : config.auth.googleAuthURL
+    const buttonText = me ? 'Open logged user' : 'Login with Google'
 
     return (
       <div className="home">
@@ -17,14 +26,11 @@ class HomeComponent extends React.Component<any, any> {
           <img src={logo} className="home-logo" alt="logo" />
           <h1 className="home-title">
             Welcome to Krei
-            {loggedUserName}
+            {loggedUserName}!
           </h1>
         </header>
-        <p className="home-intro">
-          To get started, edit <code>src/containers/Home.tsx</code> and save to reload.
-        </p>
-        <a href={config.auth.googleAuthURL}>
-          <button>Login with Google</button>
+        <a href={buttonRef}>
+          <button>{buttonText}</button>
         </a>
       </div>
     )
