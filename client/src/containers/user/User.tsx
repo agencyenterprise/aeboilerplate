@@ -1,13 +1,18 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
 import './user.scss'
 
 import { getMe } from '../../redux/ducks/get-me'
 
-class UserComponent extends React.Component<any, any> {
+export class UserComponent extends React.Component<any, any> {
   componentDidMount() {
-    this.props.dispatch(getMe())
+    this.props.getMe()
+  }
+
+  handleGoBackClick = () => {
+    this.props.history.goBack()
   }
 
   render() {
@@ -23,18 +28,27 @@ class UserComponent extends React.Component<any, any> {
           <span>{me.email}</span>
         </div>
         <br />
-        <button onClick={() => this.props.history.goBack()}>Go back</button>
+        <button onClick={this.handleGoBackClick}>Go back</button>
       </div>
     )
   }
 }
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state) => {
   return {
     me: state.me,
   }
 }
 
-const User = connect(mapStateToProps)(UserComponent)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getMe: bindActionCreators(getMe, dispatch),
+  }
+}
+
+const User = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(UserComponent)
 
 export { User }
