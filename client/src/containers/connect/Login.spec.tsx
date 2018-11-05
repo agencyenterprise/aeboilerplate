@@ -1,7 +1,6 @@
 import { configure, shallow } from 'enzyme'
 import * as Adapter from 'enzyme-adapter-react-16'
 import * as React from 'react'
-import * as renderer from 'react-test-renderer'
 
 import { config } from '../../config'
 import { Login } from './Login'
@@ -10,8 +9,7 @@ configure({ adapter: new Adapter() })
 
 describe(`<Login />`, () => {
   it('renders', () => {
-    const login = renderer.create(<Login />).toJSON()
-    expect(login).toMatchSnapshot()
+    expect(shallow(<Login />).exists()).toBeTruthy()
   })
 
   it('has login class', () => {
