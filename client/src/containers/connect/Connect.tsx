@@ -9,7 +9,7 @@ import { authenticate } from '../../redux/ducks/authenticate'
 import { getMe } from '../../redux/ducks/get-me'
 import { routePaths } from '../route-paths'
 
-class ConnectComponent extends React.Component<any, any> {
+export class ConnectComponent extends React.Component<any, any> {
   getToken = () => {
     const { token: queryToken } = queryString.parse(this.props.location.search)
 
