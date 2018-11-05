@@ -22,7 +22,8 @@
     "collectCoverageFrom": [
       "src/**/*.{ts,tsx}",
       "!<rootDir>/node_modules/",
-      "!<rootDir>/src/registerServiceWorker.ts"
+      "!<rootDir>/src/registerServiceWorker.ts",
+      "!<rootDir>/src/index.tsx"
     ]
   },
   "scripts": {
