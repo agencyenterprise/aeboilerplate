@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Login /> renders 1`] = `
+<div
+  className="login"
+>
+  <a
+    href="/api/auth/google"
+  >
+    <button>
+      Login with Google
+    </button>
+  </a>
+</div>
+`;
