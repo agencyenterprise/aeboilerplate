@@ -7,7 +7,7 @@ import { Connect } from './connect/Connect'
 import { Login } from './connect/Login'
 import { routePaths } from './route-paths'
 
-const AuthenticationGateway = ({ component: Component, path }: { component: any; path: string; location: any }) => {
+const AuthenticationGateway = ({ component: Component, path }: { component: any; path: string }) => {
   const componentRenderer = () => {
     if (!!store.get(config.localStorageKeys.token)) {
       return <Component exact path={path} />
