@@ -14,5 +14,6 @@ function setReturnedValue(value) {
 
 store.setReturnedValue = setReturnedValue
 store.get = get
+store.clearAll = jest.fn()
 
 module.exports = store
