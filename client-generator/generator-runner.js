@@ -219,7 +219,7 @@ const deleteUnnecessaryFiles = async () => {
 
 const gitInit = () => {
   logStepHeaderMessage('Initializing git repository', 9)
-  shell.exec('git init')
+  shell.exec('cd .. && git init')
 }
 
 const showSuccessMessage = () => {
