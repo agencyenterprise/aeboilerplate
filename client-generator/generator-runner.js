@@ -186,7 +186,7 @@ const installDependencies = () => {
     )
 
     console.log('Installing dependencies')
-    shell.exec(`npm install -S redux redux-thunk-actions react-redux redux-thunk react-router-dom axios platform qs store query-string`)
+    shell.exec(`npm install -S redux github:wgrisa/redux-thunk-actions react-redux redux-thunk react-router-dom axios platform qs store query-string`)
 
     console.log('Installing @types')
     shell.exec(
