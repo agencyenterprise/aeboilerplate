@@ -55,6 +55,7 @@ const updateAppResources = () => {
 
 const createFolders = () => {
   console.log('Creating client folders')
+  shell.mkdir('../client/__mocks__')
   shell.mkdir('../client/src/api')
   shell.mkdir('../client/src/api/me')
   shell.mkdir('../client/src/config')
