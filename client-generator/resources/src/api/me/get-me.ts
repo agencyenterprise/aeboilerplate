@@ -6,5 +6,5 @@ export const getMeData = async () => {
     url: '/me',
   })
 
-  return data
+  return { me: data }
 }

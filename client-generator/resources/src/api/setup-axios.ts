@@ -3,6 +3,7 @@ import * as qs from 'qs'
 import * as store from 'store'
 
 import { config } from '../config'
+import { routePaths } from '../containers/route-paths'
 
 export const setupAxios = () => {
   const paramsSerializer = (params: any) => qs.stringify(params, { arrayFormat: 'brackets' })
@@ -24,9 +25,9 @@ export const setupAxios = () => {
       return response
     },
     (error) => {
-      if (error.response.data.code === 401) {
+      if (error.response.status === 401) {
         store.clearAll()
-        window.location.href = '/'
+        window.location.href = routePaths.root
       }
 
       return Promise.reject(error)

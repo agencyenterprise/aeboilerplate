@@ -20,6 +20,10 @@
   &-intro {
     font-size: large;
   }
+
+  a > button {
+    margin-top: 2em;
+  }
 }
 
 @keyframes home-logo-spin {

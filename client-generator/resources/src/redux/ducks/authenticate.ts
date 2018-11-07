@@ -1,5 +1,6 @@
 import { createAction, handleActions } from 'redux-actions'
-const defaultState = {
+
+export const initialState = {
   token: '',
   authenticated: false,
 }
@@ -12,7 +13,7 @@ export const authentication = handleActions(
       return { ...state, token: action.payload.token, authenticated: true }
     },
   },
-  defaultState,
+  initialState,
 )
 
 export const authenticate = (token: string) => {

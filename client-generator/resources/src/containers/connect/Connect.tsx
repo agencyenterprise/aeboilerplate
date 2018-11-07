@@ -6,25 +6,31 @@ import * as store from 'store'
 
 import { config } from '../../config'
 import { authenticate } from '../../redux/ducks/authenticate'
+import { getMe } from '../../redux/ducks/get-me'
+import { routePaths } from '../route-paths'
 
-class ConnectComponent extends React.Component<any, any> {
-  componentDidMount() {
-    const { token: queryToken } = this.parseQueryString()
+export class ConnectComponent extends React.Component<any, any> {
+  getToken = () => {
+    const { token: queryToken } = queryString.parse(this.props.location.search)
 
-    const token = Array.isArray(queryToken) ? queryToken[0] : queryToken
-
-    if (token) {
-      store.set(config.localStorageKeys.token, token)
-      this.props.dispatch(authenticate(token))
-    }
+    return Array.isArray(queryToken) ? queryToken[0] : queryToken
   }
 
-  parseQueryString() {
-    return queryString.parse(this.props.location.search)
+  componentDidMount() {
+    const token = this.getToken()
+
+    if (!token) {
+      return
+    }
+
+    store.set(config.localStorageKeys.token, token)
+
+    this.props.dispatch(authenticate(token))
+    this.props.dispatch(getMe())
   }
 
   render() {
-    return <Redirect to="/" />
+    return <Redirect to={routePaths.root} />
   }
 }
 
