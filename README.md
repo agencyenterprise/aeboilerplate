@@ -3,97 +3,46 @@
 [![krei license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/agencyenterprise/krei/blob/master/LICENCE.md)
 [![build](https://circleci.com/gh/agencyenterprise/krei.svg?style=shield&circle-token=3d749403becdba1c3b622fb512abad50192930b6)](https://circleci.com/gh/agencyenterprise/krei)
 
-> From Latin creō (“I create, make, produce”) +‎ -i. e.g.: I krei my full-stack application in seconds.
+Krei is an opinionated boilerplate developed by [AE Studio](https://ae.studio/), that makes it easier to create a full-stack React/Node Typescript project. It includes independent client and API structures in the same repository, ready to run and deploy with a neat and tidy base.
 
-Krei is an opinionated boilerplate that creates a full-stack React/Node Typescript project. It includes independent client and API structures in the same repository, ready to run and deploy with a neat and tidy base.
+## Installation
 
-There’s a lot of setup whenever you start a project. And it often gets repeated project to project.
+Have your new project up and running going through the following process.
 
-We start a lot of projects at [AE Studio](https://ae.studio/), for startups and for big companies like Samsung and Berkshire Hathaway. So we decided to take the best stuff out there and put it together in one place to make our future projects kickoff faster. 
+- Make sure you have installed
+  - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+  - [Node 8+](https://nodejs.org/en/)
+  - [Docker 18+](https://docs.docker.com/install/)
+  - [Docker Compose 1.21+](https://docs.docker.com/compose/install/)
+- Run the boilerplate generator:
+  - `git clone https://github.com/agencyenterprise/krei.git PROJECT_NAME && cd PROJECT_NAME && npm run krei`
 
-We’ve also scaled it down to make it simple to use for personal projects, and with a couple lines of code.
+## Features
 
-*Krei includes*
-
-* The basics of a React client and Node API with zero configuration and no complicated structure.
 * [Github templates](https://blog.github.com/2016-02-17-issue-and-pull-request-templates/).
 * [Circle CI configuration](https://circleci.com/docs/2.0/configuration-reference/#section=configuration).
-* Authentication using [PassportJS](http://www.passportjs.org/) and a social network [OAuth2](https://oauth.net/2/) strategy.
+* Authentication using [PassportJS](http://www.passportjs.org/) and social network [OAuth2](https://oauth.net/2/) strategy.
+* [Docker](https://docs.docker.com) and [docker compose](https://docs.docker.com/compose/) to run all of this in a controlled environment.
+* In order to guarantee the consistency of your codebase it includes: [prettier](https://github.com/prettier/prettier), [editorconfig](https://editorconfig.org/), and [tslint](https://palantir.github.io/tslint/).
 * Client
   * Created using [create-react-app](https://github.com/facebook/create-react-app) with [Typescript](https://www.typescriptlang.org/docs/home.html) and [SASS](https://sass-lang.com/).
   * Access to the API using [Axios](https://github.com/axios/axios).
   * [Redux](https://github.com/reduxjs/redux) using [ducks modular approach](https://github.com/erikras/ducks-modular-redux).
-  * Private and protected routes with [React Router 4](https://reacttraining.com/react-router/core/guides/philosophy).
+  * Public and private routes samples with [React Router 4](https://reacttraining.com/react-router/core/guides/philosophy).
+  * [Jest](https://jestjs.io/) and [Enzyme](https://github.com/airbnb/enzyme) for tests.
 * API
-  * [Express](https://expressjs.com/) with public and private routes structure.
+  * [Express](https://expressjs.com/) with public and private routes samples.
   * Database access using [Knex](https://knexjs.org/)
       * [Migrations](https://knexjs.org/#Migrations-CLI) and [seeds](https://knexjs.org/#Seeds-CLI) included.
-  * [Jest](https://jestjs.io/) for your tests.
-* [Docker](https://docs.docker.com) and [docker compose](https://docs.docker.com/compose/) to run all of this in a controlled environment.
+  * [Jest](https://jestjs.io/) for tests.
 
-Krei also includes: [prettier](https://github.com/prettier/prettier), [editorconfig](https://editorconfig.org/), and [tslint](https://palantir.github.io/tslint/) to guarantee the consistency of your codebase.
+## Documentation
 
-## Before you start
-
-Make sure you have installed:
-
-- [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-- [Node 8+](https://nodejs.org/en/)
-- [Docker 18+](https://docs.docker.com/install/)
-- [Docker Compose 1.21+](https://docs.docker.com/compose/install/)
-
-## Quick reference
-
-- Create a new project: `npm run krei`
-- Run the project: `npm run dev`
-- Install dependencies of a cloned project: `npm run npm-i`
-- Configure the development environment: `docker-compose` files, `api/src/config` and `client/src/config`
-- Access the database (make sure your db container is running): `localhost:5432` user `user`, password `password`, database `api-db`
-- Execute the migration files: `npm run migrate`
-- Execute the seed files: `npm run seed`
-
-## Creating a new project
-
-Clone this project using the following command and changing the `PROJECT_NAME` placeholder: `git clone --depth=1 https://github.com/agencyenterprise/krei.git PROJECT_NAME`
-
-```shell
-npm run krei
-```
-
-This command creates a client and installs all the packages creating a full stack project structure ready to be developed.
-
-## Running a cloned project
-
-If you are running a cloned project originally made by krei, make sure you install all packages executing:
-
-```shell
-npm run npm-i
-```
-
-## Running locally
-
-**
-
-```shell
-npm run dev
-```
-
-It starts an API, database and client containers using docker compose. The default configuration provides the following environment:
-
-- API: http://localhost:3001/api
-- Client: http://localhost:3000
-- Database:
-  - host: localhost
-  - port: 5432
-  - user: user
-  - password: password
-  - database: api-db
-
-The authentication process uses [PassportJS](http://www.passportjs.org/) with the [Oauth2 framework](https://oauth.net/2/) to authenticate to Google and LinkedIn. In order to make it work, you are going to need:
-
-## Configuring the project environment
+Learn how to configure authentication using OAuth2, deploy and Circle CI
 
 The API and Client have both the same structure of configuration files. You can find these files on: `api/src/config` and `client/src/config`. The configuration is based on environment variables set using the docker-compose file when running the project in development mode.
+
+## Authentication
 
 ### Configuring Google Authentication
 
@@ -117,7 +66,11 @@ The API and Client have both the same structure of configuration files. You can 
 - Add the linkedin callback URL from your docker compose file in the LinkedIn developer app
   - LINKEDIN_CALLBACK_URL: http://localhost:3001/api/auth/linkedin/callback
 
-## Deploying to heroku
+## Deploy
+
+Put your app online.
+
+### Deploying to heroku
 
 1. Create a [Heroku](https://www.heroku.com/) account.
 2. Install [heroku cli](https://www.npmjs.com/package/heroku) using npm
@@ -138,7 +91,11 @@ The API and Client have both the same structure of configuration files. You can 
    - Run `git remote remove heroku`
    - Run `git remote add heroku git@heroku.com:ANOTHER_HEROKU_APP_NAME.git`
 
-## Setup Continuous integration with Circle CI and Heroku
+## Continuous Integration
+
+Setup your continuous integration process to have your code deployed when you push it to the master branch.
+
+### Setup Continuous integration with Circle CI and Heroku
 
 1. Deploy your application to heroku following the steps above.
 2. Remove comments from the deploy step in the circle ci configuration file: `.circleci/config.yml`
@@ -155,14 +112,6 @@ The API and Client have both the same structure of configuration files. You can 
 10. Go back to your Circle CI application settings and click on `Heroku deployment` item on the left menu.
     * Add your Heroku API key copied before.
     * Click on `Set User to YOUR_GIT_USER` button.
-
-## Running tests
-
-```shell
-npm run api-test-watch
-```
-
-It runs tests on watch mode for the API.
 
 ## License
 
