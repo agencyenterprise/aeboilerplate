@@ -180,11 +180,11 @@ const installDependencies = () => {
 
     console.log('Installing DEV dependencies')
     shell.exec(
-      'npm install -D prettier tslint tslint-config-prettier tslint-consistent-codestyle redux-devtools-extension redux-actions',
+      'npm install -D enzyme enzyme-adapter-react-16 axios-mock-adapter redux-mock-store prettier tslint tslint-config-prettier tslint-consistent-codestyle redux-devtools-extension redux-actions',
     )
 
     console.log('Installing dependencies')
-    shell.exec(`npm install -S redux react-redux redux-thunk react-router-dom axios platform qs store query-string`)
+    shell.exec(`npm install -S redux redux-thunk-actions react-redux redux-thunk react-router-dom axios platform qs store query-string`)
 
     console.log('Installing @types')
     shell.exec(
