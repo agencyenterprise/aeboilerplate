@@ -9,7 +9,7 @@ const replace = require('replace-in-file')
 const clientGeneratorPath = `${process.cwd()}`
 const clientAppPath = '../client'
 const resourcesFilesPath = './resources'
-const totalSteps = 8
+const totalSteps = 9
 
 const run = async () => {
   try {
@@ -21,6 +21,7 @@ const run = async () => {
     await addReactRouter()
     await installDependencies()
     await deleteUnnecessaryFiles()
+    await gitInit()
 
     showSuccessMessage()
   } catch (error) {
@@ -213,6 +214,11 @@ const deleteUnnecessaryFiles = async () => {
       fs.unlinkSync(fullFilePath)
     }
   })
+}
+
+const deleteUnnecessaryFiles = () => {
+  logStepHeaderMessage('Initializing git repository', 9)
+  shell.exec('git init')
 }
 
 const showSuccessMessage = () => {
