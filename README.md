@@ -19,11 +19,6 @@ Have your new project up and running going through the following process.
 
 ## Features
 
-* [Github templates](https://blog.github.com/2016-02-17-issue-and-pull-request-templates/).
-* [Circle CI configuration](https://circleci.com/docs/2.0/configuration-reference/#section=configuration).
-* Authentication using [PassportJS](http://www.passportjs.org/) and social network [OAuth2](https://oauth.net/2/) strategy.
-* [Docker](https://docs.docker.com) and [docker compose](https://docs.docker.com/compose/) to run all of this in a controlled environment.
-* In order to guarantee the consistency of your codebase it includes: [prettier](https://github.com/prettier/prettier), [editorconfig](https://editorconfig.org/), and [tslint](https://palantir.github.io/tslint/).
 * Client
   * Created using [create-react-app](https://github.com/facebook/create-react-app) with [Typescript](https://www.typescriptlang.org/docs/home.html) and [SASS](https://sass-lang.com/).
   * Access to the API using [Axios](https://github.com/axios/axios).
@@ -35,6 +30,11 @@ Have your new project up and running going through the following process.
   * Database access using [Knex](https://knexjs.org/)
       * [Migrations](https://knexjs.org/#Migrations-CLI) and [seeds](https://knexjs.org/#Seeds-CLI) included.
   * [Jest](https://jestjs.io/) for tests.
+* [Circle CI configuration](https://circleci.com/docs/2.0/configuration-reference/#section=configuration).
+* Authentication using [PassportJS](http://www.passportjs.org/) and social network [OAuth2](https://oauth.net/2/) strategy.
+* [Docker](https://docs.docker.com) and [docker compose](https://docs.docker.com/compose/) to run all of this in a controlled environment.
+* In order to guarantee the consistency of your codebase it includes: [prettier](https://github.com/prettier/prettier), [editorconfig](https://editorconfig.org/), and [tslint](https://palantir.github.io/tslint/).
+* [Github templates](https://blog.github.com/2016-02-17-issue-and-pull-request-templates/).
 
 ## Documentation
 
