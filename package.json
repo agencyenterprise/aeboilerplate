@@ -17,6 +17,7 @@
     "build-client": "cd client && npm i --only=dev && npm i && npm run build",
     "client-npm-i-sass": "docker-compose run --rm site npm i node-sass",
     "client-npm-i": "docker-compose run --rm site npm i",
+    "client-test": "docker-compose run --rm site npm run test",
     "\n# Container commands": "",
     "stop-containers": "docker stop $(docker ps -a -q)",
     "show-containers": "docker ps --format 'table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}'",
