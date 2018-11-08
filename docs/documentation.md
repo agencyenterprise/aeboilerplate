@@ -1,6 +1,3 @@
-# Table of Contents
-
-- [Table of Contents](#table-of-contents)
 - [Boilerplate structure](#boilerplate-structure)
 - [Available scripts](#available-scripts)
 - [Configuration](#configuration)
