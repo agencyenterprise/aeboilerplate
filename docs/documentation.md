@@ -1,4 +1,18 @@
-# Features
+# Table of Contents
+
+- [Table of Contents](#table-of-contents)
+- [Boilerplate structure](#boilerplate-structure)
+- [Available scripts](#available-scripts)
+- [Configuration](#configuration)
+  - [Authentication](#authentication)
+    - [Configuring Google Authentication](#configuring-google-authentication)
+    - [Configuring LinkedIn Authentication](#configuring-linkedin-authentication)
+  - [Deploy](#deploy)
+    - [Deploying to heroku](#deploying-to-heroku)
+  - [Continuous Integration](#continuous-integration)
+    - [Setup Continuous integration with Circle CI and Heroku](#setup-continuous-integration-with-circle-ci-and-heroku)
+
+# Boilerplate structure
 
 * Client
   * Created using [create-react-app](https://github.com/facebook/create-react-app) with [Typescript](https://www.typescriptlang.org/docs/home.html) and [SASS](https://sass-lang.com/).
@@ -8,7 +22,7 @@
   * [Jest](https://jestjs.io/) and [Enzyme](https://github.com/airbnb/enzyme) for tests.
 * API
   * [Express](https://expressjs.com/) with public and private routes samples.
-  * Database access using [Knex](https://knexjs.org/)
+  * [Postgres](https://www.postgresql.org/about/) database access using [Knex](https://knexjs.org/)
       * [Migrations](https://knexjs.org/#Migrations-CLI) and [seeds](https://knexjs.org/#Seeds-CLI) included.
   * [Jest](https://jestjs.io/) for tests.
 * [Circle CI configuration](https://circleci.com/docs/2.0/configuration-reference/#section=configuration).
@@ -16,6 +30,14 @@
 * [Docker](https://docs.docker.com) and [docker compose](https://docs.docker.com/compose/) to run all of this in a controlled environment.
 * In order to guarantee the consistency of your codebase it includes: [prettier](https://github.com/prettier/prettier), [editorconfig](https://editorconfig.org/), and [tslint](https://palantir.github.io/tslint/).
 * [Github templates](https://blog.github.com/2016-02-17-issue-and-pull-request-templates/).
+
+# Available scripts
+
+In order to list all scripts available when using the boilerplate run:
+
+```shell
+npm run
+```
 
 # Configuration
 
@@ -49,7 +71,7 @@ The API and Client have both the same structure of configuration files. You can 
 
 ## Deploy
 
-Put your app online.
+We use Heroku as our cloud service at AE for its simplicity and here is how we do it.
 
 ### Deploying to heroku
 
@@ -74,7 +96,7 @@ Put your app online.
 
 ## Continuous Integration
 
-Setup your continuous integration process to have your code deployed when you push it to the master branch.
+Setup a continuous integration process to have your code deployed to the cloud when you push it to the master branch. Following the step before regarding Heroku, we are going to use Circle CI as our continuous integration platform.
 
 ### Setup Continuous integration with Circle CI and Heroku
 

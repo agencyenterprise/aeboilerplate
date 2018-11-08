@@ -21,7 +21,7 @@
     "stop-containers": "docker stop $(docker ps -a -q)",
     "show-containers": "docker ps --format 'table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}'",
     "\n# General commands": "After executing the `npm run krei` command, run `npm build && npm start` to use the built version",
-    "npm-i": "npm run client-npm-i && npm run api-npm-i && npm run stop-containers",
+    "install-dependencies": "npm run client-npm-i && npm run api-npm-i && npm run stop-containers",
     "build": "npm i && npm run build-client && npm run build-api",
     "heroku-postbuild": "npm run build",
     "dev": "docker-compose up",
