@@ -223,7 +223,7 @@ const changeClientPackageFile = () => {
   const packagePath = `${clientAppPath}/package.json`
   const packageContent = JSON.parse(fs.readFileSync(packagePath, "utf8"))
 
-  packageContent.scripts['test-coverage'] = 'npm run test --coverage'
+  packageContent.scripts['test-coverage'] = 'npm run test -- --coverage'
   packageContent.jest = {
     collectCoverageFrom: [
       "src/**/*.{ts,tsx}",
