@@ -14,5 +14,5 @@
     "noUnusedLocals": true,
     "baseUrl": "."
   },
-  "exclude": ["node_modules", "build", "scripts", "webpack"]
+  "exclude": ["node_modules", "build", "scripts", "webpack", "__mocks__"]
 }

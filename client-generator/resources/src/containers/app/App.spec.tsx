@@ -8,7 +8,7 @@ configure({ adapter: new Adapter() })
 
 describe(`<App />`, () => {
   it('renders', () => {
-    const appComponent = shallow(<App location="" />)
+    const appComponent = shallow(<App />)
 
     expect(appComponent.exists()).toBeTruthy()
   })

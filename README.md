@@ -3,7 +3,7 @@
 [![krei license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/agencyenterprise/krei/blob/master/LICENCE.md)
 [![build](https://circleci.com/gh/agencyenterprise/krei.svg?style=shield&circle-token=3d749403becdba1c3b622fb512abad50192930b6)](https://circleci.com/gh/agencyenterprise/krei)
 
-Krei is an opinionated boilerplate developed by [AE Studio](https://ae.studio/), that makes it easier to create a full-stack React/Node Typescript project. It includes independent client and API structures in the same repository, ready to run and deploy with a neat and tidy base.
+Krei is an opinionated boilerplate developed by [AE Studio](https://ae.studio/) that makes it easier to create a full-stack React/Node Typescript project. It includes independent client and API structures in the same repository, ready to run and deploy with a neat and tidy base.
 
 ## Installation
 
