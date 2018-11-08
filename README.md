@@ -17,6 +17,10 @@ Have your new project up and running going through the following process.
 - Run the boilerplate generator:
   - `git clone https://github.com/agencyenterprise/krei.git PROJECT_NAME && cd PROJECT_NAME && npm run krei`
 
+## Documentation
+
+Here's our full [boilerplate documentation](https://github.com/agencyenterprise/krei/blob/master/docs/documentation.md).
+
 ## Contributing
 
 Please submit issues/pull requests if you have feedback.
