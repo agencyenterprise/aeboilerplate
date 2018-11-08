@@ -1,4 +1,4 @@
-## Features
+# Features
 
 * Client
   * Created using [create-react-app](https://github.com/facebook/create-react-app) with [Typescript](https://www.typescriptlang.org/docs/home.html) and [SASS](https://sass-lang.com/).
@@ -17,7 +17,7 @@
 * In order to guarantee the consistency of your codebase it includes: [prettier](https://github.com/prettier/prettier), [editorconfig](https://editorconfig.org/), and [tslint](https://palantir.github.io/tslint/).
 * [Github templates](https://blog.github.com/2016-02-17-issue-and-pull-request-templates/).
 
-## Configuration
+# Configuration
 
 Learn how to configure authentication using OAuth2, deploy and Circle CI
 
