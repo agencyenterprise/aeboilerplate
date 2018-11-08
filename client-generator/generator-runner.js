@@ -218,13 +218,8 @@ const deleteUnnecessaryFiles = () => {
   })
 }
 
-const gitInit = () => {
-  logStepHeaderMessage('Initializing git repository', 9)
-  shell.exec('cd .. && git init')
-}
-
 const changeClientPackageFile = () => {
-  logStepHeaderMessage('Update client package configuration', 10)
+  logStepHeaderMessage('Update client package configuration', 9)
   const packagePath = `${clientAppPath}/package.json`
   const packageContent = JSON.parse(fs.readFileSync(packagePath, "utf8"))
 
@@ -239,6 +234,11 @@ const changeClientPackageFile = () => {
   },
 
   fs.writeFileSync(packagePath, JSON.stringify(packageContent, null, 2))
+}
+
+const gitInit = () => {
+  logStepHeaderMessage('Initializing git repository', 10)
+  shell.exec('cd .. && git init')
 }
 
 const showSuccessMessage = () => {
