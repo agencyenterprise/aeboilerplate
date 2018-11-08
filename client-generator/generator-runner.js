@@ -9,7 +9,7 @@ const replace = require('replace-in-file')
 const clientGeneratorPath = `${process.cwd()}`
 const clientAppPath = '../client'
 const resourcesFilesPath = './resources'
-const totalSteps = 9
+const totalSteps = 10
 
 const run = async () => {
   try {
@@ -20,8 +20,9 @@ const run = async () => {
     await addReduxStoreProvider()
     await addReactRouter()
     await installDependencies()
-    await deleteUnnecessaryFiles()
-    await gitInit()
+    deleteUnnecessaryFiles()
+    changeClientPackageFile()
+    gitInit()
 
     showSuccessMessage()
   } catch (error) {
@@ -200,7 +201,7 @@ const installDependencies = () => {
   })
 }
 
-const deleteUnnecessaryFiles = async () => {
+const deleteUnnecessaryFiles = () => {
   logStepHeaderMessage('Removing unnecessary files', 8)
   const srcPath = `${clientAppPath}/src`
   const files = fs.readdirSync(srcPath)
@@ -220,6 +221,24 @@ const deleteUnnecessaryFiles = async () => {
 const gitInit = () => {
   logStepHeaderMessage('Initializing git repository', 9)
   shell.exec('cd .. && git init')
+}
+
+const changeClientPackageFile = () => {
+  logStepHeaderMessage('Update client package configuration', 10)
+  const packagePath = `${clientAppPath}/package.json`
+  const packageContent = JSON.parse(fs.readFileSync(packagePath, "utf8"))
+
+  packageContent.scripts['test-coverage'] = 'npm run test --coverage'
+  packageContent.jest = {
+    collectCoverageFrom: [
+      "src/**/*.{ts,tsx}",
+      "!<rootDir>/node_modules/",
+      "!<rootDir>/src/index.tsx",
+      "!<rootDir>/src/registerServiceWorker.ts"
+    ]
+  },
+
+  fs.writeFileSync(packagePath, JSON.stringify(packageContent, null, 2))
 }
 
 const showSuccessMessage = () => {
