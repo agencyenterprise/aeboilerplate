@@ -38,9 +38,7 @@ npm run
 
 # Configuration
 
-Learn how to configure authentication using OAuth2, deploy and Circle CI
-
-The API and Client have both the same structure of configuration files. You can find these files on: `api/src/config` and `client/src/config`. The configuration is based on environment variables set using the docker-compose file when running the project in development mode.
+The API and Client have the same structure of configuration files. You can find these files on: `api/src/config` and `client/src/config`. The configuration is based on environment variables set using the docker-compose file when running the project in development mode.
 
 ## Authentication
 
