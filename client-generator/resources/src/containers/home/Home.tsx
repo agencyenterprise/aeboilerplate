@@ -10,7 +10,7 @@ export const Home = () => (
   <div className="home">
     <header className="home-header">
       <img src={logo} className="home-logo" alt="logo" />
-      <h1 className="home-title">Welcome to Krei!</h1>
+      <h1 className="home-title">Welcome to AEboilerplate!</h1>
     </header>
     <a href={routePaths.loggedUser.root}>
       <button>Open logged user</button>

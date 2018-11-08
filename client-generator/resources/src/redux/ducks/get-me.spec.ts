@@ -55,7 +55,7 @@ describe('me duck', () => {
 
     describe('reducer', () => {
       let startedState = { me: {}, loading: true, error: null }
-      let succeededState = { me: { name: 'Krei' }, loading: true, error: null }
+      let succeededState = { me: { name: 'AEboilerplate' }, loading: true, error: null }
 
       it('activates loading on start reducer', async () => {
         const startReducer = me(initialState, { type: getMe.START })
@@ -64,7 +64,7 @@ describe('me duck', () => {
       })
 
       it('adds "me" data when it succeeds', async () => {
-        const succeededReducer = me(startedState, { type: getMe.SUCCEEDED, payload: { me: { name: 'Krei' } } })
+        const succeededReducer = me(startedState, { type: getMe.SUCCEEDED, payload: { me: { name: 'AEboilerplate' } } })
 
         expect(succeededReducer).toEqual(succeededState)
       })
@@ -76,9 +76,9 @@ describe('me duck', () => {
       })
 
       it('sets loading equals to false when it ends', async () => {
-        const succeededReducer = me(succeededState, { type: getMe.ENDED, payload: { me: { name: 'Krei' } } })
+        const succeededReducer = me(succeededState, { type: getMe.ENDED, payload: { me: { name: 'AEboilerplate' } } })
 
-        expect(succeededReducer).toEqual({ me: { name: 'Krei' }, loading: false, error: null })
+        expect(succeededReducer).toEqual({ me: { name: 'AEboilerplate' }, loading: false, error: null })
       })
     })
   })
