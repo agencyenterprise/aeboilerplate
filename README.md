@@ -17,6 +17,8 @@ AEboilerplate is an opinionated boilerplate that makes it easier to create a ful
 
 It includes independent client and API structures in the same repository, ready to run and deploy with a neat and tidy base.
 
+Insert impressive stuff about technical decision making here. Not monolithic, etc.
+
 ## Installation
 
 Have your project up and running by going through the following process.
