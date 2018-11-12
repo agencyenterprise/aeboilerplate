@@ -10,7 +10,7 @@
     - [Adding new authentication methods](#adding-other-authentication-methods)
     - [Protecting your routes](#protecting-your-routes)
   - [Deploy](#deploy)
-    - [Deploying to heroku](#deploying-to-heroku)
+    - [Deploying to Heroku](#deploying-to-heroku)
   - [Continuous Integration](#continuous-integration)
     - [Setup Continuous integration with Circle CI and Heroku](#setup-continuous-integration-with-circle-ci-and-heroku)
   - [Testing](#testing)
