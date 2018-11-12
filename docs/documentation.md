@@ -10,10 +10,10 @@
     - [Adding new authentication methods](#adding-other-authentication-methods)
     - [Protecting your routes](#protecting-your-routes)
   - [Deploy](#deploy)
-    - [Deploying to heroku](#deploying-to-heroku)
+    - [Deploying to Heroku](#deploying-to-heroku)
   - [Continuous Integration](#continuous-integration)
     - [Setup Continuous integration with Circle CI and Heroku](#setup-continuous-integration-with-circle-ci-and-heroku)
-  - [Testing](#testing)
+- [Testing](#testing)
 
 # Boilerplate structure
 
@@ -165,7 +165,7 @@ Setup a continuous integration process to have your code deployed to the cloud w
     * Add your Heroku API key copied before.
     * Click on `Set User to YOUR_GIT_USER` button.
 
-## Testing
+# Testing
 
 The API and client are tested and we highly encourage you to keep them up when developing. The API tests are set in the `api/spec` folder and are basically integration tests. The client tests are set in the same folder as their components or tested files as they are unit tests.
 
