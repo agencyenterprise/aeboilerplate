@@ -3,11 +3,13 @@
 [![aeboilerplate license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/agencyenterprise/aeboilerplate/blob/master/LICENCE.md)
 [![build](https://circleci.com/gh/agencyenterprise/aeboilerplate.svg?style=shield&circle-token=3d749403becdba1c3b622fb512abad50192930b6)](https://circleci.com/gh/agencyenterprise/aeboilerplate)
 
-AEboilerplate is an opinionated boilerplate developed by [AE Studio](https://ae.studio/) that makes it easier to create a full-stack React/Node Typescript project. It includes independent client and API structures in the same repository, ready to run and deploy with a neat and tidy base.
+We start a lot of projects at [AE Studio](https://ae.studio/), for startups and for big companies like Samsung and Berkshire Hathaway. So we decided to take the best stuff out there and put it together in one place to make our future projects kickoff faster.
+
+AEboilerplate is an opinionated boilerplate that makes it easier to create a full-stack React/Node Typescript project. It includes independent client and API structures in the same repository, ready to run and deploy with a neat and tidy base.
 
 ## Installation
 
-Have your new project up and running going through the following process.
+Have your project up and running by going through the following process.
 
 - Make sure you have installed
   - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
