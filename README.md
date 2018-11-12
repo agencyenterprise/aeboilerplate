@@ -3,7 +3,7 @@
 [![aeboilerplate license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/agencyenterprise/aeboilerplate/blob/master/LICENCE.md)
 [![build](https://circleci.com/gh/agencyenterprise/aeboilerplate.svg?style=shield&circle-token=3d749403becdba1c3b622fb512abad50192930b6)](https://circleci.com/gh/agencyenterprise/aeboilerplate)
 
-We start a lot of projects at [AE Studio](https://ae.studio/), for startups and for big companies like Samsung and Berkshire Hathaway. So we decided to take the best stuff out there and put it together in one place to make our future projects kickoff faster.
+We start a lot of projects at [AE Studio](https://ae.studio/), for startups and for big companies like Samsung and Berkshire Hathaway. So we decided to take the best stuff out there and put it together in one place to make our future projects kickoff faster. Keeping it in mind, we wanted to share our knowledge and keep improving our practices with the help of a wider community.
 
 AEboilerplate is an opinionated boilerplate that makes it easier to create a full-stack React/Node Typescript project. It includes independent client and API structures in the same repository, ready to run and deploy with a neat and tidy base.
 
