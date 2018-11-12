@@ -17,9 +17,9 @@
 
 # Boilerplate structure
 
-The boilerplate is divided in the main folder which holds the API and client which we call meta, client and API. The API and client are independent and could be easily separated into different repositories, it's important to inform that this is not a monolithic application. 
+The boilerplate is divided in the main folder that holds the API and client which we call meta, client and API. The API and client are independent and could be easily separated into different repositories, it's important to inform that this is not a monolithic application. 
 
-It was built using Node with Express for the API and create-react-app for the client side. It uses Docker and Docker Compose to run the environment locally. Also, it uses the open source object relational database Postgres. 
+It was built using Node with Express for the API and create-react-app for the client side. It uses Docker and Docker Compose to run the environment locally. Also, it uses the open source object-relational database Postgres. 
 
 Below you can see more details regarding the project structure and links for each technology used.
 
@@ -42,13 +42,13 @@ Below you can see more details regarding the project structure and links for eac
 
 # Development mode
 
-The meta project (the project which holds the client and API code), is already prepared with a docker-compose file to help you when developing. The client and API are already configured with hot reloading.
+The meta-project (the project which holds the client and API code), is already prepared with a docker-compose file to help you when developing. The client and API are already configured with hot reloading.
 
 ```shell
 npm run dev
 ```
 
-Running the command above will start a Dockerized version of your local postgres database, API and client.
+Running the command above will start a Dockerized version of your local Postgres database, API and client.
 
 # Available scripts
 
@@ -69,21 +69,21 @@ The API and Client have the same structure of configuration files. You can find 
 * Go to [Google developer page](https://console.developers.google.com).
 * Create a new project.
 * Enable Google+ API.
-* Go to OAuth consent tab by clicking on the credentials item on the left menu, add a product name and any other data you want to have for your app.
+* Go to the OAuth consent tab by clicking on the credentials item on the left menu, add a product name and any other data you want to have for your app.
 * After saving it, you will be redirected to the credentials tab. Click on create credentials and OAuth client ID.
 * Click on web application and set your web client name, your Authorized JavaScript origins as http://localhost:3001 and Authorized redirect URIs as http://localhost:3001/auth/google/callback.
 * Click on create.
-* You'll be redirected once again to the credentials tab with a popup showing your client id and client secret. Make sure you save both in your docker-compose files (meta and api)
+* You'll be redirected once again to the credentials tab with a popup showing your client id and client secret. Make sure you save both in your docker-compose files (meta and API)
     * GOOGLE_ID
     * GOOGLE_SECRET
 
 ### Configuring LinkedIn Authentication
 
 - Create a new application in the [LinkedIn developer page](https://www.linkedin.com/developer/apps).
-- Add your LinkedIn id and secret in the docker-compose.yml files (meta and api folders).
+- Add your LinkedIn id and secret in the docker-compose.yml files (meta and API folders).
   - LINKEDIN_ID
   - LINKEDIN_SECRET
-- Add the linkedin callback URL from your docker compose file in the LinkedIn developer app
+- Add the LinkedIn callback URL from your docker compose file in the LinkedIn developer app
   - LINKEDIN_CALLBACK_URL: http://localhost:3001/api/auth/linkedin/callback
 
 ### Adding new authentication methods
@@ -116,29 +116,29 @@ The `asyncHandler` will make sure your promise is solved.
 
 **Client**
 
-Add the component you want protected to the `ProtectedRoutes.tsx` file.
+Add the component you want to be protected to the `ProtectedRoutes.tsx` file.
 
 ## Deploy
 
 We use Heroku as our cloud service at AE for its simplicity and here is how we do it.
 
-### Deploying to heroku
+### Deploying to Heroku
 
 1. Create a [Heroku](https://www.heroku.com/) account.
 2. Install [heroku cli](https://www.npmjs.com/package/heroku) using npm
 3. Run `heroku login` and fulfil with your login data.
-4. Run `heroku create` to create a randomly named app or run `heroku create APP_NAME_HERE` to set a name to your application. Save your application url for further use.
-5. Open your app in the [heroku apps dashboard](https://dashboard.heroku.com/apps), go to the resources tab and search for [postgres](https://elements.heroku.com/addons/heroku-postgresql) in the add-ons, select it and confirm clicking on "provision". It'll automatically create an [environment variable](https://devcenter.heroku.com/articles/config-vars) in your app called DATABASE_URL which means your app has now access to a database.
+4. Run `heroku create` to create a randomly named app or run `heroku create APP_NAME_HERE` to set a name to your application. Save your application URL for further use.
+5. Open your app in the [heroku apps dashboard](https://dashboard.heroku.com/apps), go to the resources tab and search for [postgres](https://elements.heroku.com/addons/heroku-postgresql) in the add-ons, select it and confirm clicking on "provision". It'll automatically create an [environment variable](https://devcenter.heroku.com/articles/config-vars) in your app called DATABASE_URL which means your app has access to a database.
 6. Open now the settings tab in your app dashboard, click on the reveal vars button in the Config Vars item and add the following variables with their respective values:
 
    - LINKEDIN_ID: client id created in the [LinkedIn developer page](https://www.linkedin.com/developer/apps)
    - LINKEDIN_SECRET: client secret created in the [LinkedIn developer page](https://www.linkedin.com/developer/apps)
    - LINKEDIN_CALLBACK_URL: for this variable, you must go back to the [LinkedIn developer page](https://www.linkedin.com/developer/apps) and add a URL using this pattern: https://url_from_heroku_create_command.herokuapp.com/api/auth/linkedin/callback.
-     - To check what is the url created for your new app, go down in the Settings tab and look for the Domains and certificates item, your application url will be there.
+     - To check what is the URL created for your new app, go down in the Settings tab and look for the Domains and certificates item, your application URL will be there.
    - SUCCESS_LOGIN_REDIRECT_URL: https://your_application_url.herokuapp.com/connect
 
 7. Considering you haven't started your git repository, run: `git init && git add . && git commit -m "First commit"`
-8. Run `git push heroku master` will deploy your project to heroku and make it available using the url
+8. Run `git push heroku master` will deploy your project to Heroku and make it available using the URL
 9. If you want to use a different Heroku app to deploy
    - Run `git remote remove heroku`
    - Run `git remote add heroku git@heroku.com:ANOTHER_HEROKU_APP_NAME.git`
@@ -149,12 +149,12 @@ Setup a continuous integration process to have your code deployed to the cloud w
 
 ### Setup Continuous integration with Circle CI and Heroku
 
-1. Deploy your application to heroku following the steps above.
+1. Deploy your application to Heroku following the steps above.
 2. Remove comments from the deploy step in the circle ci configuration file: `.circleci/config.yml`
-3. Change the placeholder `HEROKU_APP_NAME` in the `.circleci/deploy-heroku.sh` file with the name returned from your heroku application.
+3. Change the placeholder `HEROKU_APP_NAME` in the `.circleci/deploy-heroku.sh` file with the name returned from your Heroku application.
 4. Sign up to [Circle CI](https://circleci.com/) using your git hub account which contains the project you want to integrate.
 5. Click on the `add projects` tab item on the left menu and `Set Up Project` right beside the project you want to integrate.
-6. Choose Linux as operating system, Node as language and click on the button for step 5, "Start building".
+6. Choose Linux as the operating system, Node as language and click on the button for step 5, "Start building".
 7. Click on the gear icon on the top right corner under your profile picture.
 8. Click on `Checkout SSH keys` item on the left menu.
     * Click on `Authorize with GitHub` button.
@@ -169,7 +169,7 @@ Setup a continuous integration process to have your code deployed to the cloud w
 
 The API and client are tested and we highly encourage you to keep them up when developing. The API tests are set in the `api/spec` folder and are basically integration tests. The client tests are set in the same folder as their components or tested files as they are unit tests.
 
-You can run the tests by executing (in the meta project folder):
+You can run the tests by executing (in the meta-project folder):
 
 ```shell
 npm run client-test
