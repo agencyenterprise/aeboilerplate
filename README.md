@@ -82,35 +82,35 @@ This project is licensed under the MIT License - see the [LICENSE.md](https://gi
 -----------------------
 
 
-~~# Our solution
+~~# Our solution~~
 
-~~AEboilerplate is an opinionated boilerplate that makes it easier to create a full-stack React/Node Typescript project. 
+~~AEboilerplate is an opinionated boilerplate that makes it easier to create a full-stack React/Node Typescript project.~~ 
 
-~~It includes independent client and API structures in the same repository, ready to run and deploy with a neat and tidy base.
+~~It includes independent client and API structures in the same repository, ready to run and deploy with a neat and tidy base.~~
 
-~~Insert impressive stuff about technical decision making here. Not monolithic, etc.
+~~Insert impressive stuff about technical decision making here. Not monolithic, etc.~~
 
-~~## Installation
+~~## Installation~~
 
-~~Have your project up and running by going through the following process.
+~~Have your project up and running by going through the following process.~~
 
-~~- Make sure you have installed
-  - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-  - [Node 8+](https://nodejs.org/en/)
-  - [Docker 18+](https://docs.docker.com/install/)
-  - [Docker Compose 1.21+](https://docs.docker.com/compose/install/)
+~~- Make sure you have installed~~
+  - ~~[Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)~~
+  - ~~[Node 8+](https://nodejs.org/en/)~~
+  - ~~[Docker 18+](https://docs.docker.com/install/)~~
+  - ~~[Docker Compose 1.21+](https://docs.docker.com/compose/install/)~~
   
-~~- Run the boilerplate generator:
-  - `git clone https://github.com/agencyenterprise/aeboilerplate.git PROJECT_NAME && cd PROJECT_NAME && npm run aeboilerplate`
+~~- Run the boilerplate generator:~~
+  - ~~`git clone https://github.com/agencyenterprise/aeboilerplate.git PROJECT_NAME && cd PROJECT_NAME && npm run aeboilerplate`~~
 
-~~## Documentation
+~~## Documentation~~
 
-~~Here's our full [boilerplate documentation](https://github.com/agencyenterprise/aeboilerplate/blob/master/docs/documentation.md).
+~~Here's our full [boilerplate documentation](https://github.com/agencyenterprise/aeboilerplate/blob/master/docs/documentation.md).~~
 
-~~## Contributing
+~~## Contributing~~
 
-~~Please submit issues/pull requests if you have feedback.
+~~Please submit issues/pull requests if you have feedback.~~
 
-~~## License
+~~## License~~
 
-~~This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/agencyenterprise/aeboilerplate/blob/master/LICENCE.md) file for details
+~~This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/agencyenterprise/aeboilerplate/blob/master/LICENCE.md) file for details~~
