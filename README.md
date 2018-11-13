@@ -2,6 +2,7 @@
 
 [![aeboilerplate license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/agencyenterprise/aeboilerplate/blob/master/LICENCE.md)
 [![build](https://circleci.com/gh/agencyenterprise/aeboilerplate.svg?style=shield&circle-token=3d749403becdba1c3b622fb512abad50192930b6)](https://circleci.com/gh/agencyenterprise/aeboilerplate)
+[![npm version](https://badge.fury.io/js/aeboilerplate.svg)](https://badge.fury.io/js/aeboilerplate)
 
 There's a lot of setup whenever you start a project. And it often gets repeated project to project.
 
