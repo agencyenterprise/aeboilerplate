@@ -22,14 +22,14 @@ AEboilerplate is an *opinionated* boilerplate that includes independent client a
 
 :poop: `Add a little bit of detail for each point and clean up` :poop:
 
-* Easy to setup
+* **Easy to setup**
 	* Initial setup is as simple as running a single command
-* Opinionated
+* **Opinionated**
 	* We spent a lot of time thinking about which technologies would allow us to build applications out more quickly and guardrails to keep our codebase neat and maintainable.
-* Lightweight 
+* **Lightweight**
 	* It’s easy to fall into the trap of wanting to use all the latest tools out there to bootstrap your application without realizing that we’re adding unnecessary complexity and bloat. We’ve stripped down the boilerplate to include only what we consider essential in starting a project.
-  * :poop: `Would you consider the boilerplate lightweight? If so, what's a better way of highlighting how light it is? I ask because above we say that it's lightweight, but then it also says how it comes with all these features prepackaged.` :poop: `Add a little bit of detail for each point and clean up` :poop:
-* Customizable
+  * :poop: `Would you consider the boilerplate lightweight? If so, what's a better way of highlighting how light it is? I ask because above we say that it's lightweight, but then it also says how it comes with all these features prepackaged.` :poop:
+* **Customizable**
 	* Localized configurations for easier management 
   * :poop: `What are some other things we can say here?` :poop:
 
