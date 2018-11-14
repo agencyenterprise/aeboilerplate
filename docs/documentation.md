@@ -1,7 +1,7 @@
 # Table of Contents
 
 - [Boilerplate structure](#boilerplate-structure)
-- [Development mode](#development-mode)
+- [Development](#development)
 - [Available scripts](#available-scripts)
 - [Configuration](#configuration)
   - [Authentication](#authentication)
