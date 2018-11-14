@@ -1,8 +1,7 @@
 # AEboilerplate
 
+:poop: `Judd suggested maybe something a little bit catchier. I personally think it's fine but if anyone has suggestions, let me know. I'm also thinking it might be good to list (not bulletpoints) the main technologies in our stack off the bat since developers often look for this right away` :poop:
 A lightweight full-stack React/Node/Typescript web project starter that focuses primarily on ease-of-use and simplicity.
-
-At [AE Studio](https://ae.studio/), we are constantly working on new projects and find ourselves spending time setting up applications that could be better used to build out features. To improve our process, we decided to take our favorite technologies and bundle them into a simple boilerplate to help kickstart our projects faster.
 
 AEboilerplate is an *opinionated* boilerplate that includes independent client and API applications packaged into one repository. It is ready to be run and deployed out-of-the-box and comes preconfigured with state management, continuous integration, testing, code-formatting, and much more.
 
@@ -12,14 +11,20 @@ AEboilerplate is an *opinionated* boilerplate that includes independent client a
 :poop: `Add links` :poop:
 
 * Features
+* Introduction
 * Getting Started
 * Documentation
 * Contributing
 * License
 
 
-## Features
+## Introduction
 
+At [AE Studio](https://ae.studio/), we are constantly working on new projects and find ourselves spending time setting up applications that could be better used to build out features. To improve our process, we decided to take our favorite technologies and bundle them into a simple boilerplate to help kickstart our projects faster.
+
+
+## Features
+  
 :poop: `Add a little bit of detail for each point and clean up` :poop:
 
 * **Easy to setup**
@@ -68,49 +73,10 @@ Please check out our full [boilerplate documentation](https://github.com/agencye
 
 ## Contributing
 
-We love sharing the work we do and look forward to improving upon our own practices with the help of the wider community and with a [growth mindset](http://www.aaronsw.com/weblog/dweck) throughout. As we continue to maintain this project, we would love to hear from you guys. 
+We, at [AE Studio](https://ae.studio/), believe in the value of having a [growth mindset](http://www.aaronsw.com/weblog/dweck). In sharing our work, we hope to improve upon our own practices with the help of the wider community as there's always room for improvement. Likewise, we hope that our work brings value to you.
 
-:poop: `The wording about growth mindset seems a little strange to me` :poop:
-
-If you have any ideas, please [open an issue](https://github.com/agencyenterprise/aeboilerplate/issues/new), or if you would like to contribute, pull requests are warmly welcomed.
+As we continue to maintain this project, we would love to hear from you. If you have any ideas, please [open an issue](https://github.com/agencyenterprise/aeboilerplate/issues/new). Or, if you would like to contribute, pull requests are warmly welcomed.
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/agencyenterprise/aeboilerplate/blob/master/LICENCE.md) file for details
-
-
------------------------
-
-
-~~# Our solution~~
-
-~~AEboilerplate is an opinionated boilerplate that makes it easier to create a full-stack React/Node Typescript project.~~ 
-
-~~It includes independent client and API structures in the same repository, ready to run and deploy with a neat and tidy base.~~
-
-~~Insert impressive stuff about technical decision making here. Not monolithic, etc.~~
-
-~~## Installation~~
-
-~~Have your project up and running by going through the following process.~~
-
-~~- Make sure you have installed~~
-  - ~~[Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)~~
-  - ~~[Node 8+](https://nodejs.org/en/)~~
-  - ~~[Docker 18+](https://docs.docker.com/install/)~~
-  - ~~[Docker Compose 1.21+](https://docs.docker.com/compose/install/)~~
-  
-~~- Run the boilerplate generator:~~
-  - ~~`git clone https://github.com/agencyenterprise/aeboilerplate.git PROJECT_NAME && cd PROJECT_NAME && npm run aeboilerplate`~~
-
-~~## Documentation~~
-
-~~Here's our full [boilerplate documentation](https://github.com/agencyenterprise/aeboilerplate/blob/master/docs/documentation.md).~~
-
-~~## Contributing~~
-
-~~Please submit issues/pull requests if you have feedback.~~
-
-~~## License~~
-
-~~This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/agencyenterprise/aeboilerplate/blob/master/LICENCE.md) file for details~~
