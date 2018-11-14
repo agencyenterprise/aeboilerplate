@@ -8,14 +8,12 @@ AEboilerplate is an *opinionated* boilerplate that includes independent client a
 
 ## Table of Contents
 
-:poop: `Add links` :poop:
-
 * [Features](#Features)
-* Introduction
-* Getting Started
-* Documentation
-* Contributing
-* License
+* [Introduction](#Introduction)
+* [Getting Started](#Getting Started)
+* [Documentation](#Documentation)
+* [Contributing](#Contributing)
+* [License](#License)
 
 
 ## Introduction
@@ -25,18 +23,16 @@ At [AE Studio](https://ae.studio/), we are constantly working on new projects an
 
 ## Features
   
-:poop: `Add a little bit of detail for each point and clean up` :poop:
+:poop: `Add a little bit more detail, if necessary, for the following points and clean up` :poop:
 
 * **Easy to setup**
-	* Initial setup is as simple as running a single command
+	* Initial setup is as simple as running a single command. 
 * **Opinionated**
-	* We spent a lot of time thinking about which technologies would allow us to build applications out more quickly and guardrails to keep our codebase neat and maintainable.
+	* We spent a lot of time thinking about which technologies would allow us to build applications out more quickly with guardrails in place to keep our codebase tidy and maintainable.
 * **Lightweight**
-	* It’s easy to fall into the trap of wanting to use all the latest tools out there to bootstrap your application without realizing that we’re adding unnecessary complexity and bloat. We’ve stripped down the boilerplate to include only what we consider essential in starting a project.
-  * :poop: `Would you consider the boilerplate lightweight? If so, what's a better way of highlighting how light it is? I ask because above we say that it's lightweight, but then it also says how it comes with all these features prepackaged.` :poop:
+	* ~~It’s easy to fall into the trap of wanting to use all the latest tools out there to bootstrap your application, without realizing that we’re adding unnecessary complexity and bloat.~~ We’ve stripped down the boilerplate to include only what we consider essential in starting a project.
 * **Customizable**
-	* Localized configurations for easier management 
-  * :poop: `What are some other things we can say here?` :poop:
+	* Configurations are localized for easier management.
 
 The boilerplate uses the following technologies:
 
