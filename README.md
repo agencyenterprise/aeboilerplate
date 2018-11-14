@@ -10,7 +10,7 @@ AEboilerplate is an *opinionated* boilerplate that includes independent client a
 
 * [Features](#Features)
 * [Introduction](#Introduction)
-* [Getting Started](#Getting Started)
+* [Getting Started](#Getting-Started)
 * [Documentation](#Documentation)
 * [Contributing](#Contributing)
 * [License](#License)
