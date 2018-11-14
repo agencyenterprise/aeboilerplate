@@ -10,7 +10,7 @@ AEboilerplate is an *opinionated* boilerplate that includes independent client a
 
 :poop: `Add links` :poop:
 
-* Features
+* [Features](#Features)
 * Introduction
 * Getting Started
 * Documentation
