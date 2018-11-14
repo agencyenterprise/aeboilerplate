@@ -1,71 +1,48 @@
 # AEboilerplate
 
-:poop: `Judd suggested maybe something a little bit catchier. I personally think it's fine but if anyone has suggestions, let me know. I'm also thinking it might be good to list (not bulletpoints) the main technologies in our stack off the bat since developers often look for this right away` :poop:
-A lightweight full-stack React/Node/Typescript web project starter that focuses primarily on ease-of-use and simplicity.
+A full-stack React/Node/Typescript web project starter that focuses primarily on ease-of-use and simplicity.
 
-AEboilerplate is an *opinionated* boilerplate that includes independent client and API applications packaged into one repository. It is ready to be run and deployed out-of-the-box and comes preconfigured with state management, continuous integration, testing, code-formatting, and much more.
+AEboilerplate is an _opinionated_ boilerplate that includes independent client and API applications packaged into one repository. It is ready to be run and deployed out-of-the-box and comes preconfigured with state management, continuous integration, testing, code-formatting, and much more.
 
+- **Easy to setup**: Initial setup is as simple as running a single command.
 
-## Table of Contents
+- **Opinionated**: We spent a lot of time thinking about which technologies would allow us to build applications out more quickly with guardrails in place to keep our codebase tidy and maintainable.
 
-* [Features](#Features)
-* [Introduction](#Introduction)
-* [Getting Started](#Getting-Started)
-* [Documentation](#Documentation)
-* [Contributing](#Contributing)
-* [License](#License)
+- **Clean**: We try to follow the KISS (Keep it simple, stupid) pattern. So we built this boilerplate adding what every robust application needs and more.
 
-
-## Introduction
-
-At [AE Studio](https://ae.studio/), we are constantly working on new projects and find ourselves spending time setting up applications that could be better used to build out features. To improve our process, we decided to take our favorite technologies and bundle them into a simple boilerplate to help kickstart our projects faster.
-
-
-## Features
-  
-:poop: `Add a little bit more detail, if necessary, for the following points and clean up` :poop:
-
-* **Easy to setup**
-	* Initial setup is as simple as running a single command. 
-* **Opinionated**
-	* We spent a lot of time thinking about which technologies would allow us to build applications out more quickly with guardrails in place to keep our codebase tidy and maintainable.
-* **Lightweight**
-	* ~~It’s easy to fall into the trap of wanting to use all the latest tools out there to bootstrap your application, without realizing that we’re adding unnecessary complexity and bloat.~~ We’ve stripped down the boilerplate to include only what we consider essential in starting a project.
-* **Customizable**
-	* Configurations are localized for easier management.
-
-The boilerplate uses the following technologies:
-
-:poop: `Keep it very high level and maybe a very short description about what they’re used for. Please add links and anything else that I’ve missed` :poop:
-
-* Redux - state management 
-* Postgres database - data persistence
-* CircleCI - continuous integration
-* Docker - development
-* Knex - query building, seeding, migrations
-* Prettier, tslint - code formatting
-* Jest - testing
-* Google and LinkedIn Authentication
-
+- **Customizable**: Configurations are localized for easier management.
 
 ## Getting Started
 
-1. Make sure you have the following installed:
-	*  [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) 
-	*  [Node 8+](https://nodejs.org/en/) 
-	*  [Docker 18+](https://docs.docker.com/install/) 
-	*  [Docker Compose 1.21+](https://docs.docker.com/compose/install/) 
+### You will need to have these installed first
 
-2. Run the boilerplate generator:
-```shell
+- [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+- [Node 8+](https://nodejs.org/en/)
+- [Docker 18+](https://docs.docker.com/install/)
+- [Docker Compose 1.21+](https://docs.docker.com/compose/install/)
+
+### Generate a new project with a simple command
+
+```bash
 npx aeboilerplate PROJECT_NAME
 ```
-
 
 ## Documentation
 
 Please check out our full [boilerplate documentation](https://github.com/agencyenterprise/aeboilerplate/blob/master/docs/documentation.md).
 
+The documentation is divided into several sections:
+
+> TODO: add these on the documentation and link them here
+
+- Tech Stack
+- Tutorial
+- Examples
+- Contributing Guide
+
+## Motivation
+
+At [AE Studio](https://ae.studio/), we are constantly working on new projects and find ourselves spending time setting up applications that could be better used to build out features. To improve our process, we decided to take our favorite technologies and bundle them into a simple boilerplate to help kickstart our projects faster.
 
 ## Contributing
 
