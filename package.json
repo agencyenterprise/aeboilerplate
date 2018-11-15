@@ -4,7 +4,7 @@
   "description": "AEboilerplate is an opinionated boilerplate that creates a full-stack React/Node Typescript project, with independent client and API structures in the same repository, ready to run and deploy with a neat and tidy base.",
   "scripts": {
     "\n# AEboilerplate commands": "",
-    "aeboilerplate": "rimraf .git && npm i && npm run api-npm-i && npm run stop-containers && npm run generator && rimraf generator",
+    "aeboilerplate": "npm i && rimraf .git && npm run api-npm-i && npm run stop-containers && npm run generator && rimraf generator",
     "generator": "cd generator && npm run create && cd ../client && prettier --write */*.tsx --loglevel silent",
     "\n# API commands": "",
     "build-api": "cd api && npm i",
