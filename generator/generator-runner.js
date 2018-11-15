@@ -13,6 +13,7 @@ const totalSteps = 10
 
 const run = async () => {
   try {
+    gitInit()
     await createReactApp()
     await updateAppResources()
     await updateAppEntryPoint()
@@ -22,17 +23,20 @@ const run = async () => {
     await installDependencies()
     deleteUnnecessaryFiles()
     changeClientPackageFile()
-    gitInit()
-
     showSuccessMessage()
   } catch (error) {
     console.log(error, 'Something went wrong with the client generator'.red)
   }
 }
 
+const gitInit = () => {
+  logStepHeaderMessage('Initializing git repository', 1)
+  shell.exec('cd .. && git init')
+}
+
 const createReactApp = () => {
   return new Promise((resolve) => {
-    logStepHeaderMessage('Running create-react-app with TypeScript and SASS (@petejkim/react-scripts-ts-sass)', 1)
+    logStepHeaderMessage('Running create-react-app with TypeScript and SASS (@petejkim/react-scripts-ts-sass)', 2)
 
     const createReactAppCommand = `create-react-app ${clientAppPath} --scripts-version="@petejkim/react-scripts-ts-sass" --use-npm`
 
@@ -47,7 +51,7 @@ const createReactApp = () => {
 
 const updateAppResources = () => {
   return new Promise(async (resolve) => {
-    logStepHeaderMessage('Updating client resources', 2)
+    logStepHeaderMessage('Updating client resources', 3)
     createFolders()
     const resourcesFiles = await mapResourceFiles()
     copyResourceFiles(resourcesFiles, resolve)
@@ -112,7 +116,7 @@ const copyFile = (resource) => {
 
 const updateAppEntryPoint = () => {
   return new Promise((resolve) => {
-    logStepHeaderMessage('Updating react app entry point', 3)
+    logStepHeaderMessage('Updating react app entry point', 4)
 
     const replaceFrom = "import App from './App'"
     const replaceTo = "import { App } from './containers/app/App'"
@@ -123,7 +127,7 @@ const updateAppEntryPoint = () => {
 
 const updateAppInitialConfig = () => {
   return new Promise((resolve) => {
-    logStepHeaderMessage('Initializing axios, redux store and react router', 4)
+    logStepHeaderMessage('Initializing axios, redux store and react router', 5)
 
     const replaceFrom = "import registerServiceWorker from './registerServiceWorker'"
     const replaceTo = `import registerServiceWorker from './registerServiceWorker' \n\n
@@ -140,7 +144,7 @@ const updateAppInitialConfig = () => {
 
 const addReduxStoreProvider = () => {
   return new Promise((resolve) => {
-    logStepHeaderMessage('Adding redux store provider', 5)
+    logStepHeaderMessage('Adding redux store provider', 6)
 
     const replaceFrom = '<App />'
     const replaceTo = '<Provider store={store}>\n<App />\n</Provider>'
@@ -151,7 +155,7 @@ const addReduxStoreProvider = () => {
 
 const addReactRouter = () => {
   return new Promise((resolve) => {
-    logStepHeaderMessage('Adding react router', 6)
+    logStepHeaderMessage('Adding react router', 7)
 
     const replaceFrom = '<App />'
     const replaceTo = '<Router>\n<Route path="/" component={App} />\n</Router>'
@@ -178,7 +182,7 @@ const replaceText = (resolve, replaceFrom, replaceTo) => {
 
 const installDependencies = () => {
   return new Promise((resolve) => {
-    logStepHeaderMessage('Installing client dependencies', 7)
+    logStepHeaderMessage('Installing client dependencies', 8)
     shell.cd(`${clientAppPath}`)
 
     console.log('Installing DEV dependencies')
@@ -187,7 +191,9 @@ const installDependencies = () => {
     )
 
     console.log('Installing dependencies')
-    shell.exec(`npm install -S redux github:wgrisa/redux-thunk-actions react-redux redux-thunk react-router-dom axios platform qs store query-string`)
+    shell.exec(
+      `npm install -S redux github:wgrisa/redux-thunk-actions react-redux redux-thunk react-router-dom axios platform qs store query-string`,
+    )
 
     console.log('Installing @types')
     shell.exec(
@@ -202,43 +208,37 @@ const installDependencies = () => {
 }
 
 const deleteUnnecessaryFiles = () => {
-  logStepHeaderMessage('Removing unnecessary files', 8)
+  logStepHeaderMessage('Removing unnecessary files', 9)
   const srcPath = `${clientAppPath}/src`
   const files = fs.readdirSync(srcPath)
   const isDirectory = (path) => fs.lstatSync(path).isDirectory()
 
-  files.forEach(file => {
+  files.forEach((file) => {
     const fullFilePath = `${srcPath}/${file}`
     const whitelistFiles = ['index.tsx', 'index.scss', 'registerServiceWorker.ts']
 
-    if (!whitelistFiles.includes(file) && !isDirectory(fullFilePath)){
-      console.log('deleting unnecessary file: ', file);
+    if (!whitelistFiles.includes(file) && !isDirectory(fullFilePath)) {
+      console.log('deleting unnecessary file: ', file)
       fs.unlinkSync(fullFilePath)
     }
   })
 }
 
 const changeClientPackageFile = () => {
-  logStepHeaderMessage('Update client package configuration', 9)
+  logStepHeaderMessage('Update client package configuration', 10)
   const packagePath = `${clientAppPath}/package.json`
-  const packageContent = JSON.parse(fs.readFileSync(packagePath, "utf8"))
+  const packageContent = JSON.parse(fs.readFileSync(packagePath, 'utf8'))
 
   packageContent.scripts['test-coverage'] = 'npm run test -- --coverage'
-  packageContent.jest = {
+  ;(packageContent.jest = {
     collectCoverageFrom: [
-      "src/**/*.{ts,tsx}",
-      "!<rootDir>/node_modules/",
-      "!<rootDir>/src/index.tsx",
-      "!<rootDir>/src/registerServiceWorker.ts"
-    ]
-  },
-
-  fs.writeFileSync(packagePath, JSON.stringify(packageContent, null, 2))
-}
-
-const gitInit = () => {
-  logStepHeaderMessage('Initializing git repository', 10)
-  shell.exec('cd .. && git init')
+      'src/**/*.{ts,tsx}',
+      '!<rootDir>/node_modules/',
+      '!<rootDir>/src/index.tsx',
+      '!<rootDir>/src/registerServiceWorker.ts',
+    ],
+  }),
+    fs.writeFileSync(packagePath, JSON.stringify(packageContent, null, 2))
 }
 
 const showSuccessMessage = () => {
