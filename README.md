@@ -1,5 +1,9 @@
 # AEboilerplate
 
+[![aeboilerplate license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/agencyenterprise/aeboilerplate/blob/master/LICENCE.md)
+[![build](https://circleci.com/gh/agencyenterprise/aeboilerplate.svg?style=shield&circle-token=3d749403becdba1c3b622fb512abad50192930b6)](https://circleci.com/gh/agencyenterprise/aeboilerplate)
+[![npm version](https://badge.fury.io/js/aeboilerplate.svg)](https://badge.fury.io/js/aeboilerplate)
+
 A full-stack React/Node/Typescript web project starter that focuses primarily on ease-of-use and simplicity.
 
 AEboilerplate is an _opinionated_ boilerplate that includes independent client and API applications packaged into one repository. It is ready to be run and deployed out-of-the-box and comes preconfigured with state management, continuous integration, testing, code-formatting, and much more.
