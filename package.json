@@ -4,7 +4,7 @@
   "description": "AEboilerplate is an opinionated boilerplate that creates a full-stack React/Node Typescript project, with independent client and API structures in the same repository, ready to run and deploy with a neat and tidy base.",
   "scripts": {
     "\n# AEboilerplate commands": "",
-    "aeboilerplate": "rm -rf .git && npm i && npm run api-npm-i && npm run stop-containers && npm run generator && rm -rf generator",
+    "aeboilerplate": "rimraf .git && npm i && npm run api-npm-i && npm run stop-containers && npm run generator && rimraf generator",
     "generator": "cd generator && npm run create && cd ../client && prettier --write */*.tsx --loglevel silent",
     "\n# API commands": "",
     "build-api": "cd api && npm i",
@@ -42,9 +42,10 @@
   },
   "homepage": "https://github.com/agencyenterprise/ae-node-boilerplate#readme",
   "dependencies": {
-    "express": "^4.16.3",
-    "ts-node": "^7.0.1",
     "@types/node": "^8.10.29",
+    "express": "^4.16.3",
+    "rimraf": "^2.6.2",
+    "ts-node": "^7.0.1",
     "typescript": "^3.0.3"
   },
   "devDependencies": {
