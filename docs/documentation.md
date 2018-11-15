@@ -108,7 +108,7 @@ Once everything has been configured, the boilerplate should automatically persis
 
 ### Protecting your routes
 
-The client is prepared to add the authentication token and use it when calling the API. If you want to create a new protected route follow these steps: :poop: `This needs better wording` :poop:
+If you want to create a new protected route follow these steps:
 
 **API**
 
@@ -118,8 +118,7 @@ Add the `ensureAuthenticated` middleware when creating your route, e.g.
 router.use('/', asyncHandler(ensureAuthenticated), (_, res) => res.send('AUTHENTICATED').status(200))
 ```
 
-The `asyncHandler` will ensure your promise is resolved.
-:poop: `How? Not sure I fully understand` :poop:
+The [`asyncHandler`](https://github.com/Abazhenov/express-async-handler) is a simple middleware for handling exceptions inside of async express routes and passing them to your express error handlers.
 
 **Client**
 
@@ -133,29 +132,36 @@ For simplicity and ease-of-use, we use Heroku as our cloud service.
 ### Setting up your Heroku application
 
 Prerequisites:
-- [heroku cli](https://www.npmjs.com/package/heroku)
-- a [Heroku](https://www.heroku.com/) account
+- [Heroku cli](https://www.npmjs.com/package/heroku)
+- [Heroku](https://www.heroku.com/) account
+- This boilerplate relies on an authentication process to work properly. Make sure you have been through the [authentication configuration](#authentication).
 
 1. In your project directory, run `heroku login` and enter your credentials.
 2. Run `heroku create APP_NAME` to create your Heroku application. Copy your application URL for later steps.
 3. Navigate to your application in the [heroku apps dashboard](https://dashboard.heroku.com/apps) and go to the Resources tab. Under Add-ons, add a [postgres](https://elements.heroku.com/addons/heroku-postgresql) database by searching for postgres in the search field. A `DATABASE_URL` [configuration variable](https://devcenter.heroku.com/articles/config-vars) is generated upon creation.
 4. Navigate to your application's Settings tab in your heroku dashboard. Click on Reveal Vars and set the following values:
-	* `LINKEDIN_ID`: the client ID for your application's [LinkedIn project](https://www.linkedin.com/developer/apps)
-	* `LINKEDIN_SECRET`: the client secret for your LinkedIn project
-	* `LINKEDIN_CALLBACK_URL`: `https://[YOUR_HEROKU_APPLICATION_URL].herokuapp.com/api/auth/linkedin/callback` using the URL from step 2. 
-		* :poop: `Do we need to set this in the LinkedIn developer page as well or is this already taken care of? Maybe I'm misunderstanding this step.` :poop:
-		* :poop: `Why are we only showing LinkedIn stuff here?` :poop:
-		* To check what is the URL created for your new app, go down in the Settings tab and look for the Domains and certificates item, your application URL will be there. :poop: `Is this redundant? Seems like it’s already taken care of from step 4` :poop: 
+	* `GOOGLE_ID`: the client ID for your application's
+	* `GOOGLE_SECRET`: the client secret for your Google app
+	* `GOOGLE_CALLBACK_URL`: `https://[YOUR_HEROKU_APPLICATION_URL].herokuapp.com/api/auth/google/callback` using the URL from step 2.
+		
+		* If you missed your application URL on step two, go down in the Settings tab and look for the Domains and certificates item.
 	* `SUCCESS_LOGIN_REDIRECT_URL`: `https://[YOUR_HEROKU_APPLICATION_URL].herokuapp.com/connect`
-8. If you haven't already set up git for your project yet, run: `git init && git add . && git commit -m "First commit"`
+
+If you haven't already set up git for your project yet, run:
+
+```shell
+git init && git add . && git commit -m "First commit"
+```
 
 ### Deploying to Heroku
-1. Deploy your application to Heroku by running `git push heroku master`. 
-2. If you want to use a different Heroku app to deploy :poop: `Is this step necessary to show? Can we remove it?` :poop: 
-	* Run `git remote remove heroku`
-	* Run `git remote add heroku git@heroku.com:ANOTHER_HEROKU_APP_NAME.git`
 
-## Continuous Integration
+Deploy your application to Heroku by running: 
+
+```shell
+git push heroku master
+``` 
+
+## Continuous integration
 
 The boilerplate uses CircleCI for automated deployment to Heroku when pushing to your Github master branch.
 
