@@ -26,7 +26,6 @@
     "@types/node-uuid": "0.0.28",
     "@types/passport": "^0.4.6",
     "@types/supertest": "^2.0.6",
-    "husky": "^0.14.3",
     "jest": "^23.5.0",
     "prettier": "^1.14.2",
     "supertest": "^3.3.0",
@@ -60,16 +59,5 @@
     "pg": "^7.4.3",
     "snakecase-keys": "^1.2.0",
     "winston": "^3.0.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{ts,tsx,scss,md,css}": [
-      "prettier --write",
-      "git add"
-    ]
   }
 }
