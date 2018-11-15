@@ -12,6 +12,10 @@ AEboilerplate is an _opinionated_ boilerplate that includes independent client a
 
 - **Customizable**: Configurations are localized for easier management.
 
+## Motivation
+
+At [AE Studio](https://ae.studio/), we are constantly working on new projects and find ourselves spending time setting up applications that could be better used to build out features. To improve our process, we decided to take our favorite technologies and bundle them into a boilerplate to help kickstart our projects faster.
+
 ## Getting Started
 
 ### You will need to have these installed first
@@ -30,19 +34,6 @@ npx aeboilerplate PROJECT_NAME
 ## Documentation
 
 Please check out our full [boilerplate documentation](https://github.com/agencyenterprise/aeboilerplate/blob/master/docs/documentation.md).
-
-The documentation is divided into several sections:
-
-> TODO: add these on the documentation and link them here
-
-- Tech Stack
-- Tutorial
-- Examples
-- Contributing Guide
-
-## Motivation
-
-At [AE Studio](https://ae.studio/), we are constantly working on new projects and find ourselves spending time setting up applications that could be better used to build out features. To improve our process, we decided to take our favorite technologies and bundle them into a simple boilerplate to help kickstart our projects faster.
 
 ## Contributing
 
