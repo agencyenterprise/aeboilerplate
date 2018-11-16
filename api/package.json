@@ -51,7 +51,7 @@
     "express-validator": "^5.3.0",
     "knex": "^0.15.2",
     "lodash.clone": "^4.5.0",
-    "morgan": "^1.9.0",
+    "morgan": "^1.9.1",
     "node-uuid": "^1.4.8",
     "passport": "^0.4.0",
     "passport-google-oauth2": "^0.1.6",
