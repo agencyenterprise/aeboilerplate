@@ -17,9 +17,6 @@ services:
       DB_CONN_PASSWORD: password
       DB_CONN_PORT: 5432
       DB_CONN_USER: user
-      LINKEDIN_ID: 77gy1y1ddffvxw
-      LINKEDIN_SECRET: WNOSE0fM0KdVPlDq
-      LINKEDIN_CALLBACK_URL: http://localhost:3000/auth/linkedin/callback
       NODE_ENV: test
       DATABASE_POOL_MIN: 0
       DATABASE_POOL_MAX: 10
