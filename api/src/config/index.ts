@@ -25,7 +25,7 @@ export const config = {
   knex: {
     client: 'postgresql',
     connection: process.env.DATABASE_URL || {
-      port: process.env.DB_CONN_PORT || 5432,
+      port: process.env.DB_CONN_PORT || 5433,
       host: process.env.DB_CONN_HOST || 'localhost',
       database: process.env.DB_CONN_DATABASE || 'api-db',
       user: process.env.DB_CONN_USER || 'user',
