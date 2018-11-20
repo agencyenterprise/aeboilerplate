@@ -3,7 +3,7 @@ version: '3'
 services:
   api:
     image: node:8.11.3
-    command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; npm run dev'
+    command: npm run dev
     working_dir: /usr/src/app
     volumes:
       - ./:/usr/src/app
