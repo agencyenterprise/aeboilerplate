@@ -6,9 +6,8 @@ const fs = require('fs')
 var readdirRecursive = require('recursive-readdir')
 const replace = require('replace-in-file')
 
-const clientGeneratorPath = `${process.cwd()}`
-const clientAppPath = '../client'
-const resourcesFilesPath = './resources'
+const clientAppPath = './client'
+const resourcesFilesPath = './generator/resources'
 const totalSteps = 10
 
 const run = async () => {
@@ -31,7 +30,8 @@ const run = async () => {
 
 const gitInit = () => {
   logStepHeaderMessage('Initializing git repository', 1)
-  shell.exec('cd .. && git init')
+  shell.cd('..')
+  shell.exec('git init')
 }
 
 const createReactApp = () => {
@@ -53,36 +53,36 @@ const updateAppResources = () => {
   return new Promise(async (resolve) => {
     logStepHeaderMessage('Updating client resources', 3)
     createFolders()
-    const resourcesFiles = await mapResourceFiles()
+    const resourcesFiles = await mapResourcesFiles()
     copyResourceFiles(resourcesFiles, resolve)
   })
 }
 
 const createFolders = () => {
   console.log('Creating client folders')
-  shell.mkdir('../client/__mocks__')
-  shell.mkdir('../client/src/api')
-  shell.mkdir('../client/src/api/me')
-  shell.mkdir('../client/src/config')
-  shell.mkdir('../client/src/redux')
-  shell.mkdir('../client/src/redux/ducks')
-  shell.mkdir('../client/src/containers')
-  shell.mkdir('../client/src/containers/app')
-  shell.mkdir('../client/src/containers/connect')
-  shell.mkdir('../client/src/containers/home')
-  shell.mkdir('../client/src/containers/user')
+  shell.mkdir(`${clientAppPath}/__mocks__`)
+  shell.mkdir(`${clientAppPath}/src/api`)
+  shell.mkdir(`${clientAppPath}/src/api/me`)
+  shell.mkdir(`${clientAppPath}/src/config`)
+  shell.mkdir(`${clientAppPath}/src/redux`)
+  shell.mkdir(`${clientAppPath}/src/redux/ducks`)
+  shell.mkdir(`${clientAppPath}/src/containers`)
+  shell.mkdir(`${clientAppPath}/src/containers/app`)
+  shell.mkdir(`${clientAppPath}/src/containers/connect`)
+  shell.mkdir(`${clientAppPath}/src/containers/home`)
+  shell.mkdir(`${clientAppPath}/src/containers/user`)
 }
 
-const mapResourceFiles = async () => {
+const mapResourcesFiles = async () => {
   console.log('Mapping resource files')
 
   const resourcesFiles = []
-  const files = await readdirRecursive(resourcesFilesPath)
+  const fileNames = await readdirRecursive(resourcesFilesPath)
 
-  files.forEach((file) => {
-    file = file.replace('resources/', '')
-    console.log('\tAdding resource file', file)
-    resourcesFiles.push(file)
+  fileNames.forEach((fileName) => {
+    fileName = fileName.replace(`generator/resources/`, '')
+    console.log('\tAdding resource', fileName)
+    resourcesFiles.push(fileName)
   })
 
   return resourcesFiles
@@ -101,7 +101,7 @@ const copyResourceFiles = (resourcesFiles, resolve) => {
 
 const copyFile = (resource) => {
   return new Promise((resolve) => {
-    const fromGeneratorResourcesPath = `${clientGeneratorPath}/resources/${resource}`
+    const fromGeneratorResourcesPath = `${resourcesFilesPath}/${resource}`
 
     const toClientResourcesPath = `${clientAppPath}/${resource}`
 
@@ -201,7 +201,8 @@ const installDependencies = () => {
     )
 
     console.log('Installing sass')
-    shell.exec(`cd .. && npm run client-npm-i-sass`)
+    shell.cd('..')
+    shell.exec(`npm run client-npm-i-sass`)
 
     resolve(true)
   })
