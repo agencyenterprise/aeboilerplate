@@ -11,7 +11,8 @@
     "seed": "knex seed:run --knexfile ./src/config/knexfile.ts",
     "seed-make": "knex seed:make --knexfile ./src/config/knexfile.ts",
     "test": "npm run migrate && jest -i --colors --verbose --coverage --detectOpenHandles",
-    "test-watch": "npm run migrate && jest -i --watchAll --colors --verbose --detectOpenHandles"
+    "test-watch": "npm run migrate && jest -i --watchAll --colors --verbose --detectOpenHandles",
+    "test-coverage": "npm run test && cat ./coverage/lcov.info | coveralls"
   },
   "license": "UNLICENSED",
   "devDependencies": {
@@ -26,6 +27,7 @@
     "@types/node-uuid": "0.0.28",
     "@types/passport": "^0.4.6",
     "@types/supertest": "^2.0.6",
+    "coveralls": "^3.0.2",
     "jest": "^23.5.0",
     "prettier": "^1.14.2",
     "supertest": "^3.3.0",

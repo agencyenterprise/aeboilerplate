@@ -38,7 +38,7 @@ jobs:
           command: |
             cd api
             set -ou pipefail
-            npm run test
+            npm run test-coverage
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
