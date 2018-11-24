@@ -166,7 +166,7 @@ const addReactRouter = () => {
 
 const replaceText = (resolve, replaceFrom, replaceTo) => {
   const options = {
-    files: `${clientAppPath}/src/index.tsx`,
+    files: '../client/src/index.tsx',
     from: replaceFrom,
     to: replaceTo,
   }
@@ -187,7 +187,7 @@ const installDependencies = () => {
 
     console.log('Installing DEV dependencies')
     shell.exec(
-      'npm install -D enzyme enzyme-adapter-react-16 axios-mock-adapter redux-mock-store prettier tslint tslint-config-prettier tslint-consistent-codestyle redux-devtools-extension redux-actions',
+      'npm install -D coveralls enzyme enzyme-adapter-react-16 axios-mock-adapter redux-mock-store prettier tslint tslint-config-prettier tslint-consistent-codestyle redux-devtools-extension redux-actions',
     )
 
     console.log('Installing dependencies')
@@ -200,9 +200,11 @@ const installDependencies = () => {
       `npm install -D @types/react-redux @types/react-router-dom @types/platform @types/qs @types/store @types/query-string`,
     )
 
-    console.log('Installing sass')
-    shell.cd('..')
-    shell.exec(`npm run client-npm-i-sass`)
+    if (process.env.NODE_ENV !== 'ci') {
+      console.log('Installing sass')
+      shell.cd('..')
+      shell.exec(`npm run client-npm-i-sass`)
+    }
 
     resolve(true)
   })
@@ -210,7 +212,7 @@ const installDependencies = () => {
 
 const deleteUnnecessaryFiles = () => {
   logStepHeaderMessage('Removing unnecessary files', 9)
-  const srcPath = `${clientAppPath}/src`
+  const srcPath = process.env.NODE_ENV !== 'ci' ? `${clientAppPath}/src` : './src'
   const files = fs.readdirSync(srcPath)
   const isDirectory = (path) => fs.lstatSync(path).isDirectory()
 
@@ -227,19 +229,21 @@ const deleteUnnecessaryFiles = () => {
 
 const changeClientPackageFile = () => {
   logStepHeaderMessage('Update client package configuration', 10)
-  const packagePath = `${clientAppPath}/package.json`
+  const packagePath = process.env.NODE_ENV !== 'ci' ? `${clientAppPath}/package.json` : './package.json'
   const packageContent = JSON.parse(fs.readFileSync(packagePath, 'utf8'))
 
-  packageContent.scripts['test-coverage'] = 'npm run test -- --coverage'
-  ;(packageContent.jest = {
+  packageContent.scripts['test-coverage'] = 'npm run test -- --coverage && cat ./coverage/lcov.info | coveralls'
+
+  packageContent.jest = {
     collectCoverageFrom: [
       'src/**/*.{ts,tsx}',
       '!<rootDir>/node_modules/',
       '!<rootDir>/src/index.tsx',
       '!<rootDir>/src/registerServiceWorker.ts',
     ],
-  }),
-    fs.writeFileSync(packagePath, JSON.stringify(packageContent, null, 2))
+  }
+
+  fs.writeFileSync(packagePath, JSON.stringify(packageContent, null, 2))
 }
 
 const showSuccessMessage = () => {
