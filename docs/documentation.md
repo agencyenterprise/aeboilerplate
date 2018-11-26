@@ -1,5 +1,7 @@
 # Table of Contents
 
+**AEBoilerplate** is a full-stack React/Node/Typescript web project starter that focuses primarily on ease-of-use and simplicity.
+
 - [Boilerplate structure](#boilerplate-structure)
 - [Development](#development)
 - [Available scripts](#available-scripts)
@@ -120,7 +122,7 @@ Add your route to `ProtectedRoutes.tsx`.
 
 ## Deployment
 
-For simplicity and ease-of-use, we use Heroku as our cloud service.
+The boilerplate can be deployed in any cloud service provider of your choice. For simplicity and ease-of-use, we use Heroku as our cloud service.
 
 ### Setting up your Heroku application
 
