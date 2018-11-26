@@ -175,13 +175,13 @@ The boilerplate comes with tests for both the API and client. We highly encourag
 
 You can find API tests in the `api/spec` folder and the client tests inside each React components folder.
 
-To run tests,
+**To run client-side tests,**
 
 ```shell
 npm run client-test
 ```
 
-or
+**To run server-side tests,**
 
 ```shell
 npm run api-test-watch
