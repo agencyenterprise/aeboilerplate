@@ -166,7 +166,7 @@ const addReactRouter = () => {
 
 const replaceText = (resolve, replaceFrom, replaceTo) => {
   const options = {
-    files: '../client/src/index.tsx',
+    files: `${clientAppPath}/src/index.tsx`,
     from: replaceFrom,
     to: replaceTo,
   }
