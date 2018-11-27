@@ -23,6 +23,9 @@ services:
       LINKEDIN_ID: YOUR_APP_LINKEDIN_ID
       LINKEDIN_SECRET: YOUR_APP_LINKEDIN_SECRET
       LINKEDIN_CALLBACK_URL: http://localhost:3001/api/auth/linkedin/callback
+      FACEBOOK_ID: YOUR_APP_FACEBOOK_ID
+      FACEBOOK_SECRET: YOUR_APP_FACEBOOK_SECRET
+      FACEBOOK_CALLBACK_URL: http://localhost:3001/api/auth/facebook/callback
       SUCCESS_LOGIN_REDIRECT_URL: http://localhost:3001/api/
       NODE_ENV: development
       DATABASE_POOL_MIN: 0

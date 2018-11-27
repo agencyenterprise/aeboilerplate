@@ -14,6 +14,7 @@ services:
       REACT_APP_API_URL: http://localhost:3001/api
       REACT_APP_LINKEDIN_AUTH_URL: http://localhost:3001/api/auth/linkedin
       REACT_APP_GOOGLE_AUTH_URL: http://localhost:3001/api/auth/google
+      REACT_APP_FACEBOOK_AUTH_URL: http://localhost:3001/api/auth/facebook
   api:
     image: node:8.11.3
     command: npm run dev
@@ -33,6 +34,9 @@ services:
       GOOGLE_ID: YOUR_APP_GOOGLE_ID
       GOOGLE_SECRET: YOUR_APP_GOOGLE_SECRET
       GOOGLE_CALLBACK_URL: http://localhost:3001/api/auth/google/callback
+      FACEBOOK_ID: YOUR_APP_FACEBOOK_ID
+      FACEBOOK_SECRET: YOUR_APP_FACEBOOK_SECRET
+      FACEBOOK_CALLBACK_URL: http://localhost:3001/api/auth/facebook/callback
       LINKEDIN_ID: YOUR_APP_LINKEDIN_ID
       LINKEDIN_SECRET: YOUR_APP_LINKEDIN_SECRET
       LINKEDIN_CALLBACK_URL: http://localhost:3001/api/auth/linkedin/callback

@@ -1,4 +1,5 @@
 import passport from 'passport'
+import facebookStrategy from 'passport-facebook'
 import googleOauth2 from 'passport-google-oauth2'
 import linkedInOauth2 from 'passport-linkedin-oauth2'
 
@@ -7,32 +8,35 @@ import { authenticate } from '../services/authentication/authenticate'
 import { logger } from '../services/logger'
 
 export const initializePassport = () => {
+  const callbackSuccess = (token, refreshToken, profile, done) => done(null, { token, refreshToken, profile })
+
   passport.use(
     'googleProvider',
     new googleOauth2.Strategy(
       {
-        clientID: config.auth.google.clientID,
-        clientSecret: config.auth.google.clientSecret,
-        callbackURL: config.auth.google.callbackURL,
-        scope: config.auth.google.scope,
+        ...config.auth.google,
       },
-      (token, refreshToken, profile, done) => {
-        done(null, { token, refreshToken, profile })
-      },
+      callbackSuccess,
     ),
   )
+
+  passport.use(
+    'facebookProvider',
+    new facebookStrategy(
+      {
+        ...config.auth.facebook,
+      },
+      callbackSuccess,
+    ),
+  )
+
   passport.use(
     'linkedInProvider',
     new linkedInOauth2.Strategy(
       {
-        clientID: config.auth.linkedIn.clientID,
-        clientSecret: config.auth.linkedIn.clientSecret,
-        callbackURL: config.auth.linkedIn.callbackURL,
-        scope: config.auth.linkedIn.scope,
+        ...config.auth.linkedIn,
       },
-      (token, refreshToken, profile, done) => {
-        done(null, { token, refreshToken, profile })
-      },
+      callbackSuccess,
     ),
   )
 

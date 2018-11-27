@@ -56,6 +56,7 @@
     "morgan": "^1.9.1",
     "node-uuid": "^1.4.8",
     "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1",
     "passport-google-oauth2": "^0.1.6",
     "passport-linkedin-oauth2": "^1.5.0",
     "pg": "^7.4.3",
