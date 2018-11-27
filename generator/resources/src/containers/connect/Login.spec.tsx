@@ -21,6 +21,6 @@ describe(`<Login />`, () => {
       shallow(<Login />)
         .find('a')
         .prop('href'),
-    ).toEqual(config.auth.googleAuthURL)
+    ).toEqual(config.authUrl.google)
   })
 })

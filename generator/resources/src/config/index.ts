@@ -3,8 +3,9 @@ export const config = {
   localStorageKeys: {
     token: 'token',
   },
-  auth: {
-    googleAuthURL: process.env.REACT_APP_GOOGLE_AUTH_URL || '/api/auth/google',
-    linkedInAuthURL: process.env.REACT_APP_LINKEDIN_AUTH_URL || '/api/auth/linkedin',
+  authUrl: {
+    google: process.env.REACT_APP_GOOGLE_AUTH_URL || '/api/auth/google',
+    linkedIn: process.env.REACT_APP_LINKEDIN_AUTH_URL || '/api/auth/linkedin',
+    facebook: process.env.REACT_APP_FACEBOOK_AUTH_URL || '/api/auth/facebook',
   },
 }

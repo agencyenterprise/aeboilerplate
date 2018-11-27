@@ -47,9 +47,4 @@ export const initializePassport = () => {
 
     done(null, authenticationInfo)
   })
-
-  passport.deserializeUser((authenticationInfo, done) => {
-    logger.info('deserializing user')
-    done(null, authenticationInfo)
-  })
 }

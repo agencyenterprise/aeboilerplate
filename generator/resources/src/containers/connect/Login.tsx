@@ -6,7 +6,7 @@ import './login.scss'
 
 const Login = () => (
   <div className="login">
-    <a href={config.auth.googleAuthURL}>
+    <a href={config.authUrl.google}>
       <button>Login with Google</button>
     </a>
   </div>
