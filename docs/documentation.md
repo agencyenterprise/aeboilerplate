@@ -7,8 +7,9 @@
 - [Available scripts](#available-scripts)
 - [Configuration](#configuration)
   - [Authentication](#authentication)
-    - [Configuring Google Authentication](#configuring-google-authentication)
-    - [Configuring LinkedIn Authentication](#configuring-linkedin-authentication)
+    - [Google](#google)
+    - [Facebook](#facebook)
+    - [LinkedIn](#linkedin)
     - [Adding other authentication methods](#adding-other-authentication-methods)
     - [Protecting your routes](#protecting-your-routes)
   - [Deployment](#deployment)
@@ -66,7 +67,7 @@ The API and client configuration files share the same structure and can be found
 
 ## Authentication
 
-### Configuring Google Authentication
+### Google
 
 - Create a new project from your [Google developer page](https://console.developers.google.com).
 - Enable Google+ API.
@@ -79,7 +80,18 @@ The API and client configuration files share the same structure and can be found
 - Click on Create.
 - You will be redirected back to the Credentials tab with a popup displaying your Client ID and Secret. Set these values to `GOOGLE_ID` and `GOOGLE_SECRET` in both the root level and API docker-compose configuration files.
 
-### Configuring LinkedIn Authentication
+### Facebook
+
+- Create a new [Facebook developer](https://developers.facebook.com) account.
+- Click on My Apps and add a new app.
+- Set a _display name_ and your _contact email_.
+- Click on the _Set Up_ button under the _Facebook Login_ card on the main dashboard.
+- Go to _Valid OAuth Redirect URIs_ and add `http://localhost:3001/api/auth/facebook/callback`.
+- Click on _Save Changes_
+- Copy the _client id_ and _client secret_ from the left menu opening the _Settings_ item and clicking on _Basic_
+- Set these values to `FACEBOOK_ID` and `FACEBOOK_SECRET` in both the root level and API docker-compose configuration files.
+
+### LinkedIn
 
 - Create a new application from your [LinkedIn developer page](https://www.linkedin.com/developer/apps).
 - Set your `LINKEDIN_ID` and `LINKEDIN_SECRET` in both the root level and API docker-compose configuration files.
