@@ -16,11 +16,12 @@ describe(`<Login />`, () => {
     expect(shallow(<Login />).hasClass('login')).toBeTruthy()
   })
 
-  it('has a link pointing to google path', () => {
-    expect(
-      shallow(<Login />)
-        .find('a')
-        .prop('href'),
-    ).toEqual(config.authUrl.google)
+  it('has links pointing to google, facebook and linkedin providers', () => {
+    const links = shallow(<Login />)
+      .find('a')
+      .getElements()
+      .map((element) => element.props.href)
+
+    expect(links).toEqual([config.authUrl.google, config.authUrl.facebook, config.authUrl.linkedIn])
   })
 })

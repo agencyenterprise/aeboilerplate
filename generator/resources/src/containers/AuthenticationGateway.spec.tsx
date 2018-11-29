@@ -24,7 +24,7 @@ describe(`<AuthenticationGateway />`, () => {
       </MemoryRouter>,
     )
 
-    expect(authenticationGateway.text()).toEqual('Login with Google')
+    expect(authenticationGateway.text()).toContain('Sign in with')
   })
 
   it('with token returns passed component', () => {
