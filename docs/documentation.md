@@ -70,15 +70,23 @@ The API and client configuration files share the same structure and can be found
 ### Google
 
 - Create a new project from your [Google developer page](https://console.developers.google.com).
-- Enable Google+ API.
-- Go to the OAuth consent tab by clicking on the credentials link on the left menu and add a product, along with any other data you want set for your project.
-- After saving, you will be redirected to the Credentials tab. Click on Create Credentials and enter your OAuth Client ID.
-- Click on Web Application and set the following values:
-  - `Web Client Name` : your application name
+- After creating your project you are redirected to the project Dashboard. Enable Google+ API by clicking on the _Library_ link on the left menu and searching for Google+ API or _ENABLE APIS AND SERVICES_ on the dashboard screen.
+- Go to the OAuth consent tab by clicking on the credentials link on the left menu. Click on _CREATE CREDENTIAL_:
+  - Which API are you using?
+    - Google+ API
+  - Where will you be calling the API from?
+    - Web server (e.g. node.js, Tomcat)
+  - What data will you be accessing?
+    - User data
+- After adding this information click on _What credentials do I need?_
+- It'll open the second step to create an OAuth 2.0 client ID:
+  - `Name` : your application name
   - `Authorized JavaScript Origins`: `http://localhost:3001`
   - `Authorized Redirect URIs`: `http://localhost:3001/auth/google/callback`
-- Click on Create.
-- You will be redirected back to the Credentials tab with a popup displaying your Client ID and Secret. Set these values to `GOOGLE_ID` and `GOOGLE_SECRET` in both the root level and API docker-compose configuration files.
+- Click on _Create OAuth client ID_.
+- The third step will open for the consent screen configuration where you need to set your product name. Click on continue after setting the product name.
+- In the last step, click on Done. You will be able to copy the client id on the next screen.
+- Click on your project name. Copy the Client ID and Client Secret to `GOOGLE_ID` and `GOOGLE_SECRET` in both the root level and API docker-compose configuration files.
 
 ### Facebook
 
