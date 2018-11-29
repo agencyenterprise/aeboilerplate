@@ -99,7 +99,7 @@ The API and client configuration files share the same structure and can be found
 
 ### Adding other authentication methods
 
-While the boilerplate’s API was built to use Google and LinkedIn’s authentication strategies, it is also easy to integrate other strategies.
+While the boilerplate’s API was built to use Google, Facebook and LinkedIn’s authentication strategies, it is also easy to integrate other strategies.
 
 First, read the [PassportJS documentation](http://www.passportjs.org/packages/). Then, make the following changes:
 
