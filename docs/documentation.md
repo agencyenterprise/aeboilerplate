@@ -30,13 +30,13 @@ Both applications come preconfigured with Docker and Docker Compose for running 
 Here is a basic overview of the structure and technologies used:
 
 - Client
-  _ Generated using [create-react-app](https://github.com/facebook/create-react-app) with [Typescript](https://www.typescriptlang.org/docs/home.html) and [SASS](https://sass-lang.com/).
-  _ [Axios](https://github.com/axios/axios) for the HTTP client.
-  _ [Redux](https://github.com/reduxjs/redux) using the [ducks modular approach](https://github.com/erikras/ducks-modular-redux) for state management.
-  _ [React Router 4](https://reacttraining.com/react-router/core/guides/philosophy) for routing. \* [Jest](https://jestjs.io/) and [Enzyme](https://github.com/airbnb/enzyme) for testing.
+  - Generated using [create-react-app](https://github.com/facebook/create-react-app) with [Typescript](https://www.typescriptlang.org/docs/home.html) and [SASS](https://sass-lang.com/).
+  - [Axios](https://github.com/axios/axios) for the HTTP client.
+  - [Redux](https://github.com/reduxjs/redux) using the [ducks modular approach](https://github.com/erikras/ducks-modular-redux) for state management.
+  - [React Router 4](https://reacttraining.com/react-router/core/guides/philosophy) for routing. \* [Jest](https://jestjs.io/) and [Enzyme](https://github.com/airbnb/enzyme) for testing.
 - API
-  _ [Express](https://expressjs.com/) for routing.
-  _ [Postgres](https://www.postgresql.org/about/) database and [Knex](https://knexjs.org/) for query building. [Migrations](https://knexjs.org/#Migrations-CLI) and [seeds](https://knexjs.org/#Seeds-CLI) are included. \* [Jest](https://jestjs.io/) for testing.
+  - [Express](https://expressjs.com/) for routing.
+  - [Postgres](https://www.postgresql.org/about/) database and [Knex](https://knexjs.org/) for query building. [Migrations](https://knexjs.org/#Migrations-CLI) and [seeds](https://knexjs.org/#Seeds-CLI) are included. \* [Jest](https://jestjs.io/) for testing.
 - [Circle CI configuration](https://circleci.com/docs/2.0/configuration-reference/#section=configuration) for continuous integration.
 - [PassportJS](http://www.passportjs.org/) and [OAuth2](https://oauth.net/2/) for authentication.
 - [Docker](https://docs.docker.com) and [docker compose](https://docs.docker.com/compose/) for running applications locally.
@@ -74,8 +74,8 @@ The API and client configuration files share the same structure and can be found
 - Go to the OAuth consent tab by clicking on the credentials link on the left menu and add a product, along with any other data you want set for your project.
 - After saving, you will be redirected to the Credentials tab. Click on Create Credentials and enter your OAuth Client ID.
 - Click on Web Application and set the following values:
-  _ `Web Client Name` : your application name
-  _ `Authorized JavaScript Origins`: `http://localhost:3001`
+  - `Web Client Name` : your application name
+  - `Authorized JavaScript Origins`: `http://localhost:3001`
   - `Authorized Redirect URIs`: `http://localhost:3001/auth/google/callback`
 - Click on Create.
 - You will be redirected back to the Credentials tab with a popup displaying your Client ID and Secret. Set these values to `GOOGLE_ID` and `GOOGLE_SECRET` in both the root level and API docker-compose configuration files.
@@ -106,11 +106,11 @@ First, read the [PassportJS documentation](http://www.passportjs.org/packages/).
 The authentication process is using the boilerplate API and it should be easy to add other strategies changing the following files:
 
 - [passport-initializer](https://github.com/agencyenterprise/aeboilerplate/blob/master/api/src/config/passport-initializer.ts)
-  _ Update the `initializePassport` function to in initialize your new strategy.
-  _ Update the configuration file with API keys and other configurations required for your strategy.
+  - Update the configuration file with API keys and other configurations required for your strategy.
+  - Update the `initializePassport` function to in initialize your new strategy.
 - [authenticate.ts](https://github.com/agencyenterprise/aeboilerplate/blob/master/api/src/api/authentication/authenticate.ts) (contains routing for your new strategy)
-  _ Add routes for your service.
-  _ Note: when following [O Auth2](https://oauth.net/2/)’s authentication pattern, two paths are required - one for the initial authenticate call and another for the callback. Make sure to use the same name that was set in the passport-initializer file, e.g. `passport.authenticate('facebookProvider')`.
+  - Add routes for your service.
+  - Note: when following [O Auth2](https://oauth.net/2/)’s authentication pattern, two paths are required - one for the initial authenticate call and another for the callback. Make sure to use the same name that was set in the passport-initializer file, e.g. `passport.authenticate('facebookProvider')`.
 
 Once everything has been configured, the boilerplate should automatically persist user authentication data to the database and save the token in the local storage.
 
