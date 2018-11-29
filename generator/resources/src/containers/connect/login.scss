@@ -1,9 +1,10 @@
 .login {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 
   a > button {
-    margin-top: 5em;
+    margin-top: 1em;
     width: 15em;
     height: 5em;
     border-radius: 5px;

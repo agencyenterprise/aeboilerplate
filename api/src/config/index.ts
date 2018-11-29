@@ -22,6 +22,11 @@ export const config = {
       callbackURL: process.env.LINKEDIN_CALLBACK_URL,
       scope: ['r_emailaddress', 'r_basicprofile'],
     },
+    providers: {
+      google: 'googleProvider',
+      facebook: 'facebookProvider',
+      linkedIn: 'linkedInProvider',
+    },
     successLoginRedirectUrl: process.env.SUCCESS_LOGIN_REDIRECT_URL,
   },
   logLevel: process.env.LOG_LEVEL || 'debug',
