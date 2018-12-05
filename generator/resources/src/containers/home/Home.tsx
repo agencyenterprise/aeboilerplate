@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Link } from 'react-router-dom'
 
 import '../../config'
 import './home.scss'
@@ -12,8 +13,8 @@ export const Home = () => (
       <img src={logo} className="home-logo" alt="logo" />
       <h1 className="home-title">Welcome to AEboilerplate!</h1>
     </header>
-    <a href={routePaths.loggedUser.root}>
+    <Link to={routePaths.loggedUser.root}>
       <button>Open logged user</button>
-    </a>
+    </Link>
   </div>
 )
