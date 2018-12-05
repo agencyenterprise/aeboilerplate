@@ -3,6 +3,7 @@
 const shell = require('shelljs')
 const colors = require('colors')
 const fs = require('fs')
+
 var readdirRecursive = require('recursive-readdir')
 const replace = require('replace-in-file')
 
@@ -80,7 +81,9 @@ const mapResourcesFiles = async () => {
   const fileNames = await readdirRecursive(resourcesFilesPath)
 
   fileNames.forEach((fileName) => {
-    fileName = fileName.replace(`generator/resources/`, '')
+    fileName = fileName
+      .replace(`generator/resources/`, '')
+      .replace(`generator\\resources\\`, '')
     console.log('\tAdding resource', fileName)
     resourcesFiles.push(fileName)
   })
