@@ -22,6 +22,7 @@
     "stop-containers": "docker-compose stop",
     "show-containers": "docker ps --format 'table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}'",
     "stop-all-containers": "docker stop $(docker ps -q) || true && docker rm $(docker ps -aq) || true",
+    "prune-docker-network": "docker network prune",
     "\n# General commands": "After executing the `npm run aeboilerplate` command, run `npm build && npm start` to use the built version",
     "install-dependencies": "npm i && npm run client-npm-i && npm run api-npm-i && npm run stop-containers",
     "build": "npm i && npm run build-client && npm run build-api",
