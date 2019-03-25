@@ -39,7 +39,11 @@ const createReactApp = () => {
   return new Promise((resolve) => {
     logStepHeaderMessage('Running create-react-app with TypeScript and SASS (@petejkim/react-scripts-ts-sass)', 2)
 
-    const createReactAppCommand = `create-react-app ${clientAppPath} --scripts-version="@petejkim/react-scripts-ts-sass" --use-npm`
+    let createReactAppCommand = `create-react-app ${clientAppPath} --typescript --use-npm`
+
+    if (process.argv.find((arg) => arg === '--no-ts')) {
+      createReactAppCommand = `create-react-app ${clientAppPath} --use-npm`
+    }
 
     const onSuccess = () => {
       console.log('\nReact app created'.green)
