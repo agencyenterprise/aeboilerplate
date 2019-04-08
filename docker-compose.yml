@@ -1,54 +1,63 @@
 version: '3'
 
 services:
+  proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - 80:80
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
   site:
-    image: node:8.11.3
+    image: node:8.15.1
     command: npm start
     working_dir: /usr/src/app
     volumes:
       - ./client:/usr/src/app
     ports:
-      - 3000:3000
+      - 3000
     environment:
       NODE_ENV: development
-      REACT_APP_API_URL: http://localhost:3001/api
-      REACT_APP_LINKEDIN_AUTH_URL: http://localhost:3001/api/auth/linkedin
-      REACT_APP_GOOGLE_AUTH_URL: http://localhost:3001/api/auth/google
-      REACT_APP_FACEBOOK_AUTH_URL: http://localhost:3001/api/auth/facebook
+      VIRTUAL_HOST: site.localtest.me
+      VIRTUAL_PORT: 3000
+      REACT_APP_API_URL: http://api.localtest.me/api
+      REACT_APP_LINKEDIN_AUTH_URL: http://api.localtest.me/api/auth/linkedin
+      REACT_APP_GOOGLE_AUTH_URL: http://api.localtest.me/api/auth/google
+      REACT_APP_FACEBOOK_AUTH_URL: http://api.localtest.me/api/auth/facebook
+
   api:
-    image: node:8.11.3
-    command: npm run dev
+    image: node:8.15.1
+    command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; npm run dev'
     working_dir: /usr/src/app
     volumes:
       - ./api:/usr/src/app
     ports:
-      - 3001:3001
+      - 3000
     depends_on:
       - db
     environment:
-      DB_CONN_DATABASE: api-db
-      DB_CONN_HOST: db
-      DB_CONN_PASSWORD: password
-      DB_CONN_PORT: 5432
-      DB_CONN_USER: user
+      NODE_ENV: development
+      VIRTUAL_HOST: api.localtest.me
+      VIRTUAL_PORT: 3000
+      DATABASE_URL: postgres://user:password@db/api-db
       FACEBOOK_ID: FACEBOOK_ID
       FACEBOOK_SECRET: FACEBOOK_SECRET
       GOOGLE_ID: GOOGLE_ID
       GOOGLE_SECRET: GOOGLE_SECRET
       LINKEDIN_ID: LINKEDIN_ID
       LINKEDIN_SECRET: LINKEDIN_SECRET
-      GOOGLE_CALLBACK_URL: http://localhost:3001/api/auth/google/callback
-      FACEBOOK_CALLBACK_URL: http://localhost:3001/api/auth/facebook/callback
-      LINKEDIN_CALLBACK_URL: http://localhost:3001/api/auth/linkedin/callback
-      SUCCESS_LOGIN_REDIRECT_URL: http://localhost:3000/connect
-      NODE_ENV: development
+      GOOGLE_CALLBACK_URL: http://api.localtest.me/api/auth/google/callback
+      FACEBOOK_CALLBACK_URL: http://api.localtest.me/api/auth/facebook/callback
+      LINKEDIN_CALLBACK_URL: http://api.localtest.me/api/auth/linkedin/callback
+      SUCCESS_LOGIN_REDIRECT_URL: http://site.localtest.me/connect
       DATABASE_POOL_MIN: 0
       DATABASE_POOL_MAX: 10
       ENABLE_NODE_CLUSTER: 'false'
+
   db:
     image: postgres:10.4
     ports:
-      - 5432:5432
+      - 5432
     command: postgres -D /run/pgsql-10.4-data -c logging_collector=on
     volumes:
       - ./api/db/local_database_volume:/var/lib/postgresql/data

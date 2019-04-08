@@ -5,26 +5,30 @@
   "scripts": {
     "\n# AEboilerplate commands": "",
     "aeboilerplate": "npm i && rimraf .git && npm run api-npm-i && npm run stop-containers && npm run generator && rimraf generator",
-    "generator": "cd generator && npm run create && cd ../client && prettier --write */*.tsx --loglevel silent",
+    "generator": "cd generator && npm i && npm run create && cd ../client && prettier --write */*.tsx --loglevel silent",
     "\n# API commands": "",
-    "build-api": "cd api && npm i",
-    "api-npm-i": "cd api && docker-compose run --rm api npm i",
-    "api-start": "cd api && docker-compose up",
-    "api-test-watch": "cd api && docker-compose -f docker-compose.tests-services.yml up --remove-orphans",
-    "migrate": "cd api && npm run migrate",
-    "seed": "cd api && npm run seed",
+    "build-api": "npm i --prefix api",
+    "api-npm": "docker-compose run --rm api npm",
+    "api-npm-i": "docker-compose run --rm api npm i",
+    "api-start": "docker-compose up api",
+    "api-test-watch": "docker-compose -f docker-compose.test.yml up --remove-orphans",
+    "migrate": "npm run migrate --prefix api",
+    "seed": "npm run seed --prefix api",
     "\n# Client commands": "",
-    "build-client": "cd client && npm i --only=dev && npm i && npm run build",
-    "client-npm-i-sass": "docker-compose run --rm site npm i node-sass",
+    "build-client": "npm i --prefix client --only=dev && npm i --prefix client && npm run build --prefix client",
+    "client-npm": "docker-compose run --rm site npm",
     "client-npm-i": "docker-compose run --rm site npm i",
-    "client-test": "cd client && npm run test",
+    "client-test": "npm run test --prefix client",
     "\n# Container commands": "",
     "stop-containers": "docker-compose stop",
+    "dstop": "npm run stop-containers",
     "show-containers": "docker ps --format 'table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}'",
+    "dps": "npm run show-containers",
     "stop-all-containers": "docker stop $(docker ps -q) || true && docker rm $(docker ps -aq) || true",
     "prune-docker-network": "docker network prune",
     "\n# General commands": "After executing the `npm run aeboilerplate` command, run `npm build && npm start` to use the built version",
     "install-dependencies": "npm i && npm run client-npm-i && npm run api-npm-i && npm run stop-containers",
+    "i": "npm run install-dependencies",
     "build": "npm i && npm run build-client && npm run build-api",
     "heroku-postbuild": "npm run build",
     "dev": "docker-compose up",
@@ -43,6 +47,17 @@
     "url": "https://github.com/agencyenterprise/ae-node-boilerplate/issues"
   },
   "homepage": "https://github.com/agencyenterprise/ae-node-boilerplate#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx,scss,md,css,json,yml}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "dependencies": {
     "@types/node": "^8.10.29",
     "express": "^4.16.3",
@@ -51,6 +66,9 @@
     "typescript": "^3.0.3"
   },
   "devDependencies": {
-    "prettier": "^1.14.2"
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.5",
+    "prettier": "^1.16.4",
+    "tslint": "^5.15.0"
   }
 }

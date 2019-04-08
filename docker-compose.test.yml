@@ -2,24 +2,23 @@ version: '3'
 
 services:
   test:
-    image: node:8.11.3
-    command: npm run test-watch
+    image: node:8.15.1
+    command: bash -c 'while !</dev/tcp/dbTest/5432; do sleep 1; done; npm run test-watch
     working_dir: /usr/src/app
     volumes:
       - ./:/usr/src/app
     ports:
-      - 4000:4000
+      - 4000
     depends_on:
       - dbTest
     environment:
-      DB_CONN_DATABASE: api-test-db
-      DB_CONN_HOST: dbTest
-      DB_CONN_PASSWORD: password
-      DB_CONN_PORT: 5432
-      DB_CONN_USER: user
       NODE_ENV: test
+      VIRTUAL_HOST: api-test.localtest.me
+      VIRTUAL_PORT: 4000
+      DATABASE_URL: postgres://user:password@dbTest/api-test-db
       DATABASE_POOL_MIN: 0
       DATABASE_POOL_MAX: 10
+
   dbTest:
     image: postgres:10.4
     ports:
