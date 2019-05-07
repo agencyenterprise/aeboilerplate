@@ -2,7 +2,7 @@ export const routePaths = {
   connect: '/connect',
   root: '/',
   login: '/login',
-  loggedUser: {
+  private: {
     root: '/logged-user',
   },
 }

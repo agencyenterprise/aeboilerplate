@@ -13,7 +13,7 @@ export const getMe = createActionThunk('GET_ME', () => getMeData())
 
 export const me = handleActions(
   {
-    [getMe.START]: (state) => ({
+    [getMe.STARTED]: (state) => ({
       ...state,
       loading: true,
     }),

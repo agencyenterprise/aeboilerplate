@@ -12,7 +12,8 @@
     "forceConsistentCasingInFileNames": true,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
-    "baseUrl": "."
+    "strict": false,
+    "baseUrl": "./src"
   },
   "exclude": ["node_modules", "build", "scripts", "webpack", "__mocks__"]
 }

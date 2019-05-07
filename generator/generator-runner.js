@@ -5,41 +5,40 @@ const colors = require('colors')
 const fs = require('fs')
 
 var readdirRecursive = require('recursive-readdir')
-const replace = require('replace-in-file')
 
 const clientAppPath = './client'
 const resourcesFilesPath = './generator/resources'
-const totalSteps = 10
+const totalSteps = 6
+let stepsTaken = 1
 
 const run = async () => {
   try {
-    gitInit()
-    await createReactApp()
-    await updateAppResources()
-    await updateAppEntryPoint()
-    await updateAppInitialConfig()
-    await addReduxStoreProvider()
-    await addReactRouter()
-    await installDependencies()
-    deleteUnnecessaryFiles()
-    changeClientPackageFile()
+    await executeStep('Initializing git repository', gitInit)
+    await executeStep('Running create-react-app with TypeScript and SASS', createReactApp)
+    await executeStep('Updating client resources', updateAppResources)
+    await executeStep('Installing client dependencies', installDependencies)
+    await executeStep('Removing unnecessary files', deleteUnnecessaryFiles)
+    await executeStep('Update client package configuration', changeClientPackageFile)
     showSuccessMessage()
   } catch (error) {
     console.log(error, 'Something went wrong with the client generator'.red)
   }
 }
 
+const executeStep = async (message, callback) => {
+  logStepHeaderMessage(message, stepsTaken++)
+
+  await callback()
+}
+
 const gitInit = () => {
-  logStepHeaderMessage('Initializing git repository', 1)
   shell.cd('..')
   shell.exec('git init')
 }
 
 const createReactApp = () => {
   return new Promise((resolve) => {
-    logStepHeaderMessage('Running create-react-app with TypeScript and SASS (@petejkim/react-scripts-ts-sass)', 2)
-
-    const createReactAppCommand = `create-react-app ${clientAppPath} --scripts-version="@petejkim/react-scripts-ts-sass" --use-npm`
+    const createReactAppCommand = `create-react-app ${clientAppPath} --typescript`
 
     const onSuccess = () => {
       console.log('\nReact app created'.green)
@@ -52,7 +51,6 @@ const createReactApp = () => {
 
 const updateAppResources = () => {
   return new Promise(async (resolve) => {
-    logStepHeaderMessage('Updating client resources', 3)
     createFolders()
     const resourcesFiles = await mapResourcesFiles()
     copyResourceFiles(resourcesFiles, resolve)
@@ -81,9 +79,7 @@ const mapResourcesFiles = async () => {
   const fileNames = await readdirRecursive(resourcesFilesPath)
 
   fileNames.forEach((fileName) => {
-    fileName = fileName
-      .replace(`generator/resources/`, '')
-      .replace(`generator\\resources\\`, '')
+    fileName = fileName.replace(`generator/resources/`, '').replace(`generator\\resources\\`, '')
     console.log('\tAdding resource', fileName)
     resourcesFiles.push(fileName)
   })
@@ -117,75 +113,8 @@ const copyFile = (resource) => {
   })
 }
 
-const updateAppEntryPoint = () => {
-  return new Promise((resolve) => {
-    logStepHeaderMessage('Updating react app entry point', 4)
-
-    const replaceFrom = "import App from './App'"
-    const replaceTo = "import { App } from './containers/app/App'"
-
-    replaceText(resolve, replaceFrom, replaceTo)
-  })
-}
-
-const updateAppInitialConfig = () => {
-  return new Promise((resolve) => {
-    logStepHeaderMessage('Initializing axios, redux store and react router', 5)
-
-    const replaceFrom = "import registerServiceWorker from './registerServiceWorker'"
-    const replaceTo = `import registerServiceWorker from './registerServiceWorker' \n\n
-    import { Provider } from 'react-redux'
-    import { BrowserRouter as Router, Route } from 'react-router-dom'
-    import { setupAxios } from './api/setup-axios'
-    import { configureStore } from './redux/configure-store' \n\n
-    setupAxios() \n\n
-    const store = configureStore() \n\n`
-
-    replaceText(resolve, replaceFrom, replaceTo)
-  })
-}
-
-const addReduxStoreProvider = () => {
-  return new Promise((resolve) => {
-    logStepHeaderMessage('Adding redux store provider', 6)
-
-    const replaceFrom = '<App />'
-    const replaceTo = '<Provider store={store}>\n<App />\n</Provider>'
-
-    replaceText(resolve, replaceFrom, replaceTo)
-  })
-}
-
-const addReactRouter = () => {
-  return new Promise((resolve) => {
-    logStepHeaderMessage('Adding react router', 7)
-
-    const replaceFrom = '<App />'
-    const replaceTo = '<Router>\n<Route path="/" component={App} />\n</Router>'
-
-    replaceText(resolve, replaceFrom, replaceTo)
-  })
-}
-
-const replaceText = (resolve, replaceFrom, replaceTo) => {
-  const options = {
-    files: `${clientAppPath}/src/index.tsx`,
-    from: replaceFrom,
-    to: replaceTo,
-  }
-
-  try {
-    replace.sync(options)
-    resolve(true)
-  } catch (error) {
-    console.error('Error occurred updating index.tsx:', error.red)
-    resolve(false)
-  }
-}
-
 const installDependencies = () => {
   return new Promise((resolve) => {
-    logStepHeaderMessage('Installing client dependencies', 8)
     shell.cd(`${clientAppPath}`)
 
     console.log('Installing DEV dependencies')
@@ -195,12 +124,12 @@ const installDependencies = () => {
 
     console.log('Installing dependencies')
     shell.exec(
-      `npm install -S redux github:wgrisa/redux-thunk-actions react-redux redux-thunk react-router-dom axios platform qs store query-string`,
+      `npm install -S redux github:wgrisa/redux-thunk-actions react-redux redux-thunk react-router-dom axios platform qs store query-string typescript`,
     )
 
     console.log('Installing @types')
     shell.exec(
-      `npm install -D @types/react-redux @types/react-router-dom @types/platform @types/qs @types/store @types/query-string`,
+      `npm install -D @types/node @types/react @types/react-dom @types/jest @types/react-redux @types/react-router-dom @types/platform @types/qs @types/store @types/query-string`,
     )
 
     if (process.env.NODE_ENV !== 'ci') {
@@ -214,14 +143,13 @@ const installDependencies = () => {
 }
 
 const deleteUnnecessaryFiles = () => {
-  logStepHeaderMessage('Removing unnecessary files', 9)
   const srcPath = process.env.NODE_ENV !== 'ci' ? `${clientAppPath}/src` : './src'
   const files = fs.readdirSync(srcPath)
   const isDirectory = (path) => fs.lstatSync(path).isDirectory()
 
   files.forEach((file) => {
     const fullFilePath = `${srcPath}/${file}`
-    const whitelistFiles = ['index.tsx', 'index.scss', 'registerServiceWorker.ts']
+    const whitelistFiles = ['index.tsx', 'index.scss', 'serviceWorker.ts']
 
     if (!whitelistFiles.includes(file) && !isDirectory(fullFilePath)) {
       console.log('deleting unnecessary file: ', file)
@@ -231,7 +159,6 @@ const deleteUnnecessaryFiles = () => {
 }
 
 const changeClientPackageFile = () => {
-  logStepHeaderMessage('Update client package configuration', 10)
   const packagePath = process.env.NODE_ENV !== 'ci' ? `${clientAppPath}/package.json` : './package.json'
   const packageContent = JSON.parse(fs.readFileSync(packagePath, 'utf8'))
 
@@ -253,7 +180,7 @@ const showSuccessMessage = () => {
   const successMessage = `\nSetup success! Welcome to AEboilerplate\n
 Some stuff to do:\n
 • commit right now if you want to have a baseline for the project
-• read our documentation at (ctrl + click to open) https://github.com/agencyenterprise/aeboilerplate/blob/master/docs/documentation.md
+• read our documentation at (ctrl/cmd + click to open) https://github.com/agencyenterprise/aeboilerplate/blob/master/docs/documentation.md
 • npm run dev to get the project going
 • have fun!\n`.green
 
