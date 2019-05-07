@@ -28,7 +28,7 @@ describe('me duck', () => {
         const executedActions = store.getActions()
         const succeededPayload = executedActions.find((action) => action.type === getMe.SUCCEEDED)
 
-        expect(executedActions.map((action) => action.type)).toEqual([getMe.START, getMe.SUCCEEDED, getMe.ENDED])
+        expect(executedActions.map((action) => action.type)).toEqual([getMe.STARTED, getMe.SUCCEEDED, getMe.ENDED])
         expect(succeededPayload).toEqual({
           type: getMe.SUCCEEDED,
           payload: { me: mePayload },
@@ -45,7 +45,7 @@ describe('me duck', () => {
         const executedActions = store.getActions()
         const failedPayload = executedActions.find((action) => action.type === getMe.FAILED)
 
-        expect(executedActions.map((action) => action.type)).toEqual([getMe.START, getMe.FAILED, getMe.ENDED])
+        expect(executedActions.map((action) => action.type)).toEqual([getMe.STARTED, getMe.FAILED, getMe.ENDED])
         expect(failedPayload).toEqual({
           type: getMe.FAILED,
           payload: { error: 'OPS' },
@@ -58,7 +58,7 @@ describe('me duck', () => {
       let succeededState = { me: { name: 'AEboilerplate' }, loading: true, error: null }
 
       it('activates loading on start reducer', async () => {
-        const startReducer = me(initialState, { type: getMe.START })
+        const startReducer = me(initialState, { type: getMe.STARTED })
 
         expect(startReducer).toEqual(startedState)
       })
