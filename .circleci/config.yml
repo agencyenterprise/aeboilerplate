@@ -39,6 +39,7 @@ jobs:
             cd api
             set -ou pipefail
             npm run test-coverage
+      - setup_remote_docker
       - run:
           name: Run generator and client tests
           environment:
