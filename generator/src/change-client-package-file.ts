@@ -3,7 +3,7 @@ import * as fs from 'fs'
 import { clientAppPath } from './core/config'
 
 export const changeClientPackageFile = () => {
-  const packagePath = process.env.NODE_ENV !== 'ci' ? `${clientAppPath}/package.json` : './package.json'
+  const packagePath = `${clientAppPath}/package.json`
   const packageContent = JSON.parse(fs.readFileSync(packagePath, 'utf8'))
 
   packageContent.scripts['test-coverage'] = 'npm run test -- --coverage && cat ./coverage/lcov.info | coveralls'

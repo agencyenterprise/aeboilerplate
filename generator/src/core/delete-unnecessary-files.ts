@@ -1,12 +1,8 @@
 import * as fs from 'fs'
 
-import shell from 'shelljs'
-
 import { clientAppPath } from './config'
 
 export const deleteUnnecessaryFiles = () => {
-  console.log('LS > \n\n', shell.ls())
-
   const srcPath = `${clientAppPath}/src`
   const files = fs.readdirSync(srcPath)
   const isDirectory = (path) => fs.lstatSync(path).isDirectory()
