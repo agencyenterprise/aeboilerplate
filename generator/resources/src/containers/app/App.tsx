@@ -1,10 +1,7 @@
 import * as React from 'react'
 
-import { AuthenticationGateway } from '../AuthenticationGateway'
-import { ProtectedRoutes } from '../ProtectedRoutes'
+import { Routes } from '../Routes'
 
-const App = () => (
-  <AuthenticationGateway component={ProtectedRoutes} path="/" />
-)
+const App = () => <Routes />
 
 export { App }

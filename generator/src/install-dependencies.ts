@@ -1,12 +1,10 @@
 import shell from 'shelljs'
 
-import { logStepHeaderMessage } from './core/log-step-header-message'
 import { clientAppPath } from './core/config'
 
 export const installDependencies = () => {
   return new Promise((resolve) => {
-    logStepHeaderMessage('Installing client dependencies', 8)
-    shell.exec(`npm run client-npm-i`)
+    shell.exec(`npm run client-npm i`)
 
     const dependencies = [
       'redux',
@@ -19,6 +17,7 @@ export const installDependencies = () => {
       'qs',
       'store',
       'query-string',
+      'typescript',
     ]
 
     const devDependencies = [
@@ -38,10 +37,14 @@ export const installDependencies = () => {
       '@types/platform',
       '@types/qs',
       '@types/store',
+      '@types/node',
+      '@types/react',
+      '@types/react-dom',
+      '@types/jest',
     ]
 
-    shell.exec(`npm run client-npm-i -- -S ${dependencies.join(' ')}`)
-    shell.exec(`npm run client-npm-i -- -D --unsafe-perm ${devDependencies.join(' ')}`)
+    shell.exec(`npm run client-npm i -- -S ${dependencies.join(' ')}`)
+    shell.exec(`npm run client-npm i -- -D --unsafe-perm ${devDependencies.join(' ')}`)
 
     shell.cd(`${clientAppPath}`)
     shell.exec(`npm i node-sass -D`)

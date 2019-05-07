@@ -35,7 +35,14 @@ export const config = {
     (process.env.ENABLE_NODE_CLUSTER && process.env.ENABLE_NODE_CLUSTER.toLowerCase() === 'true') || false,
   knex: {
     client: 'postgresql',
-    connection: process.env.DATABASE_URL,
+    connection: process.env.DATABASE_URL || {
+      port: process.env.DB_CONN_PORT || 5432,
+      host: process.env.DB_CONN_HOST || 'localhost',
+      database: process.env.DB_CONN_DATABASE || 'api-db',
+      user: process.env.DB_CONN_USER || 'user',
+      password: process.env.DB_CONN_PASSWORD || 'password',
+      multipleStatements: true,
+    },
     pool: {
       min: +process.env.DATABASE_POOL_MIN || 0,
       max: +process.env.DATABASE_POOL_MAX || 10,

@@ -60,7 +60,7 @@ services:
       - 5432
     command: postgres -D /run/pgsql-10.4-data -c logging_collector=on
     volumes:
-      - ./api/db/local_database_volume:/var/lib/postgresql/data
+      - ./api/db/local_database_volume:/run/pgsql-10.4-data
     healthcheck:
       test: ['CMD-SHELL', 'pg_isready -U postgres']
       interval: 10s
