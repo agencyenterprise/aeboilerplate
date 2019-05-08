@@ -41,7 +41,7 @@ jobs:
             npm run test-coverage
       - setup_remote_docker
       - run:
-          name: Run generator and client tests
+          name: Run generator
           environment:
             NODE_ENV: ci
           command: |
@@ -49,8 +49,6 @@ jobs:
               set -ou pipefail
               npm i
               npm run generator
-              cat ./client/package.json
-              docker-compose run --rm site npm run test-coverage
             fi
       - restore_cache:
           keys:

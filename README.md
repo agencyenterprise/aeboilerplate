@@ -3,7 +3,6 @@
 [![aeboilerplate license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/agencyenterprise/aeboilerplate/blob/master/LICENCE.md)
 [![build](https://circleci.com/gh/agencyenterprise/aeboilerplate.svg?style=shield&circle-token=3d749403becdba1c3b622fb512abad50192930b6)](https://circleci.com/gh/agencyenterprise/aeboilerplate)
 [![npm version](https://badge.fury.io/js/aeboilerplate.svg)](https://badge.fury.io/js/aeboilerplate)
-[![Coverage Status](https://coveralls.io/repos/github/agencyenterprise/aeboilerplate/badge.svg?branch=)](https://coveralls.io/github/agencyenterprise/aeboilerplate?branch=)
 
 A full-stack React/Node/Typescript web project starter that focuses primarily on ease-of-use and simplicity.
 
