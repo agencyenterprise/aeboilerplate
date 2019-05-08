@@ -4,7 +4,7 @@ import { clientAppPath } from './core/config'
 
 export const installDependencies = () => {
   return new Promise((resolve) => {
-    shell.exec(`npm run client-npm i`)
+    shell.exec(`npm run client-npm -- i`)
 
     const dependencies = [
       'redux',
@@ -43,8 +43,8 @@ export const installDependencies = () => {
       '@types/jest',
     ]
 
-    shell.exec(`npm run client-npm i -- -S ${dependencies.join(' ')}`)
-    shell.exec(`npm run client-npm i -- -D --unsafe-perm ${devDependencies.join(' ')}`)
+    shell.exec(`npm run client-npm -- i -S ${dependencies.join(' ')}`)
+    shell.exec(`npm run client-npm -- i -D --unsafe-perm ${devDependencies.join(' ')}`)
 
     shell.cd(`${clientAppPath}`)
     shell.exec(`npm i node-sass -D`)
