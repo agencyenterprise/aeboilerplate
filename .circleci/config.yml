@@ -50,9 +50,10 @@ jobs:
               npm i
               npm run generator
               cd client
-              rm -rf node_modules
-              cat package.json
               npm i
+              npm install -S redux github:wgrisa/redux-thunk-actions react-redux redux-thunk react-router-dom axios platform qs store query-string typescript
+              npm install -D coveralls enzyme enzyme-adapter-react-16 axios-mock-adapter redux-mock-store prettier tslint tslint-config-prettier tslint-consistent-codestyle redux-devtools-extension redux-actions
+              npm install -D @types/node @types/react @types/react-dom @types/jest @types/react-redux @types/react-router-dom @types/platform @types/qs @types/store @types/query-string
               npm run test-coverage
             fi
       - restore_cache:
