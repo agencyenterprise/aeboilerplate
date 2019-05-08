@@ -13,7 +13,8 @@ export const changeClientPackageFile = () => {
       'src/**/*.{ts,tsx}',
       '!<rootDir>/node_modules/',
       '!<rootDir>/src/index.tsx',
-      '!<rootDir>/src/registerServiceWorker.ts',
+      '!<rootDir>/src/serviceWorker.ts',
+      '!<rootDir>/src/react-app-env.d.ts',
     ],
   }
 
