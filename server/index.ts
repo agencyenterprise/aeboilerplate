@@ -4,13 +4,13 @@ import os from 'os'
 import path from 'path'
 
 import { app } from '../api/src/app'
-import { config } from './config'
 import { logger } from '../api/src/services/logger'
+import { config } from './config'
 
 app.use(express.static(path.join(__dirname, '../client/build')))
 
-app.get('*', function(_, res) {
-  res.sendFile(path.join(__dirname, '../client/build/index.html'), function(err) {
+app.get('*', (_, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'), (err) => {
     if (err) {
       res.status(500).send(err)
     }

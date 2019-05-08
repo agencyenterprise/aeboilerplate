@@ -39,8 +39,9 @@ jobs:
             cd api
             set -ou pipefail
             npm run test-coverage
+      - setup_remote_docker
       - run:
-          name: Run generator and client tests
+          name: Run generator
           environment:
             NODE_ENV: ci
           command: |
@@ -48,9 +49,6 @@ jobs:
               set -ou pipefail
               npm i
               npm run generator
-              cd client
-              npm i
-              npm run test-coverage
             fi
       - restore_cache:
           keys:

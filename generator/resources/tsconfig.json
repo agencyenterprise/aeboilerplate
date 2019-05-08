@@ -13,7 +13,8 @@
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "strict": false,
-    "baseUrl": "./src"
+    "allowSyntheticDefaultImports": false,
+    "noImplicitAny": false
   },
   "exclude": ["node_modules", "build", "scripts", "webpack", "__mocks__"]
 }
