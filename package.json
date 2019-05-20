@@ -15,7 +15,7 @@
     "migrate": "npm run migrate --prefix api",
     "seed": "npm run seed --prefix api",
     "\n# Client commands": "",
-    "build-client": "npm i --prefix client --only=dev && npm i --prefix client && npm run build --prefix client",
+    "build-client": "npm i --prefix client && npm i --prefix client --only=dev && npm run build --prefix client",
     "client-npm": "docker-compose run --rm site npm",
     "client-test": "npm run test --prefix client",
     "ctw": "npm run client-test",
