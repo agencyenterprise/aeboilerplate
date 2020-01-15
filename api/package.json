@@ -51,7 +51,7 @@
     "express-rate-limit": "^3.1.0",
     "express-session": "^1.15.6",
     "express-validator": "^5.3.0",
-    "knex": "^0.15.2",
+    "knex": "^0.19.5",
     "lodash.clone": "^4.5.0",
     "morgan": "^1.9.1",
     "node-uuid": "^1.4.8",
